@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 19</title>
+</head>
+<body>
+    <!-- 1 -->
+    <!-- <button onclick="alert('Привет!')">Нажми на меня!</button> -->
+
+    <!-- 2 -->
+    <!-- <button onmouseover="alert('Привет!')">Наведи на меня!</button> -->
+
+    <!-- 3 -->
+    <!-- <button ondblclick="alert('Привет!')">Двойной щелчек по мне!</button> -->
+
+    <!-- 4 -->
+    <!-- <div onmouseout="alert('Привет!')">Наведи на меня мышь - а потом убери!</div>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            }
+    </style> -->
+
+    <!-- Метод getElementById и работа с атрибутами -->
+    <!-- 5 -->
+
+    <!-- <input type="text" id="input" value="Ку-ку">
+    <button onclick="buttonClick()">Нажми на меня!</button>
+    <script>
+        function buttonClick(){
+            var input =  document.getElementById('input');
+            alert(input.value);
+        }
+    
+    </script> -->
+
+    <!-- 6 -->
+<!-- 
+    <input type="text" id="input" value="Ку-ку">
+    <button onclick="buttonClick()">Нажми на меня!</button>
+    <script>
+        function buttonClick(){
+            var input =  document.getElementById('input');
+            input.value = 'Ой, я поменял свой текст!';
+        }
+    
+    </script>  -->
+
+    <!-- 7 -->
+
+    <!-- <img src="http://code.mu/exercises/javascript/dom/osnovy-raboty-s-dom-v-javascript/2/3/1.jpg" alt="img" id="img" width="150px">
+    <br>
+    <button onclick="buttonClick()">Нажми на меня!</button>
+    <script>
+        function buttonClick(){
+            var input =  document.getElementById('img');
+            img.src='http://code.mu/exercises/javascript/dom/osnovy-raboty-s-dom-v-javascript/2/3/2.jpg';
+        }
+    
+    </script>   -->
+
+    <!-- Работа с this -->
+    <!-- 8 -->
+
+    <!-- <input type="text" id="input" value="Нажми на меня!" onfocus="inputClick(this)">
+    <script>
+            function inputClick(elem){
+                alert(elem.value);
+            }
+        
+        </script>   -->
+
+        <!-- 9 -->
+
+    <!-- <input type="text" id="input" value="Нажми на меня!" onclick="inputClick(this)"> 
+        <script>
+            function inputClick(elem){
+             elem.value='Ой, я поменял текст!';
+            }
+
+     </script>   -->
+
+     <!-- 10 -->
+
+         <!-- <input type="text" id="input" value="Нажми на меня!" onclick="inputClick(this)" onblur="inputClick2(this)"> 
+        <script>
+            function inputClick(elem){
+             elem.value='Ой, я поменял текст!';
+            }
+
+            function inputClick2(elem){
+              elem.value='Ой, я еще раз поменял текст!';
+            }   
+     </script>   -->
+
+     <!-- 11 -->
+        <!-- <input type="submit" value="Нажми на меня!" onclick="inputClick(this)">
+
+        <script>
+                function inputClick(elem){
+                 elem.value='Ку-ку';
+                }
+    
+         </script>  -->
+
+    <!-- 12 -->
+
+        <!-- <input type="submit" value="Нажми на меня!" onclick="inputClick(this)">
+
+        <script>
+                function inputClick(elem){
+                 elem.value='Не нажать';
+                 elem.disabled=true;
+                }
+    
+         </script>  -->
+
+    <!-- 13 -->
+<!-- 
+    <img src="http://code.mu/exercises/javascript/dom/osnovy-raboty-s-dom-v-javascript/2/3/1.jpg" alt="img" id="img" width="150px" onmousemove="imgClick(this)" onmouseout="imgClick2(this)">
+    <script>
+        function imgClick(elem){
+            elem.src='http://code.mu/exercises/javascript/dom/osnovy-raboty-s-dom-v-javascript/2/3/2.jpg';
+        }
+
+        function imgClick2(elem){
+            elem.src='http://code.mu/exercises/javascript/dom/osnovy-raboty-s-dom-v-javascript/2/3/1.jpg';
+        }
+    
+    
+    </script>    -->
+
+    <!-- Работа с CSS -->
+    <!-- 14 -->
+
+    <!-- <input type="text" value="Ку-ку" id="input">
+
+    <button onclick="buttonClick()">Нажми на меня!</button>
+
+    <script>
+            function buttonClick(){
+             var elem = document.getElementById('input');
+             input.style.color = 'red';
+             input.style.width = '300px';
+            }
+
+     </script> -->
+
+     <!-- 15 -->
+
+     <!-- <input type="text" value="Ку-ку" id="input">
+
+    <button onclick="buttonClick()">Нажми на меня!</button>
+    <button onclick="buttonClick2()">Нажми потом на меня!</button>
+
+    <script>
+            function buttonClick(){
+             var elem = document.getElementById('input');
+             elem.style.display='none';
+            }
+
+            function buttonClick2(){
+             var elem = document.getElementById('input');
+             elem.style.display='inline-block';
+            }
+
+     </script> -->
+
+     <!-- 16 -->
+
+     <!-- <input type="text" value="Ку-ку" id="input">
+     <br>
+     <button onclick="buttonClick()">Нажми на меня!</button>
+ 
+     <script>
+             function buttonClick(){
+              var elem = document.getElementById('input');
+              input.value='Ой, я поменял свой текст и css!';
+              input.style.color = 'red';
+              input.style.width = '300px';
+              input.style.padding = '20px 0';
+              input.style.borderRadius = '10px';
+             }
+ 
+      </script>      -->
+
+    <!-- 17 -->
+
+   <!-- <input type="submit" value="Нажми на меня!" onclick="buttonClick()" id="sub1" style="width:300px; margin-bottom: 10px;">
+   <input type="submit" value="Отблокировать" onclick="buttonClick2()" id='sub2' style="display:none; width:300px">
+
+   <script>
+        function buttonClick(){
+        var sub1 = document.getElementById('sub1');
+        var sub2 = document.getElementById('sub2');
+        sub1.value='Теперь не нажать';
+        sub1.disabled=true;
+        sub2.style.display="block";
+        }
+
+        function buttonClick2(){
+        var sub1 = document.getElementById('sub1');
+        var sub2 = document.getElementById('sub2');
+        sub1.disabled=false;
+        sub2.style.display="none";
+        }
+
+ </script> -->
+
+ <!-- 18 -->
+
+<!-- 
+ <div>Кнопка считает кол-во нажатий по ней.</div>
+ <input type="submit" value="0" onclick="buttonClick(this)" id="sub1" style="width:300px">
+
+ <script>
+ function buttonClick(elem){
+    elem.value++;
+    }
+</script> -->
+
+<!-- 19 -->
+
+<!-- <input type="text" value="Ку-ку" id="input" style="width:300px;">
+
+    <button onclick="buttonClick()">Нажми на меня!</button>
+
+    <script>
+            function buttonClick(){
+             var elem = document.getElementById('input');
+             input.value='Тепер я справа';
+             input.style.cssFloat='right';
+            }
+
+     </script> -->
+
+     <!-- 20 -->
+
+     <!-- <input type="text" value="Ку-ку" id="input" class="eee www ddd" style="width:300px;">
+
+     <button onclick="buttonClick()">Нажми на меня!</button>
+ 
+     <script>
+            function buttonClick(){
+            var elem = document.getElementById('input');
+            elem.value='Мои css классы:' + elem.className;
+            }
+ 
+      </script>       -->
+
+     <!-- 21 -->
+<!-- 
+     <input type="text" value="Привет!" id="input1">
+     <input type="text" value="Пока!" id="input2">
+     <input type="submit" value="Нажми на меня!" onclick="buttonClick()">
+
+     <script>
+            function buttonClick(){
+             var elem = document.getElementById('input1');
+             var elem = document.getElementById('input2');
+             var a = input1.value;
+             input1.value = input2.value;
+             input2.value = a;
+            }
+
+     </script> -->
+
+     <!-- 22 -->
+
+     <!-- <div>По нажатию на кнопку в нижнем инпуте появится квадрат числа из верхнего инпута.</div>
+     <input type="text" placeholder="Введите число!" id="input1" >
+     <input type="text" value="Здесь появится результат" id="input2" disabled>
+     <input type="submit" value="Нажми на меня!" onclick="buttonClick()">
+
+     <script>
+            function buttonClick(){
+             var elem = document.getElementById('input1');
+             var elem = document.getElementById('input2');
+             input2.value = Math.pow(input1.value,2);
+            }
+
+     </script>  -->
+
+     <!-- 23 -->
+
+     <!-- <div>По нажатию на кнопку в нижнем инпуте появится квадрат числа из верхнего инпута. Если введено не число - должна показаться ошибка.</div>
+     <input type="text" placeholder="Введите число!" id="input1"><br>
+     <input type="text" value="Здесь появится результат" id="input2" disabled><br>
+     <input type="submit" value="Нажми на меня!" onclick="buttonClick()">
+
+     <script>
+            function buttonClick(){
+             var elem = document.getElementById('input1');
+             var elem = document.getElementById('input2');
+
+             if (input1.value==parseInt(input1.value)) {
+                input2.value = Math.pow(input1.value,2);
+             }
+
+             else {
+                 alert('Введено не число');
+                }
+            }
+
+     </script> -->
+
+     <!-- 24 -->
+
+     <!-- <div>Обратите внимание на курсор в различных состояниях.</div>
+     <input type="submit" value="Нажми на меня!" onclick="buttonClick(this)" >
+
+     <script>
+            function buttonClick(elem){
+             elem.disabled=true;
+             elem.style.cursor='not-allowed';
+            }
+
+     </script> -->
+
+     <!-- 25 -->
+
+     <!-- <input type="text" id="input">
+     <br> 
+     <br>
+     <input type="submit" value="Я добавлю +" onclick="buttonClick1()">
+     <br>
+     <input type="submit" value="Я добавлю -" onclick="buttonClick2()">
+     <br> 
+     <input type="submit" value="Я добавлю /" onclick="buttonClick3()">
+     <br> 
+     <input type="submit" value="Я добавлю *" onclick="buttonClick4()">
+     <br>  
+     <br>
+     <input type="submit" value="1" onclick="buttonClick(this)">
+     <br>
+     <input type="submit" value="2" onclick="buttonClick(this)">
+     <br> 
+     <input type="submit" value="3" onclick="buttonClick(this)">
+     <br> 
+     <input type="submit" value="4" onclick="buttonClick(this)">
+     <br>  
+     <input type="submit" value="5" onclick="buttonClick(this)">
+     <br>
+     <input type="submit" value="6" onclick="buttonClick(this)">
+     <br> 
+     <input type="submit" value="7" onclick="buttonClick(this)">
+     <br> 
+     <input type="submit" value="8" onclick="buttonClick(this)">
+     <br>
+     <input type="submit" value="9" onclick="buttonClick(this)">
+     <br> 
+     <input type="submit" value="0" onclick="buttonClick(this)">   
+
+     <style>
+         input{
+             width: 200px;
+         }
+     </style>
+
+<script>
+        function buttonClick1(){
+         var input = document.getElementById('input');
+         input.value += '+';   
+        }
+
+        function buttonClick2(){
+         var input = document.getElementById('input');
+         input.value += '-';   
+        }
+
+        function buttonClick3(){
+         var input = document.getElementById('input');
+         input.value += '/';   
+        }
+
+        function buttonClick4(){
+         var input = document.getElementById('input');
+         input.value += '*';   
+        }
+
+        function buttonClick(elem){
+         var input = document.getElementById('input');
+         input.value += elem.value;   
+        }
+
+ </script>  -->
+
+</body>
+</html>
