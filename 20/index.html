@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 20</title>
+</head>
+<body>
+
+<!-- Свойства innerHTML, outerHTML
+Для решения задач данного блока вам понадобятся следующие свойства: innerHTML, outerHTML. -->
+
+<!-- 1 -->
+
+    <!-- <p id="elem">При нажатии на кнопку текст в абзаце поменяется.</p>
+    <button onclick="buttonClick()" style="width:200px">Нажми на меня!</button>
+
+    <script>
+        function buttonClick(){
+        var elem = document.getElementById('elem');
+        elem.innerHTML='Ку-ку! А <b>я жирный!</b>'; 
+        }
+    </script> -->
+
+<!-- 2 -->
+   
+    <!-- <p id="elem">При нажатии на кнопку текст в абзаце поменяется.</p>
+    <button onclick="buttonClick()" style="width:200px">Нажми на меня!</button>
+
+    <script>
+        function buttonClick(){
+        var elem = document.getElementById('elem');
+        elem.outerHTML='<h3>Абзац превратился в h3!</h3>'; 
+        }
+    </script>  -->
+
+<!-- 3 -->
+
+    <!-- <p id="elem">При нажатии на кнопку абзац станет h3, но текст останется.</p>
+    <button onclick="buttonClick()" style="width:200px">Нажми на меня!</button>
+
+    <script>
+        function buttonClick(){
+        var elem = document.getElementById('elem');
+        elem.outerHTML='<h3>'+elem.innerHTML+'</h3>'; 
+        }
+    </script>  -->
+   
+<!-- 4 -->
+
+    <!-- <input type="text" id="input1">
+    +
+    <input type="text" id="input2">
+    =
+    <span id="sum">?</span>
+    <br>
+    <br>
+    <button id="button" onclick="func()">Нажмите чтобы сложить</button>
+
+    <style>
+        input{
+            width: 100px;
+        }
+    
+    </style>
+
+    <script>
+        function func(){
+            var input1 = document.getElementById('input1');
+            var input2 = document.getElementById('input2');
+            var sum = document.getElementById('sum');
+            sum.innerHTML = Number(input1.value) + Number(input2.value);
+        }
+    </script> -->
+
+<!-- Метод getElementsByTagName -->
+<!-- 5 -->
+
+    <!-- <p>При нажатии на кнопку текст в каждом абзаце поменяется.</p>
+    <p>При нажатии на кнопку текст в каждом абзаце поменяется.</p>
+    <p>При нажатии на кнопку текст в каждом абзаце поменяется.</p>
+    <p>При нажатии на кнопку текст в каждом абзаце поменяется.</p>
+    <h2>А я h2 и не поменяюсь!</h2>
+    <button id="button" onclick="func()">Нажмите на меня</button>
+
+         <script>
+            function func(){
+                var elems = document.getElementsByTagName('p');
+                for (i=0; i< elems.length; i++) {
+                     elems[i].innerHTML = 'Ку-ку';
+                } 
+            }
+        </script> -->
+    
+<!-- Метод getElementsByClassName -->
+<!-- 6 -->
+
+    <!-- Дан HTML код (см. под задачей). Поменяйте содержимое элементов с классом www на их порядковый номер в коде. -->
+    <!-- <h2 class="www">Заголовок с классом www.</h2>
+    <p class="www">Абзац с классом www.</p>
+    <p class="www">Абзац с классом www.</p>
+    <p>Просто абзац, не поменяется.</p>
+    <button id="button" onclick="func()">Нажмите на меня</button>
+
+        <script>
+            function func(){
+                var elems = document.getElementsByClassName('www');
+                for (i=0; i< elems.length; i++) {
+                    elems[i].innerHTML = i;
+                } 
+            }
+        </script> -->
+
+    <!-- Метод querySelectorAll -->
+    <!-- 7 -->
+
+        <!-- Дан HTML код (см. под задачей). Поменяйте содержимое абзацев с классом www на их порядковый номер в коде. -->
+
+        <!-- <h2 class="www">Заголовок с классом www, не поменяется.</h2>
+        <p class="www">Абзац с классом www.</p>
+        <p class="www">Абзац с классом www.</p>
+        <p class="www">Абзац с классом www.</p>
+        <p>Просто абзац, не поменяется.</p>
+        <button id="button" onclick="func()">Нажмите на меня</button>
+
+        <script>
+            function func(){
+                var elems = document.querySelectorAll('p.www');
+                for (i=0; i< elems.length; i++) {
+                     elems[i].innerHTML = i;
+                } 
+            }
+        </script> -->
+
+    <!-- Методы setAttribute, getAttribute, removeAttribute, hasAttribute -->
+    <!-- 8 -->
+
+        <!-- <p id="text" class="my-class">Абзац с class="my-class".</p>
+        <button id="button" onclick="func()">Нажмите и я выведу класс абзаца</button>
+
+        <script>
+                function func(){
+                    var elem = document.getElementById('text');
+                   alert(elem.getAttribute('class'));
+                }
+            </script>  -->
+
+    <!-- 9 -->
+    
+       <!-- <p id="text" class="my-class">Абзац с class="my-class". Класс задает красный цвет.</p>
+        <button id="button" onclick="func()">Нажмите и я выведу класс абзаца</button>
+        <br>
+        <br>
+        <button id="button" onclick="delClass()">Нажмите и я удалю атрибут class для абзаца</button>
+        
+        <style>
+            .my-class{
+                color: red;
+            }
+        </style>
+
+        <script>
+            function func(){
+                var elem = document.getElementById('text');
+                alert(elem.getAttribute('class'));
+            }
+
+            function delClass(){
+                var elem = document.getElementById('text');
+                elem.removeAttribute('class');
+            }
+        </script>  -->
+
+    <!-- 10 -->
+
+        <!-- <p id="text" class="my-class">Абзац с class="my-class". Класс задает красный цвет.</p>
+        <button id="button" onclick="func()">Нажмите и я выведу класс абзаца</button>
+        <br>
+        <br>
+        <button id="button" onclick="delClass()">Нажмите и я изменю атрибут class для абзаца на "new-class"</button>
+        
+        <style>
+            .my-class{
+                color: red;
+            }
+        </style>
+
+        <script>
+            function func(){
+                var elem = document.getElementById('text');
+                alert(elem.getAttribute('class'));
+            }
+
+            function delClass(){
+                var elem = document.getElementById('text');
+                elem.setAttribute('class', 'new-class');
+            }
+        </script>  -->
+
+    <!-- Задачи -->
+    <!-- 11 -->
+
+        <!-- <input type="text" placeholder="Введи в меня текст!" id="input" onkeyup="func(this)"> 
+        <span id="text"></span>
+
+        <script>
+                function func(elem){
+                    var text = document.getElementById('text');
+                    text.innerHTML = input.value;
+                }
+        </script>   -->
+
+    <!-- 12 -->
+
+    <!-- <a href="http://google.ru">ссылка1</a>
+    <br>
+    <br>
+    <a href="http://tut.by">ссылка2</a>
+    <br>
+    <br>
+    <a href="http://yandex.ru">ссылка3</a>
+    <br>
+    <br>
+    <button id="button" onclick="func()">Нажмите и я выведу класс абзаца</button>
+
+    <script>
+        function func(){
+            var elem = document.getElementsByTagName('a');
+            for (i=0;i<elem.length;i++) {
+            elem[i].innerHTML += ' (' + elem[i].href + ')';
+            }
+        }
+    </script> -->
+
+    <!-- 13 -->
+
+    <!-- <p id="text">При нажатии на кнопку текст в абзаце поменяется.</p>
+    <button id="button" onclick="func(this)" style="width:400px">Нажмите на меня</button>
+
+    <script>
+            function func(elem2){
+                var elem = document.getElementById('text');
+
+                elem.innerHTML = ('Привет, мир!');
+                elem.style.color = 'red';
+                elem2.innerHTML = 'Нельзя нажать';
+                elem2.disabled  =  true;
+            }
+        </script>  -->
+
+    <!-- 14 -->
+
+    <!-- <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+
+    <button id="button" onclick="func()">Нажмите на меня</button>
+
+    <script>
+            function func(){
+                var elem = document.getElementsByTagName('p');
+
+                for(i=0;i<elem.length;i++){
+                    elem[i].innerHTML = i;
+                }
+            }
+    </script> -->
+
+    <!-- 15 -->
+    <!-- <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+    <p>Абзац с текстом.</p>
+
+    <button id="button" onclick="func()">Нажмите на меня</button>
+
+    <script>
+            function func(){
+                var elem = document.getElementsByTagName('p');
+
+                for(i=0;i<elem.length;i++){
+                    elem[i].innerHTML = i+'. ' + elem[i].innerHTML;
+                }
+            }
+    </script> -->
+
+</body>
+</html>
