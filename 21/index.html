@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 21</title>
+</head>
+<body>
+        <!-- Работа с new Date -->
+    <!-- 1. Выведите на экран текущий день. -->
+
+    <!-- <script>
+        var date =  new Date();
+        alert(date.getDate());
+    </script> -->
+
+    <!-- 2. Выведите на экран текущий месяц. -->
+
+    <!-- <script>
+        var date =  new Date();
+        alert(date.getMonth());
+    </script> -->
+
+    <!-- 3. Выведите на экран текущий год. -->
+
+    <!-- <script>
+        var date =  new Date();
+        alert(date.getFullYear());
+    </script> -->
+
+    <!-- 4.	Выведите на экран текущую дату-время в формате '12:59:59 31.12.2014'. Для решения этой задачи напишите функцию, которая будет добавлять 0 перед днями и месяцами, которые состоят из одной цифры (из 1.9.2014 сделает 01.09.2014). -->
+
+    <!-- <script>
+        var date =  new Date();
+        
+        function func(num) {
+            if (num > 0 && num <10) {
+                return '0' + num;
+            }
+
+            else {
+                return num;
+            }
+        }
+
+        alert(func(date.getHours()) + ':' + func(date.getMinutes()) + ':' + func(date.getSeconds()) + ' ' + func(date.getDate()) + '.' + func(date.getMonth() + 1) + '.' + date.getFullYear());
+    </script> -->
+
+        <!-- Работа с getDay -->
+    <!-- 5. Выведите на экран номер текущего дня недели -->
+<!-- 
+    <script>
+        var date =  new Date();
+        alert(date.getDay());
+    </script> -->
+
+    <!-- 6.  Выведите на экран текущий день недели (словом, по-русски). Создайте для этого вспомогательную функцию showDay, которая параметром принимает число, а возвращает день недели по-русски.  -->
+
+<!--     
+    <script>
+        var date =  new Date();
+        var day = date.getDay();
+
+        function showDay(day){
+            var arr = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+            return arr[day];
+        }
+        alert(showDay(day));
+    </script>  -->
+
+    <!-- 7. Узнайте, какой был 7-го января 2015 года. -->
+
+<!-- 
+    <script>
+            var date =  new Date(2015,0,7);
+            var day = date.getDay();
+    
+            function showDay(day){
+                var arr = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+                return arr[day];
+            }
+            alert(showDay(day));
+        </script> -->
+
+        <!-- Работа с getTime -->
+    <!-- 8. Выведите на экран количество минут с 1-го января 1970 года до настоящего момента времени. -->
+
+<!-- 
+    <script>
+        var date =  new Date();
+
+        alert(date.getTime()/(1000*60));
+    </script> -->
+
+        <!--  Работа с Date.parse -->
+    <!-- 9. Выведите на экран количество часов, прошедшее между 1 марта 1988 года и текущим моментом с помощью Date.parse.  -->
+
+<!--  
+    <script>
+        var time = Date.parse('1988-02-01T00:00:00');
+        var date = new Date();
+        var now = date.getTime();
+        var result = now - time;
+        alert(result/(1000*60*60));
+    </script>    -->
+
+        <!-- Разность между датами -->
+    <!-- 10. Выведите на экран количество секунд с начала дня до настоящего момента времени. -->
+
+<!--  
+    <script>
+        var date = new Date();
+        var now = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+        var result = date.getTime() - now.getTime();
+        alert(result/1000);
+    </script>    -->
+
+    <!-- 11. Выведите на экран количество секунд, которое осталось до конца дня. -->
+
+<!--   
+    <script>
+        var date = new Date();
+        var now = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 24, 00, 00);
+        var result = now.getTime() - date.getTime();
+        alert(result/1000);
+    </script>       -->
+
+    <!-- 12. Создайте инпут, в который пользователь вводит дату своего рождения в формате '2014-12-31' (с конкретным годом). По потери фокуса выведите под инпутом сколько дней осталось до его дня рождения. Воспользуйтесь методом Date.parse. -->
+    
+    <!-- <p>Введите датурождения в формате год-меясц-число</p>
+    <input type="text" onblur="func(this)">
+    <p id="result"></p>
+
+    <script>
+       function func(elem) {
+            var result = document.getElementById('result');
+
+            var date = new Date();
+            var now = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            var arr = elem.value.split('-');
+            var birthDay = new Date(now.getFullYear(),arr[1]-1,arr[2]);
+
+            if (birthDay < now) {
+                var birthDay = new Date(now.getFullYear()+1,arr[1]-1,arr[2]); 
+            }
+
+           var res = Date.parse(birthDay) - Date.parse(now);
+
+           result.innerHTML = res/(1000*60*60*24);
+       } -->
+    </script>      
+</body>
+</html>
