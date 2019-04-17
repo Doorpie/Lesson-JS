@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 22.6</title>
+</head>
+<body>
+    
+        <!-- Создайте карусель: -->
+        <style>
+            body{
+                text-align: center;
+            }
+        </style>
+    
+        <img src="/22/images/1.png" alt="" id="img1">
+        <img src="/22/images/2.png" alt="" id="img2">
+        <img src="/22/images/3.png" alt="" id="img3">
+        <br>
+        <button id="elem" onclick="start(this)">Запустить слайдер</button>
+
+        <script>
+        
+            function start(elem) {
+                elem.disabled = true;
+                window.timerId =  window.setInterval(func,1000);
+            }
+                
+            function func() {
+                var img1 = document.getElementById('img1');
+                var img2 = document.getElementById('img2');
+                var img3 = document.getElementById('img3');
+                var tmp = img1.src;
+
+                img1.src = img2.src;
+                img2.src = img3.src;
+                img3.src = tmp;
+            }
+        </script>    
+    
+</body>
+</html>

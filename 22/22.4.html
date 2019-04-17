@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 22.4</title>
+</head>
+<body>
+    <!-- Создайте таймер обратного отсчета: -->
+    <style>
+            body{
+                text-align: center;
+            }
+            button{
+                width: 200px;
+            }
+        </style>
+    
+        <h1 id="num">10</h1>
+        <p id="stop"></p>
+        <button id="btn" onclick="start()">Запустить таймер</button>
+    
+        <script>
+            function start() {
+                window.timerId =  window.setInterval(func,500);
+            }
+    
+            function func() {
+                var elem = document.getElementById('num');
+                elem.innerHTML = parseInt(elem.innerHTML) - 1;
+                var btn = document.getElementById('btn');
+                var stop = document.getElementById('stop');
+                btn.disabled = true;
+
+            if (elem.innerHTML==0) {
+                window.clearInterval(window.timerId);
+                stop.innerHTML = 'Обратный отсчет завершен';
+            }
+            }
+        </script> 
+</body>
+</html>

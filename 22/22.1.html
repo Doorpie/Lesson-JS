@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 22.1</title>
+</head>
+<body>
+    <!--  Создайте отсчет от 0 до бесконечности: -->
+    <style>
+        body{
+            text-align: center;
+        }
+        button{
+            width: 200px;
+        }
+    </style>
+
+    <h1 id="num">0</h1>
+    <button onclick="start()">Нажми на меня</button>
+
+    <script>
+        function start() {
+            window.timerId =  window.setInterval(func,500);
+        }
+
+        function func() {
+            var elem = document.getElementById('num');
+            elem.innerHTML = parseInt(elem.innerHTML) + 1;
+        }
+    </script>
+    
+</body>
+</html>

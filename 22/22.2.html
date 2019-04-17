@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson 22.2</title>
+</head>
+<body>
+    <!--  Создайте отсчет с кнопкой остановки: -->
+        <style>
+                body{
+                    text-align: center;
+                }
+                button{
+                    width: 200px;
+                }
+            </style>
+        
+            <h1 id="num">0</h1>
+            <button id="elem" onclick="start(this)">Запустить таймер</button>
+            <button id="elem2" onclick="stop(this)">Остановить таймер</button>
+        
+            <script>
+                function start(elem) {
+                    var elem2 = document.getElementById('elem2');
+                    window.timerId =  window.setInterval(func,500);
+                    elem.disabled = true;
+                    elem2.disabled = false;
+                }
+
+                function stop(elem2) {
+                    var elem = document.getElementById('elem');
+                    window.clearInterval(window.timerId);
+                    elem2.disabled = true;
+                    elem.disabled = false;
+
+                }
+        
+                function func() {
+                    var elem = document.getElementById('num');
+                    elem.innerHTML = parseInt(elem.innerHTML) + 1;
+                }
+            </script>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 22.3</title>
+</head>
+<body onload="go()">
+   <!-- Создайте тикающие часики: -->
+   <style>
+        body{
+            text-align: center;
+        }
+
+        #clock{
+            font-size: 42px;
+        }
+    </style>
+
+    <div id="clock" >00:00:00</div>
+
+    <script>
+
+        function go() {
+            window.setInterval(func,1000);
+        }
+
+        function func() {
+            var elem = document.getElementById('clock');
+            var date = new Date();
+            var now = getZero(date.getHours()) + ':' + getZero(date.getMinutes()) + ':' + getZero(date.getSeconds());
+            elem.innerHTML = now;
+        }
+
+        function getZero(num){
+            if (num <=9) {
+                return '0'+num;
+            }
+            else {
+                return num;
+            }
+        }
+    </script> 
+</body>
+</html>

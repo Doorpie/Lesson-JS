@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 22.7</title>
+</head>
+<body>    
+        <!-- Создайте карусель: -->
+        <style>
+            body{
+                text-align: center;
+            }
+        </style>
+    
+        <img src="/22/images/1.png" alt="" id="img1">
+        <img src="/22/images/2.png" alt="" id="img2">
+        <img src="/22/images/3.png" alt="" id="img3">
+        <img src="/22/images/4.png" alt="" id="img4">
+        <img src="/22/images/5.png" alt="" id="img5">
+        <img src="/22/images/6.png" alt="" id="img6">
+        <br>
+        <button id="elem1" onclick="start(this)">Запустить слайдер</button>
+        <button id="elem2" onclick="stop(this)">Остановить слайдер</button>
+        
+
+        <script>
+        
+            function start(elem1) {
+                var elem2 = document.getElementById('elem2');
+                elem1.disabled = true;
+                elem2.disabled = false;
+                window.timerId =  window.setInterval(func,1000);
+            }
+
+            function stop(elem2) {
+                var elem1 = document.getElementById('elem1');
+                elem2.disabled = true;
+                elem1.disabled = false;
+                window.clearInterval(window.timerId);
+            }
+                
+            function func() {
+                var img1 = document.getElementById('img1');
+                var img2 = document.getElementById('img2');
+                var img3 = document.getElementById('img3');
+                var img4 = document.getElementById('img4');
+                var img5 = document.getElementById('img5');
+                var img6 = document.getElementById('img6');
+                var tmp = img1.src;
+
+                img1.src = img2.src;
+                img2.src = img3.src;
+                img3.src = img4.src;
+                img4.src = img5.src;
+                img5.src = img6.src;
+                img6.src = tmp;
+            }
+        </script>    
+</body>
+</html>

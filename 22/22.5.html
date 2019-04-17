@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesonn 22.5</title>
+
+
+</head>
+<body onload="go()">
+    
+    <!-- Создайте простой слайдер: -->
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+
+    <img src="/22/images/1.png" alt="" id="img">
+
+    <script>
+
+        var i=0;
+
+        function go() {
+            window.timerId =  window.setInterval(func,1000);
+        }
+        
+        function func() {
+            var arr = ['1.png', '2.png', '3.png'];
+            var elem = document.getElementById('img');
+               elem.src = '/22/images/' + arr[i]; 
+                i++;
+               if (i==arr.length)  i=0;
+            }
+    </script>
+
+</body>
+</html>
