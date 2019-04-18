@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 23</title>
+</head>
+<body>
+    <!-- На elem.onclick -->
+    <!-- 1. Даны картинки. Привяжите к каждой картинке событие, чтобы по клику на картинку алертом выводился ее src.  -->
+
+    <!-- <img src="/23/images/1.png" alt="">
+    <img src="/23/images/2.png" alt="">
+    <img src="/23/images/3.png" alt="">
+
+    <script>
+        var elem = document.getElementsByTagName('img');
+
+        for (i=0; i<elem.length; i++) {
+            elem[i].onclick = func;
+        }
+        
+        function func() {
+            alert(this.getAttribute('src'));
+        }
+    </script> -->
+
+    <!-- На addEventListener, removeEventListener -->
+    <!-- 2.  Даны ссылки. Привяжите всем ссылкам событие - по наведению на ссылку в атрибут title запишется ее текст.  -->
+
+    <!-- <a href="#" title="">1</a>
+    <a href="#" title="">2</a>
+    <a href="#" title="">3</a>
+
+    <script>
+        var elem = document.getElementsByTagName('a');
+
+        for (i=0; i<elem.length; i++) {
+            elem[i].addEventListener('mouseover', func);
+        }
+
+        function func() {
+           this.title = this.innerHTML;
+        }
+    </script> -->
+
+    <!-- 3.  Привяжите всем ссылкам событие - по наведению на ссылку в конец ее текста дописывается ее href в круглых скобках. -->
+
+<!-- 
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+
+    <script>
+        var elem = document.getElementsByTagName('a');
+
+        for (i=0; i<elem.length; i++) {
+            elem[i].addEventListener('mouseover', func);
+        }
+
+        function func() {
+          this.innerHTML += '(' + this.getAttribute('href') + ')';
+        }
+    </script>
+     -->
+
+    <!-- 4.  Дополните предыдущую задачу: после первого наведению на ссылку следует отвязать от нее событие, которое добавляет href в конец текста.  -->
+
+ <!-- 
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+
+    <script>
+        var elem = document.getElementsByTagName('a');
+
+        for (i=0; i<elem.length; i++) {
+            elem[i].addEventListener('mouseover', func);
+        }
+
+        function func() {
+          this.innerHTML += '(' + this.getAttribute('href') + ')';
+          this.removeEventListener('mouseover', func);
+        }
+    </script>
+     -->
+
+    <!-- 5.  Привяжите всем инпутам следующее событие - по потери фокуса каждый инпут выводит свое value в абзац с id="test".  -->
+
+<!-- 
+    <input type="text" value="1">
+    <input type="text" value="2">
+    <input type="text" value="3">
+    <p id="test"></p>
+
+    <script>
+        var elem = document.getElementsByTagName('input');
+        var test = document.getElementById('test');
+    
+        for (i=0; i<elem.length; i++) {
+             elem[i].addEventListener('blur', func);
+        }
+    
+        function func() {
+            test.innerHTML = this.value;
+            }
+    </script>
+     -->
+
+     <!-- 6.  Для всех инпутов сделайте так, чтобы они выводили свой value алертом при нажатии на любой из них, но только по первому нажатию. Повторное нажатие на инпут не должно вызывать реакции. -->
+
+<!-- 
+     <input type="text" value="1">
+     <input type="text" value="2">
+     <input type="text" value="3">
+ 
+     <script>
+         var elem = document.getElementsByTagName('input');
+     
+         for (i=0; i<elem.length; i++) {
+              elem[i].addEventListener('click', func);
+         }
+     
+         function func() {
+             alert(this.value);
+             this.removeEventListener('click', func);
+             }
+     </script> 
+    -->
+
+     <!-- 7.  Даны абзацы с числами. По нажатию на абзац в нем должен появится квадрат числа, которое он содержит.  -->
+
+<!-- 
+     <p>1</p>
+     <p>2</p>
+     <p>3</p>
+     <p>4</p>
+
+     <script>
+            var elem = document.getElementsByTagName('p');
+        
+            for (i=0; i<elem.length; i++) {
+                 elem[i].addEventListener('click', func);
+            }
+        
+            function func() {
+                this.innerHTML = Math.pow( this.innerHTML,2);
+                }
+        </script> 
+         -->
+
+    <!-- 8. Даны инпуты. Сделайте так, чтобы все инпуты по потери фокуса проверяли свое содержимое на правильное количество символов. Сколько символов должно быть в инпуте, указывается в атрибуте data-length. Если вбито правильное количество, то граница инпута становится зеленой, если неправильное - красной.  -->
+
+<!-- 
+    <input type="text" value="" data-length="1">
+    <input type="text" value="" data-length="2">
+    <input type="text" value="" data-length="3">
+ 
+    <script>
+         var elem = document.getElementsByTagName('input');
+     
+         for (i=0; i<elem.length; i++) {
+              elem[i].addEventListener('blur', func);
+         }
+     
+         function func() {
+             if(this.value.length == this.dataset.length) {
+                 this.style.borderColor = 'green';
+             }
+
+             else {
+                this.style.borderColor = 'red';
+             }
+         }
+    </script>  -->
+
+
+    <!-- 9. Даны дивы. По первому нажатию на каждый див он красится красным фоном, по второму красится обратно и так далее каждый клик происходит чередование фона. Сделайте так, чтобы было две функции: одна красит в красный цвет, другая в зеленый и они сменяли друг друга через removeEventListener. -->
+<!-- 
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+            var elem = document.getElementsByTagName('div');
+        
+            for (i=0; i<elem.length; i++) {
+                 elem[i].addEventListener('click', func);
+            }
+        
+            function func() {
+                this.style.background = 'red';
+                this.removeEventListener('click', func);
+                this.addEventListener('click', func2);
+                }
+
+                function func2() {
+                this.style.background = 'green';
+                this.removeEventListener('click', func2);
+                this.addEventListener('click', func);
+                }
+       </script>
+        -->
+</body>
+</html>
