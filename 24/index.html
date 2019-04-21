@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 24</title>
+</head>
+<body>
+    <!-- Работа с классами
+    Для решения задач данного блока вам понадобятся следующие свойства: classList. -->
+    <!-- 1.  Дан элемент #elem. Добавьте ему класс www.  -->
+<!-- 
+    <p id="elem"></p>
+    <script>
+        var elem = document.getElementById('elem');
+        elem.classList.add('www');
+    </script>
+     -->
+
+     <!-- 2.  Дан элемент #elem. Удалите у него класс www. -->
+<!-- 
+     <p id="elem" class="www"></p>
+     <script>
+         var elem = document.getElementById('elem');
+         elem.classList.remove('www');
+     </script>
+      -->
+    <!-- 3. Дан элемент #elem. Проверьте наличие у него класса www.  -->
+<!-- 
+    <p id="elem" class="www"></p>
+    <script>
+        var elem = document.getElementById('elem');
+        alert(elem.classList.contains('www'));
+    </script>    
+     -->
+
+     <!-- 4.  Дан элемент #elem. Добавьте ему класс www, если его нет и удалите - если есть. -->
+<!-- 
+     <p id="elem" class="www"></p>
+     <script>
+        var elem = document.getElementById('elem');
+        elem.classList.toggle('www');
+     </script> 
+      -->
+    <!-- 5. Дан элемент #elem. Узнайте количество его классов. -->
+<!-- 
+    <p id="elem" class="www"></p>
+    <script>
+       var elem = document.getElementById('elem');
+       alert(elem.classList.length);
+    </script> 
+     -->
+    <!-- 6.  Дан элемент #elem. Выведите последовательно алертом его классы. -->
+<!-- 
+    <p id="elem" class="www"></p>
+    <script>
+       var elem = document.getElementById('elem');
+       var className = elem.classList;
+       for (i=0; i < className.length; i++) {
+            document.write(className[i] + '<br>');
+       }
+    </script>  -->
+
+    <!-- Работа с CSS
+    Для решения задач данного блока вам понадобятся следующие свойства: cssText. -->
+    <!-- 7. Дан элемент #elem. Сделайте его красного цвета, размером 30px, добавьте ему границу. Решите задачу с помощью свойства cssText.  -->
+<!-- 
+    <p id="elem" class="www">12345</p>
+    <script>
+       var elem = document.getElementById('elem');
+      elem.style.cssText = 'color:red; font-size: 30px; border: 1px solid black;';
+    </script>
+     -->
+
+    <!-- Свойство tagName
+    Для решения задач данного блока вам понадобятся следующие свойства: tagName. -->
+    <!-- 8. Дан элемент #elem. По клику на него выведите название его тега. -->
+<!-- 
+    <p id="elem" class="www">12345</p>
+    <script>
+       var elem = document.getElementById('elem');
+       elem.addEventListener('click', func);
+
+
+      function func() {
+          alert(elem.tagName);
+      }
+    </script> -->
+
+    <!-- 9. Дан элемент #elem. По клику на него выведите название его тега в нижнем регистре. -->
+<!-- 
+    <div id="elem" class="www">12345</div>
+    <script>
+       var elem = document.getElementById('elem');
+       elem.addEventListener('click', func);
+
+
+      function func() {
+          alert(elem.tagName.toLocaleLowerCase());
+      }
+    </script>  
+ -->
+
+    <!-- 10. Даны элементы с классом www. Добавьте каждому элементу в конец название его тега в нижнем регистре.  -->
+<!-- 
+    <div id="elem" class="www">12345</div>
+    <p id="elem" class="www">45</p>
+    <h1 id="elem" class="www">545</h1>
+    <script>
+       var elem = document.querySelectorAll('.www');
+       for(i=0; i < elem.length; i++){
+           elem[i].innerHTML += elem[i].tagName.toLowerCase();
+       }
+    </script>  -->
+
+    <!-- Вставка элементов через appendChild
+    Для решения задач данного блока вам понадобятся следующие методы: createElement, appendChild. -->
+
+    <!-- 11.  Дан ol. Вставьте ему в конец li с текстом 'пункт'.  -->
+<!-- 
+    <ol></ol>
+
+    <script>
+        var elem = document.querySelector('ol');
+
+        var li = document.createElement('li');
+        li.innerHTML = 'пункт';
+
+        elem.appendChild(li);
+    </script> -->
+
+    <!-- 12.  Дан ul. Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li. -->
+<!-- 
+    <ul></ul>
+    <script>
+        var arr = [1,2,3,4,5];
+        var elem = document.querySelector('ul');
+
+
+        for(i=0; i < arr.length; i++){
+            var li = document.createElement('li');
+            li.innerHTML += arr[i];
+            elem.appendChild(li);
+        }
+    </script>
+     -->
+
+     <!--  Привязывание событий при вставке -->
+     <!-- 13.  Дан ul. Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li. Сделайте так, чтобы к вставляемым li было привязано следующее событие: по нажатию на li она должна вывести на экран свой текст.  -->
+<!-- 
+     <ul></ul>
+     <script>
+         var arr = [1,2,3,4,5];
+         var elem = document.querySelector('ul');
+ 
+         for(i=0; i < arr.length; i++){
+             var li = document.createElement('li');
+             li.innerHTML = arr[i];
+             elem.appendChild(li);
+             li.addEventListener('click', func);
+         }
+
+         function func() {
+            alert(this.innerHTML);
+         }
+     </script>
+      -->
+
+    <!-- Вставка элементов через insertBefore
+    Для решения задач данного блока вам понадобятся следующие методы: insertBefore. -->
+
+    <!-- 14.  Дан элемент ul, а в нем li #elem. Вставьте перед элементом #elem новую li с текстом '!!!'. -->
+<!-- 
+    <ul>
+        <li id="elem"></li>
+    </ul>
+
+    <script>
+        var ul = document.querySelector('ul');
+        var elem = document.getElementById('elem');
+        var li = document.createElement('li');
+        li.innerHTML = '!!!';
+        ul.insertBefore(li, elem);
+    </script> -->
+
+    <!-- Вставка элементов через insertAdjacentHTML
+Для решения задач данного блока вам понадобятся следующие методы: insertAdjacentHTML. -->
+    <!-- 15.  Дан элемент #elem. Вставьте перед ним span с текстом '!!!'.-->
+<!-- 
+    <p id="elem">!!!</p>
+
+    <script>
+        var p = document.querySelector('p');
+        p.insertAdjacentHTML('beforeBegin','<span>!!!</span>')
+    </script> -->
+
+    <!-- 16. Дан элемент #elem. Вставьте после него span с текстом '!!!'.  -->
+        <!-- <p id="elem">!!!</p>
+
+    <script>
+        var p = document.querySelector('p');
+        p.insertAdjacentHTML('afterEnd','<span>!!!</span>')
+    </script> -->
+
+    <!-- 17.  Дан элемент #elem. Вставьте ему в начало span с текстом '!!!'. -->
+
+<!--     
+    <p id="elem">!!!</p>
+
+    <script>
+        var p = document.querySelector('p');
+        p.insertAdjacentHTML('afterBegin','<span>!!!</span>')
+    </script> -->
+
+    <!-- 18. Дан элемент #elem. Вставьте ему в конец span с текстом '!!!'.  -->
+<!-- 
+    <p id="elem">!!!</p>
+
+    <script>
+        var p = document.querySelector('p');
+        p.insertAdjacentHTML('beforeEnd','<span>!!!</span>')
+    </script> --> 
+
+    <!-- Потомки
+Для решения задач данного блока вам понадобятся следующие свойства: firstElementChild, lastElementChild, children. -->
+
+    <!-- 19. Дан элемент #elem. Найдите первого потомка этого элемента и сделайте его текст красного цвета. -->
+
+    <!-- <div id="elem">
+
+        <p>1</p>
+        <p>2</p>
+    </div>
+
+    <script>
+        var p = document.getElementById('elem');
+        p.firstElementChild.style.cssText = 'color:red';
+    </script> -->
+
+    <!-- 20.  Дан элемент #elem. Найдите последнего потомка этого элемента и сделайте его текст красного цвета. -->
+<!-- 
+    <div id="elem">
+
+            <p>1</p>
+            <p>2</p>
+        </div>
+    
+        <script>
+            var p = document.getElementById('elem');
+            p.lastElementChild.style.cssText = 'color:red';
+        </script> -->
+
+    <!-- 21.  Дан элемент #elem. Найдите всех потомков этого элемента и добавьте им в конец текст '!'. -->
+<!-- 
+    <div id="elem">
+        <p>1</p>
+        <p>2</p>
+    </div>
+
+    <script>
+        var elem  = document.getElementById('elem');
+            for (i=0; elem.children.length; i++) {
+                elem.children[i].innerHTML += '!';
+            }
+    </script> -->
+
+    <!-- Соседи
+Для решения задач данного блока вам понадобятся следующие свойства: previousElementSibling, nextElementSibling. -->
+
+    <!-- 22.  Дан элемент #elem. Найдите его соседа сверху и добавьте ему в конец текст '!'. -->
+<!-- 
+        <p>123</p>
+        <p id="elem">123</p>
+
+        <script>
+            var elem = document.getElementById('elem');
+            elem.previousElementSibling.innerHTML += '!';
+        </script> -->
+
+    <!-- 23.  Дан элемент #elem. Найдите его соседа снизу и добавьте ему в конец текст '!'. -->
+<!-- 
+        <p>123</p>
+        <p id="elem">123</p>
+        <p>a</p>
+
+        <script>
+            var elem = document.getElementById('elem');
+            elem.nextElementSibling.innerHTML += '!';
+        </script>
+ -->
+
+    <!-- 24. Дан элемент #elem. Найдите его соседа снизу его соседа снизу (следующий элемент за соседним) и добавьте ему в конец текст '!'. -->
+<!-- 
+    <p>123</p>
+        <p id="elem">123</p>
+        <p>a</p>
+        <p>b</p>
+
+        <script>
+            var elem = document.getElementById('elem');
+            next = elem.nextElementSibling;
+            next.nextElementSibling.innerHTML += '!';
+        </script>
+         -->
+
+    <!--  Родители
+Для решения задач данного блока вам понадобятся следующие свойства: parentElement, parentNode. -->
+
+    <!-- 25. Дан элемент #elem. Найдите его родителя и покрасьте его в красный цвет. -->
+<!-- 
+    <div>
+        a
+        <div id="elem"></div>
+    </div>
+
+    <script>
+         var elem = document.getElementById('elem');
+         elem.parentElement.style.cssText = 'color:red';
+    </script> -->
+
+    <!-- 26. Дан элемент #elem. Найдите родителя его родителя и покрасьте его в красный цвет. -->
+<!-- 
+    <p>
+        1
+        <div>
+            2
+            <div id="elem"></div>
+        </div>
+    </p>
+    
+        <script>
+             var elem = document.getElementById('elem');
+             var parent = elem.parentElement;
+             parent.parentElement.style.cssText = 'color:red';
+        </script> -->
+
+    <!-- Удаление и клонирование
+Для решения задач данного блока вам понадобятся следующие свойства: removeChild. -->
+
+    <!-- 27. Дан элемент #parent, внутри него дан элемент #child. Дана кнопка. По нажатию на эту кнопку удалите элемент #child. -->
+<!-- 
+    <div id="parent">
+        <div id="child">4</div>
+    </div>
+    <button id="btn">Удалить #child</button>
+
+    <script>
+        var parent = document.getElementById('parent');
+        var child = document.getElementById('child');
+        var btn = document.getElementById('btn');
+
+        btn.addEventListener('click', func);
+
+        function func() {
+            parent.removeChild(child);
+        }
+
+    </script>
+     -->
+
+    <!-- 28.  Дан ol. По нажатию на кнопку получите его последнего потомка и удалите его. -->
+    <!-- <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <button id="btn">Удалить</button>
+
+    <script>
+    var ol = document.querySelector('ol');
+    var btn = document.getElementById('btn');
+    var last = ol.lastElementChild;
+
+    btn.addEventListener('click', func);
+
+    function func() {
+     ol.removeChild(last);
+    }
+
+    </script>
+     -->
+
+    <!-- 29. Дан элемент. Сделайте так, чтобы по нажатию по нему этот элемент удалялся. -->
+<!-- 
+    <p id="elem">1</p>
+
+    <script>
+        var p = document.getElementById('elem');
+        p.addEventListener('click', func);
+        
+        function func() {
+        this.parentElement.removeChild(this);
+        }
+
+    </script>
+     -->
+
+    <!-- 30. Дан ol, а внутри него li. Сделайте так, чтобы по нажатию на любую li эта li удалялась -->
+<!-- 
+    <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    
+        <script>
+        var li = document.querySelectorAll('li');
+            for(i=0; i<li.length; i++) {
+        li[i].addEventListener('click', func);
+            }
+    
+        function func() {
+         this.parentElement.removeChild(this);
+        }
+    
+        </script>
+         -->
+
+    <!--  Клонирование
+Для решения задач данного блока вам понадобятся следующие свойства: cloneNode. -->
+
+    <!-- 31. Дан инпут. Дана кнопка. По нажатию на кнопку клонируйте этот инпут.  -->
+<!-- 
+    <input type="text" value="12345" id="input">
+    <button id="btn">Копировать</button>
+
+    <script>
+        var elem = document.getElementById('input');
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click',func);
+
+        function func() {
+            
+            var clone = elem.cloneNode(true);
+            elem.parentElement.appendChild(clone);
+        }
+    </script>
+     -->
+
+    <!-- Практика -->
+
+    <!-- 32.  Дан массив. Создайте ul через createElement, затем вставьте каждый элемент этого массива в отдельную li внутри этой ul, затем вставьте эту ul в конец body. -->
+<!-- 
+     <script>
+         var arr = [1,2,3,4,5];
+         var ul = document.createElement('ul');
+
+         for(i=0; i<arr.length;i++) {
+
+            var li =document.createElement('li');
+            li.innerHTML = arr[i];
+            ul.appendChild(li);
+         }
+
+         document.body.appendChild(ul);
+
+     </script>
+      -->
+
+    <!-- 33. Дан инпут. Рядом с ним находится кнопочка "+". По нажатию на эту кнопку под нашим инпутом должен появится еще один пустой инпут. -->
+<!-- 
+    <input type="text" >
+    <button id="btn">+</button>
+
+    <script>
+        var btn  = document.getElementById('btn');
+
+        btn.addEventListener('click', func); 
+        
+        function func(){
+            var newInput = document.createElement('input');
+            btn.parentElement.appendChild(newInput);
+        }
+    </script>
+     -->
+
+    <!-- 34. Дан инпут. В него вводится число. По потери фокуса сделайте так, чтобы каждая цифра вставилась в новый инпут. Инпутов для цифр изначально не существует, они должны создаться в процессе работы скрипта. -->
+<!-- 
+    <input type="text" id="input">
+
+    <script>
+        var btn  = document.getElementById('input');
+        input.addEventListener('blur', func); 
+
+        function func(){
+            
+            var arr = input.value.split('');
+            for(i=0; i<arr.length; i++) {
+
+            var newInput = document.createElement('input');
+            newInput.value = arr[i];
+            input.parentElement.appendChild(newInput);  
+            }
+        }
+    </script>
+     -->
+
+    <!-- 35.  Дана кнопка. Сделайте так, чтобы по нажатию на эту кнопку, скрывался родитель этой кнопки. -->
+<!-- 
+    <div id="elem"><button id="btn">Скрыть</button></div>
+
+    <script>
+        var btn  = document.getElementById('btn');
+        btn.addEventListener('click', func); 
+
+        function func() {
+            btn.parentElement.style.cssText='display:none';
+        }
+    </script>
+     -->
+</body>
+</html>
