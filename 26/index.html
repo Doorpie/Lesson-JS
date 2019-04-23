@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 26</title>
+</head>
+<body>
+    <style>
+        body{
+          width: 2000px;
+          height: 1200px;
+        }
+
+        button{
+          position: fixed;
+        }
+    </style>
+<!--1.  Дана кнопка. По нажатию на эту кнопку выведите высоту окна браузера.  -->
+<!-- 2.  Дана кнопка. По нажатию на эту кнопку прокрутите окно браузера до самого низа.  -->
+<!-- 3.  Дана кнопка. По нажатию на эту кнопку узнайте, есть ли у окна браузера вертикальная прокрутка. -->
+
+<button id="btn">Показать</button>
+<br>
+<br>
+<button id="btnDown">Прокрутить вниз</button>
+<br>
+<br>
+<button id="btnInfo">Узнать</button>
+
+<script>
+  var btn = document.getElementById('btn');
+  var btnDown = document.getElementById('btnDown');
+  var btnInfo = document.getElementById('btnInfo');
+  btn.addEventListener('click', func);
+  btnDown.addEventListener('click', func2);
+  btnInfo.addEventListener('click', func3);
+
+  function func(){
+   alert(document.body.clientHeight);
+  }
+
+  function func2(){
+    document.body.scrollIntoView(false);
+  }
+
+  function func3(){
+    alert(window.pageYOffset);
+  }
+</script>
+
+</body>
+</html>
