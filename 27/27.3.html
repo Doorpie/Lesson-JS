@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 27.3</title>
+</head>
+<body>
+    <style>
+        #square{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            position: absolute;
+        }
+    </style>
+    <div>Нажмите в любое место.</div>
+    <div id="square"></div>
+    <script>
+        var square = document.getElementById('square');
+        window.addEventListener('click', func);
+
+        function func(event){
+            square.style.top = (event.clientY-parseInt(window.getComputedStyle(square).height) / 2)+'px';
+            square.style.left = (event.clientX-parseInt(window.getComputedStyle(square).width) / 2)+'px';
+        }
+    </script>
+</body>
+</html>

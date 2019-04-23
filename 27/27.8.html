@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 27.8</title>
+</head>
+<body>
+   <!--  Дан инпут. В него вводится текст и нажимается клавиша Enter (ее код имеет номер 13). Сделайте так, чтобы по нажатию Enter введенный текст попадал в абзац под инпутом, а содержимое инпута очищалось. -->
+
+   <input type="text" id="text">
+   <div id="subText"></div>
+   <script>
+       var text = document.getElementById('text');
+       var subText = document.getElementById('subText');
+       text.addEventListener('keypress', func);
+
+       function func(event){
+           if(event.keyCode==13) {
+              subText.innerHTML=text.value;
+              text.value = '';
+           }
+       }
+   </script>
+</body>
+</html>

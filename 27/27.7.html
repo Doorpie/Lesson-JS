@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 27.7</title>
+</head>
+<body>
+   <!-- Дан элемент. Сделайте так, чтобы при клике на него и нажатой клавише Ctrl - в его текст записывалось '1', при нажатой клавише Alt - '2', а при нажатой клавише Shift - '3'. -->
+
+   <div id="text">123</div>
+   <script>
+       var  text = document.getElementById('text');
+       text.addEventListener('click', func);
+       function func(event){
+           if (event.ctrlKey) {
+               text.innerHTML = '1';
+           }
+           if (event.altKey) {
+               text.innerHTML = '2';
+           }
+           if (event.shiftKey) {
+               text.innerHTML = '3';
+           }
+       }
+   </script>
+</body>
+</html>

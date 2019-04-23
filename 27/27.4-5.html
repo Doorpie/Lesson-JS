@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 27.4-5</title>
+</head>
+<body>
+   <input type="text" id="input" placeholder="Введите тест">
+   <div>Код нажатой клавиши: <span id="num">?</span> Нажатая клавиша: <span id="key">?</span></div>
+   <script>
+       var input = document.getElementById('input');
+       var num = document.getElementById('num');
+       var key = document.getElementById('key');
+        input.addEventListener('keypress',func);
+
+        function func(event){
+            var code =  event.keyCode;
+            num.innerHTML = code;
+            key.innerHTML = String.fromCharCode(code);
+        }
+   </script>
+</body>
+</html>
