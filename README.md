@@ -24,5 +24,6 @@
 * 23 - Продвинутая работа с событиями в JavaScript.
 * 24 - Продвинутая работа с DOM на JavaScript.
 * 25 - Работа с метриками на JavaScript.
-* 26 - абота с метриками для window на JavaScript.
-
+* 26 - Работа с метриками для window на JavaScript.
+* 27 - Основы работы с объектом Event на JavaScript.
+* 28 - Продвинутая работа с объектом Event на JavaScript.
