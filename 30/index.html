@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 30</title>
+</head>
+<body>
+    <!-- Задача 1 Понятие узел:
+
+Дан див. Внутри него вначале находится просто текст, а затем span:
+
+<div> text <span>span</span></div>
+Получите первого потомка нашего дива с помощью firstChild и с помощью firstElementChild. Сравните результаты. -->
+
+<!-- 
+
+<script>
+    var elem = document.querySelector('div');
+    console.log(elem.firstChild);
+    console.log(elem.firstElementChild);
+</script> -->
+
+<!--2.  Текстовый узел и узел-комментарий
+
+Задача :
+
+Дан див. Внутри него вначале находится просто текст, а затем span:
+
+<div> text <span>span</span></div>
+Выведите на экран находящийся в начале дива текст. -->
+
+<!--
+<script>
+    var elem = document.querySelector('div');
+    alert(elem.firstChild.data);
+</script> -->
+
+<!-- 3. Задача :
+
+Дан див. Внутри него вначале находится просто текст, а затем span:
+
+<div> text <span>span</span></div>
+Поменяйте текст на восклицательный знак.
+
+<script>
+    var elem = document.querySelector('div');
+    elem.firstChild.data='!';
+</script> -->
+
+<!-- 4. Задача :
+
+Дан див. Внутри него вначале находится span, а затем просто текст:
+
+<div><span>span</span> text </div>
+Поменяйте текст на восклицательный знак.
+
+<script>
+    var elem = document.querySelector('div');
+    elem.lastChild.date='!';
+</script> -->
+
+<!-- Задача 5 : Дан див с комментарием:
+    
+<div>comment<span>span</span> text </div>
+Выведите на экран текст комментария.
+<script>
+    var elem = document.querySelector('div');
+    alert(elem.firstChild.textContent);
+</script>-->
+
+<!-- Задача 6:
+
+Дан див с комментарием:
+
+<div>comment<span>span</span> text </div>
+Поменяйте текст комментария на восклицательный знак.
+<script>
+    var elem = document.querySelector('div');
+    elem.firstChild.textContent = '!';
+</script> -->
+
+<!-- Разница между nextSibling и nextElementSibling, childNodes и children, firstChild и firstElementChild, lastChild и lastElementChild -->
+<!-- 7. Задача :
+Дан див:
+Переберите циклом всех потомков дива сначала через childNodes, а потом через children. -->
+
+<!-- <div> 1 <span>2</span> 3 <span>4</span></div>
+
+<script>
+    var elem = document.querySelector('div');
+
+    for (i=0; i<elem.childNodes.length; i++) {
+        console.log(elem.childNodes[i]);
+    }
+
+    for (j=0; j<elem.children.length; j++) {
+        console.log(elem.children[j]);
+    }
+</script> -->
+
+<!-- 8. Задача :
+
+Дан див:
+Выведите на экран содержимого второго (если начинать отсчет с единицы) DOM-элемента-потомка нашего дива. -->
+
+<!-- <div> 1 <span>2</span> 3 <span>4</span></div>
+    
+<script>
+    var elem = document.querySelector('div');
+    alert(elem.firstElementChild.nextElementSibling.textContent);
+</script> -->
+
+<!-- 9. Задача :
+
+Дан див:
+Выведите на экран содержимого второго (если начинать отсчет с единицы) узла-потомка нашего дива. -->
+
+<!-- <div> 1 <span>2</span> 3 <span>4</span></div>
+
+<script>
+    var elem = document.querySelector('div');
+    
+   alert(elem.firstChild.nextSibling.textContent);
+</script> -->
+
+<!-- 10. Задача :
+
+Дан див:
+Получите span с числом 3 внутри. Выведите на экран текст его правого и левого узла-соседа. -->
+
+<!-- <div><span>1</span> 2 <span>3</span><span>4</span> 5</div>
+
+<script>
+    var elem = document.querySelector('div');
+    
+    for(i=0; i<elem.childNodes.length; i++) {
+
+        if(elem.childNodes[i].textContent=='3') {
+            console.log(elem.childNodes[i].nextSibling);
+            console.log(elem.childNodes[i].previousSibling);
+        }
+    }
+</script> -->
+
+<!-- 11. Дан див:
+
+Получите span с числом 3 внутри. Выведите на экран текст его правого и левого DOM-элемента-соседа. -->
+
+<!-- <div><span>1</span> 2 <span>3</span><span>4</span> 5</div>
+
+<script>
+    var elem = document.querySelector('div');
+    
+    for(i=0; i<elem.childNodes.length; i++) {
+
+        if(elem.childNodes[i].textContent=='3') {
+            console.log(elem.childNodes[i].nextElementSibling.textContent);
+            console.log(elem.childNodes[i].previousElementSibling.textContent);
+        }
+    }
+</script> -->
+
+<!-- 12. Задача :
+
+Дан див:
+Получите текстовый узел с числом 3 внутри. Выведите на экран текст его правого соседа. -->
+
+<!-- <div> 1 <span>2</span> 3 <span>4</span> 5</div>
+
+<script>
+    var elem = document.querySelector('div');
+    
+    for(i=0; i<elem.childNodes.length; i++) {
+
+        if(elem.childNodes[i].textContent==' 3 ') {
+            alert(elem.childNodes[i].nextSibling.textContent);
+        }
+    }
+</script> -->
+
+<!-- 13. Работа с nodeType на JavaScript -->
+
+<!-- Задача :
+
+Дан див:
+
+<div>comment<span>span</span> text </div>
+Переберите циклом все его узлы, получите их текст, выведите текст на экран, а рядом с каждый текстом - тип соответствующего узла.
+
+<script>
+        var elem = document.querySelector('div');
+        
+        for(i=0; i<elem.childNodes.length; i++) {
+    
+            console.log(elem.childNodes[i].textContent + ' ' + elem.childNodes[i].nodeType);
+        }
+    </script> -->
+
+<!-- Разница между nodeList и HTMLCollection в JavaScript -->
+<!-- 14. Задача :Даны абзацы. Получите их в виде NodeList. -->
+<!-- 15. Задача :Даны абзацы. Получите их в виде HTMLCollection. -->
+<!-- 
+<div><p>1</p><p>2</p><p>3</p></div>
+
+<script>
+    var elem = document.querySelector('div');
+    
+    console.log(elem.childNodes);
+    console.log(elem.children);
+ 
+</script> -->
+
+<!-- Преобразование NodeList или HTMLCollection в массив JavaScript -->
+<!-- 16. Задача :Даны абзацы. Получите их в виде NodeList, а затем преобразуйте этот NodeList в массив. -->
+<!-- 17. Задача :Даны абзацы. Получите их в виде HTMLCollection, а затем преобразуйте этот HTMLCollection в массив. -->
+
+<!-- <div><p>1</p><p>2</p><p>3</p></div>
+
+<script>
+    var elem = document.querySelector('div');
+    
+   var childNodes = elem.childNodes;
+   var children = elem.children;
+
+   var arr = Array.from(childNodes);
+   var arr2 = Array.from(children);
+
+   console.log(arr);
+   console.log(arr2);
+ 
+</script> -->
+
+<!-- Метод createTextNode для создания текстового узла -->
+<!-- 18. Задача :Дан див:
+
+Вставьте перед спеном текст '!!!', создав его предварительно как текстовый узел с помощью createTextNode. -->
+
+<!-- <div><span>span</span> text </div>
+
+<script>
+    var elem = document.querySelector('div');
+       
+    var node = document.createTextNode('!!!');
+    elem.insertBefore(node, elem.childNodes[0]);
+     
+</script> -->
+
+<!-- 19. Задача :Дан див: Вставьте после слова text новый текстовый узел с текстом '!!!'. -->
+
+<!-- <div> text <span>span</span></div>
+
+<script>
+    var elem = document.querySelector('div');
+       
+    var node = document.createTextNode('!!!');
+    elem.insertBefore(node, elem.childNodes[1]);
+     
+</script> -->
+
+<!-- Удаление текстовых узлов на JavaScript  -->
+<!-- 20. Задача : Удалите из него текстовый узел ' text '. -->
+
+<!-- <div> text <span>span</span></div>
+
+<script>
+    var elem = document.querySelector('div');
+       
+    elem.removeChild(elem.childNodes[0]);
+     
+</script> -->
+
+<!-- Различаем в цикле узлы разного типа -->
+<!-- 21. Задача :
+
+Дан див:
+Переберите циклом все его узлы и выведите на экран для текстовых узлов и комментариев их текст, а для узлов-DOM-элементов - их innerHTML. -->
+
+<!-- <div>comment<span><b>bold</b>span</span> text </div>
+
+<script>
+    var elem = document.querySelector('div');
+       
+    elem.childNodes.forEach(function(child) {
+        console.log(child.nodeType);
+        if (child.nodeType==3) {
+            console.log(child.textContent);
+        }
+        if (child.nodeType==1) {
+            console.log(child.innerHTML);
+        }
+        if (child.nodeType==8) {
+            console.log(child.textContent);
+        }
+    });
+     
+</script> -->
+</body>
+</html>
