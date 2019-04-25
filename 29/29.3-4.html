@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 29.3</title>
+</head>
+<body>
+
+    <!-- Работа с селектами
+ 3. Дан селект. Дан инпут. По изменению селекта выведите текст выбранного пункта в инпут. -->
+ <!-- 4. Дан селект. Дан инпут. Дана кнопка. Сделайте так, чтобы в инпут можно было ввести число, нажать на кнопку и в селекте становился выбранным пункт с этим номером. -->
+    
+    <select id="select">
+        <option value="one">Один</option>
+        <option value="two" selected>Два</option>
+        <option value="three">Три</option>
+    </select>
+
+    <input type="text" id="text">
+    <button id="btn">Выбрать</button>
+
+    <script>
+        var select = document.getElementById('select');
+        var options = select.options;
+        var text = document.getElementById('text');
+
+        select.addEventListener('change',func);
+
+        function func() {
+            var i = select.selectedIndex;
+            text.value = options[i].innerHTML;           
+        }
+
+        var btn = document.getElementById('btn');
+
+        btn.addEventListener('click',func2);
+
+        function func2() {
+            select.selectedIndex = Number(text.value)-1;          
+        }
+
+    </script>
+    
+</body>
+</html>

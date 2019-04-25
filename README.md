@@ -27,3 +27,4 @@
 * 26 - Работа с метриками для window на JavaScript.
 * 27 - Основы работы с объектом Event на JavaScript.
 * 28 - Продвинутая работа с объектом Event на JavaScript.
+* 29 - Разные полезные темы JavaScript.

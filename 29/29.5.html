@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 29.5</title>
+</head>
+<body>
+
+    <!-- Работа с селектами
+ 5.  Дан селект со списком стран. Сделайте так, чтобы при выборе страны рядом появлялся еще и селект со списком городов из этой страны. -->
+    <select id="select">
+        <option value="one">Россия</option>
+        <option value="two" selected>США</option>
+    </select>
+
+    <select id="russia">
+        <option value="one">Москва</option>
+        <option value="two" selected>Калининград</option>
+    </select>
+
+    <select id="usa">
+        <option value="one">Вашингтон</option>
+        <option value="two" selected>Нью-йорк</option>
+    </select>
+
+    <script>
+        var select = document.getElementById('select');
+        var russia = document.getElementById('russia');
+        var usa = document.getElementById('usa');
+
+        russia.style.display='none';
+        usa.style.display='none';
+
+        select.addEventListener('change', func);
+        
+        function func(){
+            if (select.selectedIndex==0) {
+                russia.style.display='inline-block';
+                usa.style.display='none'; 
+            }
+            if (select.selectedIndex==1) {
+                usa.style.display='inline-block';
+                russia.style.display='none'; 
+            }
+        }
+    </script>
+</body>
+</html>

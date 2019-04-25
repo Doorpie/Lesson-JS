@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 29.6</title>
+</head>
+<body>
+
+    <!-- Работа с селектами
+ 6.  Даны 3 селекта: с днем, с месяцем и годом. Сделайте так, чтобы некорректную дату нельзя было выбрать. -->
+    <select id="day-select">
+    </select>
+
+    <select id="month-select">
+    </select>
+
+    <select id="year-select">
+    </select>
+
+    <script>
+        var daySelect = document.getElementById('day-select');
+        var monthSelect = document.getElementById('month-select');
+        var yearSelect = document.getElementById('year-select');
+
+            var now = new Date();
+
+            window.addEventListener('load', nowDate);
+
+            function nowDate() {
+                var select = document.querySelectorAll('select');
+
+                for(var i=0; i<select.length; i++) {
+
+                    if (select[i].id=='day-select') {
+                        
+                        for(var j=1; j<=31; j++) {
+                            var option = document.createElement('option');
+                            option.innerHTML = addZero(j);
+                            daySelect.appendChild(option);
+                        }
+
+                        daySelect.selectedIndex = now.getDate()-1;
+                    }
+
+                    if (select[i].id=='month-select') {
+
+                        for(var j=1; j<=12; j++) {
+                            var option = document.createElement('option');
+                            option.innerHTML = addZero(j);
+                            monthSelect.appendChild(option);
+                        }
+
+                        monthSelect.selectedIndex = now.getMonth();
+                    }
+
+                    if (select[i].id=='month-select') {
+
+                        for(var j=1900; j<=now.getFullYear(); j++) {
+                            var option = document.createElement('option');
+                            option.innerHTML = addZero(j);
+                            yearSelect.appendChild(option);
+                        }
+
+                        yearSelect.selectedIndex = now.getFullYear()-1900;
+                    }
+                } 
+            }
+
+            
+            function addZero(num){
+                if (num<=9) {
+                  return  num;
+                }
+
+                else {
+                  return  num;
+                }
+            }
+
+            function chekDate(year, month, day) {
+                var date = new Date(year, month-1, day);
+                return date.getFullYear() == year && addZero(date.getMonth()) == month-1 && addZero(date.getDate()) == day;
+                
+            }
+
+        daySelect.addEventListener('change', selectChangeHandle);
+        monthSelect.addEventListener('change', selectChangeHandle);  
+        yearSelect.addEventListener('change', selectChangeHandle);   
+        
+            function selectChangeHandle() {
+
+               if (chekDate(yearSelect.value, monthSelect.value, daySelect.value)==false) {
+                   this.value = a;
+                   alert('Неверная дата')
+               }
+            }
+
+        daySelect.addEventListener('click', selectClickHandle);
+        monthSelect.addEventListener('click', selectClickHandle);  
+        yearSelect.addEventListener('click', selectClickHandle);   
+
+        var a='';
+        function selectClickHandle() {
+           a = this.value;
+           return a;
+        }
+    </script>
+</body>
+</html>

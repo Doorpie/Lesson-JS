@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 29.1</title>
+</head>
+<body>
+
+    <!-- Разные полезные темы JavaScript -->
+    <!-- 1.   Дана форма с id="form". В ней даны инпуты, в них числа. Дана кнопка. По нажатию на эту кнопку получите форму по ее id, затем циклом переберите все инпуты в ней и найдите сумму чисел из этих инпутов. -->
+    
+    <form action="" id="form">
+        <input type="text" value="1">
+        <input type="text" value="2">
+        <input type="submit" id="btn">
+    </form>
+
+    <script>
+        var btn = document.getElementById('btn');
+
+        btn.addEventListener('click', func);
+        var num =0;
+        function func() {
+            var elements = document.forms['form'].elements;
+            
+            for(i=0; i<elements.length; i++) {
+               num+=Number(elements[i].value);
+            }
+            alert(num);
+        }
+    </script>
+</body>
+</html>
