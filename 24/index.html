@@ -57,7 +57,7 @@
     <script>
        var elem = document.getElementById('elem');
        var className = elem.classList;
-       for (i=0; i < className.length; i++) {
+       for (var i=0; i < className.length; i++) {
             document.write(className[i] + '<br>');
        }
     </script>  -->
@@ -109,7 +109,7 @@
     <h1 id="elem" class="www">545</h1>
     <script>
        var elem = document.querySelectorAll('.www');
-       for(i=0; i < elem.length; i++){
+       for(var i=0; i < elem.length; i++){
            elem[i].innerHTML += elem[i].tagName.toLowerCase();
        }
     </script>  -->
@@ -138,7 +138,7 @@
         var elem = document.querySelector('ul');
 
 
-        for(i=0; i < arr.length; i++){
+        for(var i=0; i < arr.length; i++){
             var li = document.createElement('li');
             li.innerHTML += arr[i];
             elem.appendChild(li);
@@ -154,7 +154,7 @@
          var arr = [1,2,3,4,5];
          var elem = document.querySelector('ul');
  
-         for(i=0; i < arr.length; i++){
+         for(var i=0; i < arr.length; i++){
              var li = document.createElement('li');
              li.innerHTML = arr[i];
              elem.appendChild(li);
@@ -260,7 +260,7 @@
 
     <script>
         var elem  = document.getElementById('elem');
-            for (i=0; elem.children.length; i++) {
+            for (var i=0; elem.children.length; i++) {
                 elem.children[i].innerHTML += '!';
             }
     </script> -->
@@ -410,7 +410,7 @@
     
         <script>
         var li = document.querySelectorAll('li');
-            for(i=0; i<li.length; i++) {
+            for(var i=0; i<li.length; i++) {
         li[i].addEventListener('click', func);
             }
     
@@ -450,7 +450,7 @@
          var arr = [1,2,3,4,5];
          var ul = document.createElement('ul');
 
-         for(i=0; i<arr.length;i++) {
+         for(var i=0; i<arr.length;i++) {
 
             var li =document.createElement('li');
             li.innerHTML = arr[i];
@@ -490,7 +490,7 @@
         function func(){
             
             var arr = input.value.split('');
-            for(i=0; i<arr.length; i++) {
+            for(var i=0; i<arr.length; i++) {
 
             var newInput = document.createElement('input');
             newInput.value = arr[i];

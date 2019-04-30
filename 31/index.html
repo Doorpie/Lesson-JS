@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 31</title>
+</head>
+<body>
+
+<!-- 1. Даны 3 инпута и кнопка. По нажатию на кнопку получите числа, стоящие в этих инпутах и запишите их сумму в четвертый инпут. -->
+
+<!-- 
+<input type="text" class="number" placeholder="Введите число">
+<input type="text" class="number" placeholder="Введите число">
+<input type="text" class="number" placeholder="Введите число">
+
+<button class="btn">Посчитать</button>
+<input type="text" class="result" placeholder="Сумма чисел">
+
+    <script>  
+        var btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', calcNumber);
+
+        function calcNumber() {
+            var numbers = document.querySelectorAll('.number');
+            var  sum =0;
+
+            for(var i = 0 ; i < numbers.length; i++) {
+              sum += Number(numbers[i].value);
+            }
+
+            var result = document.querySelector('.result');
+            result.value = sum;
+        }
+    </script>
+ -->
+ 
+ <!-- 2. Даны N инпутов с классом .num и кнопка. По нажатию на кнопку получите числа, стоящие в этих инпутах и запишите их сумму в абзац с id="result". -->
+
+ <!-- 
+<input type="text" class="num" placeholder="Введите число">
+<input type="text" class="num" placeholder="Введите число">
+<input type="text" class="num" placeholder="Введите число">
+
+<button class="btn">Посчитать</button>
+<p id="result"></p>
+
+    <script>  
+        var btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', calcNumber);
+
+        function calcNumber() {
+            var numbers = document.querySelectorAll('.num');
+            var  sum =0;
+
+            for(var i = 0 ; i < numbers.length; i++) {
+              sum += Number(numbers[i].value);
+            }
+
+            var result = document.getElementById('result');
+            result.innerHTML = 'Сумма чисел =' + sum;
+        }
+    </script>
+-->
+
+<!-- 3. Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого числа.  -->
+
+<!--  
+<input type="text" class="numbers" placeholder="Введите число">
+<p></p>
+
+    <script>
+        var num = document.querySelector('.numbers');
+
+        num.addEventListener('blur', calcSum);
+
+        function calcSum() {
+            var numArr = num.value.split('');
+            var sum=0;
+
+            for (var i = 0; i < numArr.length; i++) {
+                sum += Number(numArr[i]);
+            }
+
+            var result = document.querySelector('p');
+            result.innerHTML = 'Сумма чисел =' + sum;
+        } 
+    </script>
+-->
+
+<!-- 4.  Дан инпут. В него вводятся числа через запятую. По потери фокуса найдите среднее арифметическое этих чисел -->
+
+<!--  
+<input type="text" class="numbers" placeholder="Введите через запятую">
+<p></p>
+
+    <script>
+        var num = document.querySelector('.numbers');
+
+        num.addEventListener('blur', calcNum);
+
+        function calcNum() {
+            var numArr = num.value.split(',');
+            var sum=0;
+
+            for (var i = 0; i < numArr.length; i++) {
+                sum += Number(numArr[i]);
+            }
+
+            var result = document.querySelector('p');
+            result.innerHTML = 'Среднее арифметическое чисел =' + sum/numArr.length;
+        } 
+    </script>
+-->
+
+<!-- 5.  Дан инпут. В него вводится ФИО через пробел. По потери фокуса запишите фамилию, имя и отчество в отдельные инпуты.  -->
+
+<!--  
+<input type="text" class="text" placeholder="Введите через пробел ФИО" style="width:200px">
+<input type="text">
+<input type="text">
+<input type="text">
+
+    <script>
+        var text = document.querySelector('.text');
+
+        text.addEventListener('blur', writeText);
+
+        function writeText() {
+            var src = text.value.split(' ');
+            var result = document.querySelectorAll('input');
+
+            for (var j = 0; j < result.length; j++) {
+                result[j+1].value = src[j];
+            }
+        } 
+    </script>
+-->
+
+<!-- 6. Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы. Сделайте так, чтобы по потери фокуса инпутом, введенные фамилия, имя и отчество автоматически стали записанными с большой буквы (в том же инпуте).  -->
+
+<!--  
+<input type="text" class="text" placeholder="Введите через пробел ФИО" style="width:200px">
+
+    <script>
+        var text = document.querySelector('.text');
+
+        text.addEventListener('blur', writeUpperText);
+
+        function writeUpperText() {
+            var arr = text.value.split(' ');
+            var resultArr = [];
+
+            for (var i = 0; i < arr.length; i++) {
+                resultArr[i] = arr[i].substr(0,1).toUpperCase() + arr[i].substr(1);
+            }
+
+            text.value = resultArr.join(' ');
+        } 
+    </script>
+-->
+
+<!-- 7. Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте. -->
+
+<!--  
+<input type="text" class="text" placeholder="Введите текст">
+<p></p>
+
+    <script>
+        var text = document.querySelector('.text');
+
+        text.addEventListener('blur', calcSumWord);
+
+        function calcSumWord() {
+            var result = document.querySelector('p');
+            var arr = text.value.split(' ');
+            result.innerHTML = 'Количество слов:' + arr.length;
+        } 
+    </script>
+-->
+
+<!-- 8. Дан инпут. В него вводится текст. По потери фокуса узнайте количество символов в самом длинном слове в этом тексте.  -->
+
+<!-- 
+<input type="text" class="text" placeholder="Введите текст">
+<p></p>
+
+    <script>
+        var text = document.querySelector('.text');
+
+        text.addEventListener('blur', calcSumWord);
+
+        function calcSumWord() {
+            var arr = text.value.split(' ');
+            var resultArr = [];
+            
+            for(var i = 0; i < arr.length; i++) {
+                resultArr[i] = arr[i].length;
+            }
+
+            var result = document.querySelector('p');
+            var maxNum = Math.max.apply(null, resultArr);
+            
+            result.innerHTML = 'Количество символов в самом длинном слове:' + maxNum;
+        }   
+    </script>
+-->
+
+<!--9. Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом же инпуте поставьте эту дату в формате 2016-12-31  -->
+
+<!--  
+<input type="text" class="text" value="31.12.2016">
+<p></p>
+ 
+    <script>
+        var text = document.querySelector('.text');
+ 
+        text.addEventListener('blur', getReverse);
+ 
+        function getReverse() {
+            var arr = text.value.split('.');
+            var str = arr.reverse().join('-');
+
+            text.value = str;
+        }   
+    </script>
+-->
+
+<!-- 10. Дан инпут. В него вводится год рождения пользователя. По нажатию на кнопку выведите в абзац ниже сколько пользователю лет. -->
+
+<!--  
+<input type="text" class="year" placeholder="Введите год рождения">
+<br>
+<br>
+<input type="submit" class="btn" value="Сколько лет">
+<p></p>
+
+    <script>
+        var btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', getYear);
+
+        function getYear() {
+
+            var textYear = document.querySelector('.year');
+            var date = new Date();
+            var year = date.getFullYear() - textYear.value;
+            var result = document.querySelector('p');
+            
+            result.innerHTML = 'Возраст ' + year + ' лет';
+        }   
+    </script>
+-->
+
+<!-- 11.  Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте день недели (словом), который приходится на эту дату. -->
+
+<!--  
+<input type="text" class="text" value="31.12.2016">
+ 
+    <script>
+        var text = document.querySelector('.text');
+ 
+        text.addEventListener('blur', getDay);
+ 
+        function getDay() {
+
+            var arrText = text.value.split('.');
+            var arrDay = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+            var nowDay = new Date(arrText[2], arrText[1]-1, arrText[0]);      
+            var day = nowDay.getDay();
+            
+            alert(arrDay[day]);
+        }   
+    </script>
+-->
+
+<!-- 12.  Дан инпут. В него вводится слово. По нажатию на кнопку проверьте то, что это слово читается с начала и с конца одинаково (например, мадам).  -->
+
+<!--
+<input type="text" class="word" placeholder="Введите слово">
+<br>
+<br>
+<input type="submit" class="btn" value="Проверить">
+<p></p>
+
+    <script>
+        var btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', chekWord);
+
+        function chekWord() {
+
+            var word = document.querySelector('.word');
+            var arrWord = word.value.split('');
+            var wordReverse = arrWord.reverse().join('');
+
+            if (word.value == wordReverse) alert('Да');
+            else alert('нет');
+        }   
+    </script>
+-->
+
+<!-- 13. Дан инпут. В него вводится число. Проверьте по вводу, что это число содержит внутри себя цифру 3. -->
+
+<!--  
+<input type="text" class="num">
+ 
+    <script>
+        var num = document.querySelector('.num');
+ 
+        num.addEventListener('blur', chekNum);
+ 
+        function chekNum() {
+
+            var arrNum = num.value.split('');
+
+            for (var i = 0; i < arrNum.length; i++) {
+
+                if (arrNum[i] == '3') {
+                    alert('Содержит цифру 3');
+                }
+            }
+        }   
+    </script>
+-->
+
+<!-- 14.  Даны N абзацев и кнопка. По нажатию на кнопку запишите в конец каждого абзаца его порядковый номер. -->
+
+<!--  
+<P>!</P>
+<P>!</P>
+<P>!</P>
+<button class="btn">Записать</button>
+
+    <script>
+        var btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', writeNum);
+
+        function writeNum() {
+            var p = document.getElementsByTagName('p');
+
+            for (var i = 0; i < p.length; i++) {
+                p[i].innerHTML += i + 1;
+            }
+        }
+    </script>
+-->
+
+<!-- 15. Даны N абзацев с числами. По нажатию на кнопку выведите эти числа в инпут через запятую в порядке возрастания. -->
+
+<!--  
+<p>1</p>
+<p>4</p>
+<p>22</p>
+<p>18</p>
+<input type="text">
+
+<button class="btn">Сортировать</button>
+
+<script>
+        var btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', createArr);
+        
+        var arr=[];
+
+        function createArr() {
+            var p = document.getElementsByTagName('p');
+
+            for (var i = 0; i < p.length; i++) {
+               arr[i] = p[i].innerHTML;
+            }
+
+            arr.sort(sortArr);
+            
+            var input = document.querySelector('input');
+            
+            input.value = arr.join(',');
+        }
+
+        function sortArr(a, b) {
+            return a - b;
+        }
+    </script>
+-->
+
+<!-- 16. Даны ссылки. По загрузке страницы добавьте в конец каждой ссылки ее href в круглых скобках. -->
+
+<!--  
+<a href="http://yandex.ru">1</a>
+<br>
+<a href="http://google.com">2</a>
+
+    <script>
+        window.addEventListener('load', addLink)
+
+        function addLink() {
+            var a = document.getElementsByTagName('a');
+
+            for (var i = 0; i < a.length; i++) {
+                a[i].innerHTML += '(' + a[i].href + ')';
+            }
+        }
+    </script>
+-->
+
+<!-- 17.  Даны ссылки. По загрузке страницы, если ссылка начинается с http://, то добавьте ей в конец стрелку → (делается так: &rarr;).  -->
+
+<!--  
+<a href="yandex.ru">1</a>
+<br>
+<a href="http://google.com">2</a>
+
+    <script>
+        window.addEventListener('load', addLink)
+
+        function addLink() {
+            var a = document.getElementsByTagName('a');
+
+            for (var i = 0; i < a.length; i++) {
+
+                if (a[i].href.indexOf('http://', 7)) {
+                    a[i].innerHTML += 1; 
+                }  
+            }
+        }
+    </script>
+-->
+
+<!-- 18.  Даны N абзацев с числами. По нажатию на любой абзац запишите в него квадрат числа, которое в нем находится. -->
+
+ <!--  
+<p>2</p>
+<p>3</p>
+<p>64</p>
+
+    <script>
+        var p = document.getElementsByTagName('p');
+
+        for (var i = 0; i < p.length; i++) {
+            p[i].addEventListener('click', calcNum);
+        }
+
+        function calcNum() {
+            this.innerHTML = Math.pow(this.innerHTML, 2);
+        }
+    </script>
+-->
+
+<!-- 19.  Даны картинки. По нажатию на любую картинку увеличьте ее в 2 раза.-->
+
+<!--  
+<img src="./img/1.png" alt="">
+<img src="./img/2.png" alt="">
+
+    <script>
+        var elems = document.querySelectorAll('img');
+
+        for (i = 0; i < elems.length; i++) {
+            elems[i].addEventListener('click', IncSize)
+        }
+
+        function IncSize() {
+            this.width =  this.width * 2;
+        }
+    </script>
+-->
+
+<!-- 20.  Даны картинки. По первому нажатию на любую картинку увеличьте ее в 2 раза. По второму нажатию - уменьшите обратно. -->
+
+<!--  
+<img src="./img/1.png" alt="">
+<img src="./img/2.png" alt="">
+
+    <script>
+        var elems = document.querySelectorAll('img');
+
+        for (i = 0; i < elems.length; i++) {
+            elems[i].addEventListener('click', IncSize)
+        }
+
+        function IncSize() {
+            this.width =  this.width * 2;
+            this.removeEventListener('click', IncSize);
+            this.addEventListener('click', reduceSize);
+        }
+
+        function reduceSize() {
+            this.width =  this.width / 2;
+            this.removeEventListener('click', reduceSize); 
+            this.addEventListener('click', IncSize);   
+        }
+    </script>
+-->
+
+<!-- 21. Даны N картинок размера 30px. По нажатию на картинку под ними эта картинка появляется размером в 50px. -->
+
+<!--  
+<style>
+    img{
+        width: 30px;
+    }
+</style>
+
+<div class="parent">
+    <img src="./img/1.png" alt="" >
+    <img src="./img/2.png" alt="">
+    <br>
+</div>
+
+
+    <script>
+        var elems = document.querySelectorAll('img');
+        var parent = document.querySelector('.parent');
+
+        for (i = 0; i < elems.length; i++) {
+            elems[i].addEventListener('click', cloneNode)
+        }
+
+        function cloneNode() {
+            var clone = this.cloneNode(true);
+            clone.style.width = '50px';
+            parent.appendChild(clone);
+        }
+    </script>
+-->
+
+<!-- 22. Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать на 1 значение инпута. Сделайте так, чтобы это значение не могло стать меньше нуля. -->
+<!--  
+
+<input class="text" type="text" value="0">
+<button class="plus">+</button>
+<button class="minus">-</button>
+
+    <script>
+        var input = document.querySelector('.text');
+        var plus = document.querySelector('.plus');
+        var minus = document.querySelector('.minus');
+
+        plus.addEventListener('click', plusNum);
+
+        function plusNum() {
+           input.value = Number(input.value) + 1;
+        }
+
+        minus.addEventListener('click', minusNum);
+
+        function minusNum() {
+           input.value = Number(input.value) - 1;
+
+           if (input.value < 0) {
+            input.value = 0;
+           }
+        }
+    </script>
+-->
+</body>
+</html>
