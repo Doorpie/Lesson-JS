@@ -782,5 +782,621 @@
         }
     </script>
 -->
+
+<!-- 32. Дан абзац. Сделайте так, чтобы каждую секунду он менял свой цвет с красного на зеленый и наоборот. -->
+
+<!--  
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores exercitationem incidunt delectus et voluptatum pariatur assumenda, commodi porro tempora consequuntur est, nulla voluptatibus ducimus deleniti, voluptatem tempore vitae omnis illum?</p>
+
+    <script>
+        var p = document.querySelector('p');
+        window.funcId = window.setInterval(timer, 1000);
+
+        function timer() {
+            p.style.color = 'green';
+            window.clearInterval(window.funcId);    
+            window.funcId2 = window.setInterval(timer2, 1000);
+        }
+
+
+        function timer2() {
+            p.style.color = 'red';
+            window.clearInterval(window.funcId2);
+            window.funcId = window.setInterval(timer, 1000); 
+        }
+    </script>
+-->
+
+<!-- 33.  Дан абзац. Дан массив цветов ['red', 'green', 'blue']. Сделайте так, чтобы каждую секунду абзац менял свой цвет на определенное значение их массива: сначала 'red', потом 'green' и так далее. Как только цвета в массиве закончатся - все начнется сначала. Количество цветов в массиве может быть любым. -->
+
+<!--  
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta rerum aliquam temporibus neque necessitatibus ratione esse eligendi accusantium perspiciatis at, animi est similique nisi, deserunt possimus illum totam magnam! Minima.</p>
+
+    <script>
+        var p = document.querySelector('p');
+        var arr = ['red', 'green', 'blue'];
+        var i = 0;
+
+        window.setInterval(timer, 1000);
+
+        function timer() {
+            
+            p.style.color = arr[i];
+            i++;
+
+                if (i >= arr.length) {
+                    i = 0;
+                }
+        }
+    </script>
+-->
+
+<!-- 34. Дан абзац. Дан массив строк ['один', 'два', 'три']. Под абзацем ссылка 'следующая строка'. По заходу на страницу в абзаце должен стоять нулевой элемент этого массива, а по нажатию на ссылку - вставлятся следующий элемент. -->
+
+<!--  
+<p></p>
+<a href="">следующая строка</a>
+
+    <script>
+        var p = document.querySelector('p');
+        var arr = ['один', 'два', 'три'];
+
+        p.innerHTML = arr[0];
+
+        var a = document.querySelector('a');
+
+       
+        a.addEventListener('click', addText); 
+       
+        
+        var i = 1;
+
+        function addText() {
+            event.preventDefault();
+            p.innerHTML += ' ' + arr[i];
+            i++;
+
+            if (i >= arr.length) {
+                i = 0;
+            }
+        }
+      
+    </script>
+-->
+
+<!-- 35. Даны инпуты с числами. Произвольное количетсво, пусть три. В первый инпут запишите 1, через секунду во второй инпут запишите 2, еще через секунду в третий инпут 3, потом через секунду в первый инпут запишите 4, во второй 5 и так далее до бесконечности. -->
+
+<!--  
+<input type="text">
+<input type="text">
+<input type="text">
+
+    <script>
+        var input = document.querySelectorAll('input');
+
+        window.setInterval(timer, 1000);
+
+        var i = 0;
+        var num = 1;
+
+        function timer() {
+            input[i].value = num;
+            i++;
+            num++;
+
+            if ( i >= input.length) {
+                i = 0;
+            }
+        }
+    </script>
+-->
+
+<!-- 36.  Дана ссылка. Дан чекбокс. По нажатию на ссылку меняйте состояние чекбокса с отмеченного на неотмеченное и наоборот. -->
+
+<!--  
+<a href="">Чек</a>
+<input type="checkbox" checked>
+
+    <script>
+        var a = document.querySelector('a');
+
+        a.addEventListener('click', addCheck);
+
+        function addCheck() {
+            event.preventDefault();
+            var input = document.querySelector('input');
+
+            if (input.checked) {
+                input.checked = false;
+            }
+            else {
+                input.checked = true;
+            }
+            
+        }
+    </script>
+-->
+
+<!-- 37.  Даны чекбокс. Дана кнопка. По нажатию на кнопку сделайте все чекбоксы отмеченными. -->
+
+<!--  
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+
+<button class="btn">Чек</button>
+
+    <script>
+        var checkbox = document.querySelectorAll('input');
+        var btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', addCheck);
+
+        function addCheck() {
+            for (i = 0; i < checkbox.length; i++) {
+                checkbox[i].checked = true;
+            }
+        }
+
+    </script>
+-->
+
+<!-- 38.  Спросите у пользователя какой язык (html, css, js, php) он знает с помощью радио кнопочек. Выведите этот язык в абзац.  -->
+
+<!--  
+<p>Какой язык вы знаете?</p>
+<p></p>
+
+<label for="">html</label>
+<input type="radio">
+<br>
+<label for="">css</label>
+<input type="radio">
+<br>
+<label for="">js</label>
+<input type="radio">
+<br>
+<label for="">php</label>
+<input type="radio">
+
+    <script>
+        var radio = document.querySelectorAll('input');
+        var label = document.querySelectorAll('label');
+
+        for (var i = 0; i < radio.length; i++) {
+            radio[i].addEventListener('change', addCheckText);
+        }
+
+        function addCheckText() {
+            var p = document.querySelectorAll('p');
+
+            for (var i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    p[1].innerHTML = label[i].innerHTML;
+                }
+            }
+            
+        }
+    </script>
+-->
+
+<!-- 39.  Спросите у пользователя какие языки (html, css, js, php) он знает с помощью чекбоксов. Выбранные языки должны выводится в абзац ниже через запятую. -->
+
+<!--  
+<p>Какой язык вы знаете?</p>
+<p></p>
+
+<label for="">html</label>
+<input type="radio" value="html">
+<br>
+<label for="">css</label>
+<input type="radio" value="css">
+<br>
+<label for="">js</label>
+<input type="radio" value="js">
+<br>
+<label for="">php</label>
+<input type="radio" value="php">
+
+    <script>
+        var radio = document.querySelectorAll('input');
+        var p = document.querySelectorAll('p');
+        
+        for (var i = 0; i < radio.length; i++) {
+            radio[i].addEventListener('change', addCheckText);
+        }
+
+        var arr = [];
+ 
+        function addCheckText() {
+ 
+            if (this.checked) {
+                arr.push(this.value);
+                p[1].innerHTML = arr;
+            }
+        }   
+    </script>
+-->
+
+<!-- 40.  Дан чекбокс. Дан инпут. Сделайте так, что если чекбокс отмечен - инпут видимый, если не отмечен - не видимый.  -->
+
+<!--  
+<input type="text">
+<input type="checkbox">
+
+    <script>
+        var input = document.querySelectorAll('input');
+
+        input[1].addEventListener('click', func);
+
+        function func() {
+            
+            if (input[1].checked) {
+                input[0].style.display = 'inline-block';
+            }
+
+            else {
+                input[0].style.display = 'none';
+            }
+        }
+    </script>
+-->
+
+<!-- 41. Даны чекбоксы. Под каждым чекбоксом размещен абзац. Сделайте так, что если чекбокс отмечен - соответствующий абзац видимый, а если не отмечен - не видимый.  -->
+
+<!--  
+<input type="checkbox">
+<p>1</p>
+<input type="checkbox">
+<p>2</p>
+
+    <script>
+        var input = document.querySelectorAll('input');
+        var p = document.querySelectorAll('p');
+
+        for (var i = 0; i < input.length; i++) {
+            input[i].addEventListener('change', func);
+        }
+
+        function func() {
+            
+            for (var i = 0; i < input.length; i++) {
+                if (input[i].checked) {
+                    p[i].style.display = 'none';
+                }
+                else {
+                    p[i].style.display = 'inline-block';
+                }
+            }
+        }
+    </script>
+-->
+
+<!-- 42.  Дан инпут. Даны li. В инпут пишется номер. Сделайте так, чтобы по вводу числа, li с заданным номером покрасился в красный цвет. -->
+
+<!--  
+<input type="text">
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+</ul>
+
+    <script>
+        var input = document.querySelector('input');
+
+        input.addEventListener('blur', func);
+
+        function func() {
+            var li = document.querySelectorAll('li');
+            li[input.value - 1].style.color = 'red';
+        }
+    </script>
+-->
+
+<!-- 43. Дан абзац. Даны чекбоксы 'перечеркнуть', 'сделать жирным', 'сделать красным'. Если соответствующий чекбокс отмечен - заданное действие происходит с абзацем (становится красным, например). Если чекбоксу снять отметку - действие отменяется.  -->
+
+<!--  
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, dicta deserunt soluta necessitatibus iste architecto illo molestias praesentium, nesciunt vero dolore, repellendus numquam unde minus possimus amet iusto doloremque nisi.</p>
+<input type="checkbox" name="" id="">перечеркнуть
+<input type="checkbox" name="" id="">сделать жирным
+<input type="checkbox" name="" id="">сделать красным
+
+    <script>
+        var checkbox = document.querySelectorAll('input');
+
+        for (var i = 0; i < checkbox.length; i++) {
+            checkbox[i].addEventListener('change', func);
+        }
+
+        var p = document.querySelector('p');
+
+        function func() {
+
+            if (checkbox[0].checked == true) {
+                p.style.textDecoration = 'line-through';
+            }
+            else {
+                p.style.textDecoration = 'none';
+            }
+
+            if (checkbox[1].checked == true) {
+                p.style.fontWeight = 'bold';
+            }
+
+            else {
+                p.style.fontWeight = 'normal';
+            }
+
+            if (checkbox[2].checked == true) {
+                p.style.color = 'red';
+            }
+
+            else {
+                p.style.color = 'black';
+            }
+        }
+    </script>
+-->
+
+<!-- 44. Дан блок с кнопкой 'закрыть блок'. По нажатию на эту кнопку блок должен исчезнуть. Кнопка размещается внутри блока и должна исчезнуть вместе с ним. Блоков может быть любое количество, каждый из них закрывает своя кнопка.  -->
+
+<!--  
+<div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aliquam rerum est consequatur temporibus mollitia accusantium! Voluptatibus in asperiores, neque porro, animi iusto dolor eaque eos quae fugiat a tempore?</p>
+    <button>закрыть</button>
+</div>
+
+    <script>
+        var btn = document.querySelectorAll('button');
+
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', hideBlock);
+        }
+
+
+        function hideBlock() {
+            this.parentNode.style.display = 'none';
+        }
+    </script>
+-->
+
+<!-- 45. В инпут через запятую вводятся страны. По нажатию на кнопку сделайте так, чтобы эти страны записались в ul под инпутом (каждая страна отдельный li). -->
+
+<!--  
+<input type="text" class="text" placeholder="Введите страны через ,">
+<button class="btn">Записать</button>
+<ul></ul>
+
+    <script>
+        var btn = document.querySelector('.btn');
+
+        btn.addEventListener('click', func);
+
+        var text = document.querySelector('.text');
+        
+
+        function func() {
+            var arr = [];
+            var ul = document.querySelector('ul');
+            arr = text.value.split(',');
+
+            for (i = 0; i < arr.length; i++) {
+                var li = document.createElement('li');
+                li.innerHTML = arr[i];
+                ul.appendChild(li);
+            }
+        }
+    </script>
+-->
+
+<!-- 46.  В инпут вводится страна и нажимается Enter. По нажатию на Enter сделайте так, чтобы введенные страны записывались в абзац под инпутом через запятую. То есть по каждому нажатию Enter в абзац будут добавляться все новые и новые страны.  -->
+
+<!--  
+<input type="text" class="text" placeholder="Введите страну">
+<p></p>
+
+    <script>
+        var text = document.querySelector('.text');
+
+        text.addEventListener('keypress', func);
+
+        var p = document.querySelector('p');
+
+        function func(event) {
+            if (event.which == 13) {
+                p.innerHTML += this.value + ', ';
+                this.value = '';
+            }
+        }
+    </script>
+-->
+
+<!-- 47. На странице есть дивы. В них есть текст. Обойдите все дивы и обрежьте тот текст, который в них стоит так, чтобы он стал длиной 10 символов. И добавьте троеточие в конец обрезанного текста -->
+
+<!--  
+<div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi facilis sunt id obcaecati beatae accusamus dolore, consectetur delectus pariatur voluptatibus ut sed debitis enim ipsam. Quaerat cupiditate error delectus eaque.</div>
+<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem esse vero sunt maiores magnam aspernatur quae molestias consectetur incidunt, recusandae sapiente iure ipsum voluptas rerum temporibus! Necessitatibus laudantium corporis nesciunt!</div>
+
+    <script>
+        var div = document.querySelectorAll('div');
+
+        for (var i = 0; i < div.length; i++) {
+            var str = '';
+            str = div[i].innerHTML.slice(0, 10);
+            div[i].innerHTML = str + '...';
+        }
+    </script>
+-->
+
+<!-- 48. Дана таблица с числами. По нажатию на кнопку найдите ячейку, в которой хранится максимальное число, и сделайте ее фон красным. -->
+
+<!--  
+<table>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+</table>
+
+<button>Найти максимальное число</button>
+
+    <script>
+        var btn = document.querySelector('button');
+
+        btn.addEventListener('click', getMaxNum);
+
+        var td = document.querySelectorAll('td');
+
+        function getMaxNum() {
+            var arr = [];
+
+            for (var i = 0; i < td.length; i++) {
+                arr[i] = td[i].innerHTML;
+            }
+
+            var maxNum = Math.max.apply(null, arr);
+
+            for (var i = 0; i < td.length; i++) {
+                if (td[i].innerHTML == maxNum) {
+                    td[i].style.color = 'red';
+                }
+            }
+        }
+    </script>
+-->
+
+<!-- 49.  Дана таблица с числами. По нажатию на кнопку в инпут под таблицей выведите эти числа через запятую в порядке возрастания.  -->
+
+<!--  
+<table>
+        <tr>
+            <td>1</td>
+            <td>511</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>55</td>
+            <td>46</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>45</td>
+            <td>32</td>
+            <td>97</td>
+        </tr>
+    </table>
+
+    <input type="text">
+    
+    <button>Найти</button>
+    
+        <script>
+            var btn = document.querySelector('button');
+    
+            btn.addEventListener('click', getNum);
+    
+            var td = document.querySelectorAll('td');
+            var arr = [];
+    
+            function getNum() {
+                for (var i = 0; i < td.length; i++) {
+                    arr[i] = td[i].innerHTML;
+                }
+
+                arr.sort(sortArr);
+
+                var input = document.querySelector('input');
+
+                input.value = arr;
+            }
+            
+            function sortArr(a, b) {
+                return a - b;
+            }
+        </script>
+-->
+
+<!-- 50. Дана таблица с числами. По нажатию на кнопку в последний ряд таблицы в каждую ячейку запишите сумму чисел в столбце таблицы, расположенном над определенной ячейкой. -->
+
+<!--  
+<table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    <button>Посчитать</button>
+    
+        <script>
+            var btn = document.querySelector('button');
+    
+            btn.addEventListener('click', getNum);
+    
+            var tr = document.querySelectorAll('tr');
+    
+            function getNum() {
+
+                var arr = [];
+
+                for (var i = 0; i < tr.length; i++) {   
+
+                    for (var j = 0; j < tr[i].children.length; j++) {
+
+                        if (arr[j] == undefined) {
+                            arr[j] = 0;
+                        }
+
+                        arr[j] += Number(tr[i].children[j].innerHTML);
+                        
+                    }
+                }
+
+                var table = document.querySelector('table');
+                var elemTr = document.createElement('tr');
+                
+                table.appendChild(elemTr);
+
+                for (var k = 0; k < arr.length; k++) {
+                    var elemTd = document.createElement('td');
+
+                    elemTd.innerHTML = arr[k];
+
+                    table.lastChild.appendChild(elemTd);
+                }
+                    
+
+                    
+              console.log(arr);
+            }
+        </script>
+-->
 </body>
 </html>
