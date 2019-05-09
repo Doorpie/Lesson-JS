@@ -460,7 +460,7 @@
     <script>
         var elems = document.querySelectorAll('img');
 
-        for (i = 0; i < elems.length; i++) {
+        for (var i = 0; i < elems.length; i++) {
             elems[i].addEventListener('click', IncSize)
         }
 
@@ -479,7 +479,7 @@
     <script>
         var elems = document.querySelectorAll('img');
 
-        for (i = 0; i < elems.length; i++) {
+        for (var i = 0; i < elems.length; i++) {
             elems[i].addEventListener('click', IncSize)
         }
 
@@ -517,7 +517,7 @@
         var elems = document.querySelectorAll('img');
         var parent = document.querySelector('.parent');
 
-        for (i = 0; i < elems.length; i++) {
+        for (var i = 0; i < elems.length; i++) {
             elems[i].addEventListener('click', cloneNode)
         }
 
@@ -690,7 +690,7 @@
         btn.addEventListener('click', getSymbol);
 
         function getSymbol() {
-            for (i = 0; i < 8; i++) {
+            for (var i = 0; i < 8; i++) {
                 text += str.charAt(Math.floor(Math.random() * str.length));
                 input.value = text;
             }
@@ -716,7 +716,7 @@
             var str = '1234567890qwertyuiopasdfghjklzxcvbnm';
             var inLenght = document.querySelector('.in-lenght');
 
-            for (i = 0; i < inLenght.value; i++) {
+            for (var i = 0; i < inLenght.value; i++) {
                 text += str.charAt(Math.floor(Math.random() * str.length));
                 input.value = text;
             }
@@ -745,7 +745,7 @@
             var inLenght = document.querySelector('.in-lenght');
             var str = inStr.value;
 
-            for (i = 0; i < inLenght.value; i++) {
+            for (var i = 0; i < inLenght.value; i++) {
                 text +=  str.charAt(Math.floor(Math.random() *  str.length));
                 input.value = text;
             }
@@ -933,7 +933,7 @@
         btn.addEventListener('click', addCheck);
 
         function addCheck() {
-            for (i = 0; i < checkbox.length; i++) {
+            for (var i = 0; i < checkbox.length; i++) {
                 checkbox[i].checked = true;
             }
         }
@@ -1185,7 +1185,7 @@
             var ul = document.querySelector('ul');
             arr = text.value.split(',');
 
-            for (i = 0; i < arr.length; i++) {
+            for (var i = 0; i < arr.length; i++) {
                 var li = document.createElement('li');
                 li.innerHTML = arr[i];
                 ul.appendChild(li);
@@ -1334,7 +1334,7 @@
 
 <!-- 50. Дана таблица с числами. По нажатию на кнопку в последний ряд таблицы в каждую ячейку запишите сумму чисел в столбце таблицы, расположенном над определенной ячейкой. -->
 
-<!--  
+ <!--  
 <table>
         <tr>
             <td>1</td>
@@ -1379,24 +1379,495 @@
                     }
                 }
 
-                var table = document.querySelector('table');
+                var tbody = document.querySelector('tbody');
                 var elemTr = document.createElement('tr');
                 
-                table.appendChild(elemTr);
+                tbody.appendChild(elemTr);
 
                 for (var k = 0; k < arr.length; k++) {
                     var elemTd = document.createElement('td');
 
                     elemTd.innerHTML = arr[k];
 
-                    table.lastChild.appendChild(elemTd);
+                    tbody.lastChild.appendChild(elemTd);
                 }
-                    
-
-                    
-              console.log(arr);
             }
         </script>
+-->
+
+<!-- 51.  Дана таблица с числами. По нажатию на ячейку она активируется и становится красного цвета. Активировать можно много ячеек. Под таблицей кнопка. По нажатию по этой кнопке в абзац ниже выведите сумма активированных ячеек. Реализуйте кнопку 'сбросить активированные ячейки' -->
+
+<!--  
+<table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    <button class="btn">Посчитать</button>
+    <button class="clear">Сбросить</button>
+    <p></p>
+    
+        <script>
+            var table = document.querySelector('table');
+
+            table.addEventListener('click', func);
+
+            var arr = [];
+            
+
+            function func() {
+                var td = event.target.closest('td');
+
+                if (td) {
+                   td.style.background = 'red';
+                   arr.push(Number(td.innerHTML));
+                }
+            }
+
+            var btn = document.querySelector('.btn');
+
+            btn.addEventListener('click', sumNum);
+
+            var p = document.querySelector('p');
+
+            function sumNum() {
+                
+                var sum = 0;
+
+                for (var i = 0; i < arr.length; i++) {
+                    sum += arr[i];
+                }
+                
+                p.innerHTML = sum;
+            }
+
+            var  clear = document.querySelector('.clear');
+
+            clear.addEventListener('click', clearNum);
+            
+            function clearNum() {
+                var td = document.querySelectorAll('td');
+
+                for (var i = 0; i < td.length; i++) {
+                    td[i].style.background = 'none';
+                }
+
+                p.innerHTML = '';
+                arr = [];
+            }
+        </script>
+-->
+
+<!-- 52. Дана таблица. По нажатию на ячейку в ней появляется инпут с содержимым этой ячейки и кнопка сохранить. Можно поредактировать текст в инпуте, сохранить - и текст ячейки поменяется. -->
+
+<!--  
+<table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    <script>
+        var td = document.querySelectorAll('td');
+
+        for (var i = 0; i < td.length; i++) {
+            td[i].addEventListener('click', func);
+        }
+            
+        function func() {
+            var val = this.innerHTML;
+
+            this.style.display = "none";
+
+            var input = document.createElement('input');
+
+            input.value = val;
+
+            var btn = document.createElement('button');
+            btn.innerHTML = 'Сохранить'; 
+
+            btn.addEventListener('click', function() {
+                this.previousElementSibling.previousElementSibling.innerHTML = this.previousElementSibling.value;;
+                this.previousElementSibling.previousElementSibling.style.display = "";
+                this.parentNode.removeChild(input);
+			    this.parentNode.removeChild(this);
+            });
+
+            this.parentNode.insertBefore(btn, this.nextSibling);
+            this.parentNode.insertBefore(input, this.nextSibling);
+        }
+    </script>
+-->
+
+<!-- 53.  Реализуйте раскрывающийся список. По умолчанию есть список стран (ul), по нажатию на страну внутри li со страной появляется список городов.-->
+
+<!--  
+<ul class="country">
+    <li>Россия
+        <ul class="city">
+            <li>Москва</li>
+            <li>Калининград</li>
+        </ul>
+    </li>
+    <li>США 
+        <ul class="city">
+            <li>Вашингтон</li>
+            <li>Нью-Йорк</li>
+        </ul>
+    </li> 
+</ul>
+
+    <script>
+        var country = document.querySelector('.country');
+        var city = document.querySelectorAll('.city');
+
+        for (var i = 0; i < city.length; i++) {
+            city[i].style.display = 'none';
+        }
+        
+        country.addEventListener('click', getList);
+
+        function getList() {
+            var li = event.target.closest('li');
+
+            if (li.firstElementChild.style.display == 'none') {
+                li.firstElementChild.style.display = '';
+            }
+
+            else {
+                li.firstElementChild.style.display = 'none';
+            }
+        }
+    </script>
+-->
+
+<!-- 54. Даны два селекта. В первом находятся страны, во втором - города. Сделайте так, чтобы когда выбирается определенная страна - в другом селекте появлялись города этой страны. В абзац ниже пишите выбранную страну и город через запятую -->
+
+<!--  
+<select name="" id="country">
+    <option value="rus">Россия</option>
+    <option value="usa">США</option>
+</select>
+<select name="" id="city"></select>
+<p></p>
+
+    <script>
+        var country = document.getElementById('country');
+        var city = document.getElementById('city');
+        var cityArr = {
+                'rus': ['Москва', 'Калининград'],
+                'usa': ['Вашингтон', 'Нью-Йорк'],
+            }
+
+        country.addEventListener('change', func);
+
+        function func() {
+
+                city.innerHTML = '';
+
+                for (var i = 0; i < cityArr[country.value].length; i++) {
+                    var option = document.createElement('option');
+
+                    option.innerHTML = cityArr[country.value][i];
+                    city.appendChild(option);
+            }
+        }
+
+        var city = document.getElementById('city'); 
+        var p = document.querySelector('p');
+
+        country.addEventListener('change', func2);
+        city.addEventListener('change', func2);
+
+        function func2() {
+            p.innerHTML = '';
+            p.innerHTML = country.options[country.selectedIndex].innerHTML + ' ' +  city.options[city.selectedIndex].innerHTML;
+        }
+    </script>
+-->
+
+<!-- 55. Сделайте селекты день, мес, год. Сделайте так, чтобы не корректную дату нельзя было выбрать (например, 30 февраля нельзя, а 30 марта можно или 29 февраля можно, но только в високосный год). -->
+
+<!--  
+<select id="day-select">
+    </select>
+
+    <select id="month-select">
+    </select>
+
+    <select id="year-select">
+</select>
+
+    <script>
+        var daySelect = document.getElementById('day-select');
+        var monthSelect = document.getElementById('month-select');
+        var yearSelect = document.getElementById('year-select');
+
+            var now = new Date();
+
+            window.addEventListener('load', nowDate);
+
+            function nowDate() {
+                var select = document.querySelectorAll('select');
+
+                for(var i=0; i<select.length; i++) {
+
+                    if (select[i].id=='day-select') {
+                        
+                        for(var j=1; j<=31; j++) {
+                            var option = document.createElement('option');
+                            option.innerHTML = addZero(j);
+                            daySelect.appendChild(option);
+                        }
+
+                        daySelect.selectedIndex = now.getDate()-1;
+                    }
+
+                    if (select[i].id=='month-select') {
+
+                        for(var j=1; j<=12; j++) {
+                            var option = document.createElement('option');
+                            option.innerHTML = addZero(j);
+                            monthSelect.appendChild(option);
+                        }
+
+                        monthSelect.selectedIndex = now.getMonth();
+                    }
+
+                    if (select[i].id=='month-select') {
+
+                        for(var j=1900; j<=now.getFullYear(); j++) {
+                            var option = document.createElement('option');
+                            option.innerHTML = addZero(j);
+                            yearSelect.appendChild(option);
+                        }
+
+                        yearSelect.selectedIndex = now.getFullYear()-1900;
+                    }
+                } 
+            }
+      
+            function addZero(num){
+                if (num<=9) {
+                  return  num;
+                }
+
+                else {
+                  return  num;
+                }
+            }
+
+            function chekDate(year, month, day) {
+                var date = new Date(year, month-1, day);
+                return date.getFullYear() == year && addZero(date.getMonth()) == month-1 && addZero(date.getDate()) == day;
+                
+            }
+
+        daySelect.addEventListener('change', selectChangeHandle);
+        monthSelect.addEventListener('change', selectChangeHandle);  
+        yearSelect.addEventListener('change', selectChangeHandle);   
+        
+            function selectChangeHandle() {
+
+               if (chekDate(yearSelect.value, monthSelect.value, daySelect.value)==false) {
+                   this.value = a;
+                   alert('Неверная дата')
+               }
+            }
+
+        daySelect.addEventListener('click', selectClickHandle);
+        monthSelect.addEventListener('click', selectClickHandle);  
+        yearSelect.addEventListener('click', selectClickHandle);   
+
+        var a='';
+        function selectClickHandle() {
+           a = this.value;
+           return a;
+        }
+    </script>
+-->
+
+<!-- 56.  Реализуйте калькулятор валют. Есть два селекта - селект с исходной валюты, селект с той валютой, в которую мы хотим перевести деньги, инпут, в который вводится сумма для обмена. Курсы валют храните в массиве. Сделайте так, чтобы в селектах нельзя было выбрать две одинаковых валюты.  -->
+
+<!--  
+Купить
+<select name="" id="first">
+    <option value="usa">usa</option>
+    <option value="rub">rub</option>
+    <option value="eur">eur</option>
+</select>
+За
+<select name="" id="last">
+        <option value="usa">usa</option>
+        <option value="rub">rub</option>
+        <option value="eur">eur</option>
+    </select>
+Купить сумму
+<input type="text">
+<p>Сумма:<b id="result"></b></p>
+
+    <script>
+        var rates = {'rub': 1.00, 'usa': 65.22, 'eur': 73.08};
+        var input = document.querySelector('input');
+        var selectFirst = document.getElementById('first');
+        var selectLast = document.getElementById('last');
+        var result = document.getElementById('result');
+
+        selectFirst.addEventListener('change', func);
+        selectLast.addEventListener('change', func);
+        input.addEventListener('blur', func);
+
+        function func() {
+            if (selectFirst.value != selectLast.value) {
+                result.innerHTML = '';
+                result.innerHTML = rates[selectFirst.value] / rates[selectLast.value] * input.value;
+            }
+
+            else {
+                alert('Выбраны одинаковые валюты');
+            }
+        }
+    </script>
+-->
+
+<!-- 57. Реализуйте генератор таблиц, ширина и высота таблиц задается в двух инпутах (например, таблица 5 на 10 ячеек). -->
+
+<!--  
+Ширина
+<input type="text" class="width" placeholder="введите число">
+Высота
+<input type="text" class="height" placeholder="введите число">
+<button class="btn">Сгенерировать</button>
+
+    <script>
+        var btn = document.querySelector('.btn');
+        var elemWidth = document.querySelector('.width');
+        var elemHeight = document.querySelector('.height');
+
+
+        btn.addEventListener('click', func);
+
+        function func() {
+            var table = document.createElement('table');
+
+            document.body.appendChild(table);
+
+            var width = elemWidth.value;
+            var height = elemHeight.value;
+
+            for (var i = 0; i < height; i++) {
+                
+                var tr = document.createElement('tr');
+
+                table.appendChild(tr);
+
+
+                for (var j = 0; j < width; j++) {
+
+                    var td = document.createElement('td');
+
+                    td.style.border = '1px solid black'
+                    tr.appendChild(td);
+                }
+            }
+        }
+    </script>
+-->
+
+<!-- 58.  Дан список и кнопка. По нажатию на кнопку посортируйте пункты списка по возрастанию. -->
+
+<!--  
+<select name="" id="">
+    <option value="">1</option>
+    <option value="">5</option>
+    <option value="">66</option>
+    <option value="">7</option>
+    <option value="">3</option>
+</select>
+
+<input type="submit" value="Сортировать">
+
+    <script>
+        var option = document.querySelectorAll('option');
+        var btn = document.querySelector('input');
+        var arr = [];
+
+        btn.addEventListener('click', func);
+        
+        function func(){
+
+            for (var i = 0; i < option.length; i++) {
+                arr.push(option[i].innerHTML);
+            }
+
+            arr.sort(sortArr);
+            console.log(arr);
+
+            for (var i = 0; i < option.length; i++) {
+                option[i].innerHTML = arr[i];
+            }
+        }
+
+        function sortArr(a, b) {
+            return a - b;
+        }
+    </script>
+-->
+
+<!-- 59.  Дан ряд ссылок. Сделайте так, чтобы по нажатию на ссылку она становилась с красным фоном. По нажатию на другую ссылку выделение первой ссылки снимается и выделяется та, на которую мы нажали. В абзац ниже пишите текст активной ссылки.  -->
+
+<!--  
+<a href="">ссылка 1</a>
+<a href="">ссылка 2</a>
+<a href="">ссылка 3</a>
+<p> </p>
+
+    <script>
+        var a = document.querySelectorAll('a');
+
+        for (var i = 0; i < a.length; i++) {
+            a[i].addEventListener('click', func);
+        }
+
+        function func() {
+            event.preventDefault();
+
+            for (var i = 0; i < a.length; i++) {
+                a[i].style.background = '';      
+            }
+
+            var p = document.querySelector('p');
+
+            p.innerHTML = this.innerHTML;
+            this.style.background = 'red';
+        }
+            
+    </script>
 -->
 </body>
 </html>

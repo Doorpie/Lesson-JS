@@ -30,11 +30,11 @@
         var num =0;
         function func() {
             var forms = document.forms;
-            for(i=0; i<forms.length; i++) {
+            for(var i = 0; i < forms.length; i++) {
                 var elements = forms[i].elements;
 
-                for(j=0; j<elements.length; j++) {
-                    num+=Number(elements[j].value);
+                for(var j = 0; j < elements.length; j++) {
+                    num += Number(elements[j].value);
                 } 
             }
             alert(num); 
