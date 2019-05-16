@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 35</title>
+</head>
+<body>
+<!-- 1.  Если переменная a больше нуля - то в ggg запишем функцию, которая выводит один !, иначе запишем функцию, которая выводит два !. -->
+
+<!--  
+    <script>
+        var num = 3;
+        var ggg;
+
+        if (num > 0) {
+            ggg = function() {
+                alert('!');
+            }
+        }
+
+        else {
+            ggg = function() {
+                alert('!!');
+            }
+        }
+    </script>
+-->
+
+<!-- 2. Функция ggg принимает 2 параметра: число и анонимную функцию, которая возводит число в квадрат. Возведите число в 4-тую степень с помощью ggg. -->
+
+<!--  
+    <script>
+        var ggg = function(num, func) {
+            return func(num);
+        }
+
+        funcNews = function(a) {
+            return Math.pow(a, 2);
+        }
+
+        num = 2;
+
+        alert(ggg(ggg(num, funcNews), funcNews));
+    </script>
+-->
+
+<!-- 3.  Функция ggg принимает 2 параметра: анонимную функцию, которая возвращает 3 и анонимную функцию, которая возвращает 4. Верните результатом функции ggg сумму 3 и 4 -->
+
+<!--  
+<script>
+    var ggg = function(func1, func2) {
+        return func1() + func2();
+    }
+
+    func1 = function() {
+        return 3;
+    }
+
+    func2 = function() {
+        return 4;
+    }
+
+    alert(ggg(func1, func2));
+</script>
+-->
+
+<!-- 4. Дана функция ggg. Она требует первым параметром число, вторым функцию, которая возводит в квадрат, а третьим параметром функцию, которая возводит в куб. Эти функции есть как Function Declaration - kvadrat, kub. Пусть функция ggg вернет сумму квадрата и куба числа. -->
+
+<!--  
+<script>
+    var ggg = function(num, kvadrat, kub) {
+        return kvadrat(num) + kub(num); 
+    }
+
+    var kvadrat = function(n) {
+        return Math.pow(n, 2);
+    }
+
+    var kub = function(n) {
+        return Math.pow(n, 3);
+    }
+
+    var num = 2;
+
+    alert (ggg(num, kvadrat, kub));
+</script>
+-->
+
+<!-- 5. Сделайте функцию each, которая первым параметром принимает массив, а вторым - функцию, которая применится к каждому элементу массива. Функция each должна вернуть измененный массив. -->
+
+<!-- 
+<script>
+    var each = function(arr, func) {
+        return func(arr);
+    }
+
+    var func = function(a) {
+        return a.reverse();
+    }
+
+    var arr = [1, 2, 3,];
+
+    alert (each(arr, func));
+</script>
+-->
+
+<!-- 6.  Сделайте функцию each, которая первым параметром принимает массив, а вторым - массив функций, которые по очереди применятся к каждому элементу массива: к первому элементу массива - первая функция, ко второму - вторая и так далее пока функции в массиве не закончатся, после этого возьмется первая функция, вторая и так далее по кругу. -->
+
+<!--  
+<script>
+    var each = function(arr, funcs) {
+        var newArr = [];
+        var j = 0;
+
+        for (var i = 0; i < arr.length; i++) {
+            var current = funcs[j](arr[i]);
+
+            newArr.push(current);
+
+            if (j < funcs.length-1) {
+                j++;
+            }
+
+            else {
+                j = 0;
+            }
+            
+        }
+
+        return newArr;
+    }
+
+    var f1 = function(a) {return a+3}
+    var f2 = function(a) {return a+2}
+    var f3 = function(a) {return a+1}
+
+    var funcArr = [f1, f2, f3];
+
+    var startArr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+    alert (each(startArr, funcArr));
+</script>
+-->
+
+<!-- На замыкания -->
+<!-- 7.   Сделайте функцию, которая считает и выводит количество своих вызовов.
+func(); //выведет 1
+func(); //выведет 2
+func(); //выведет 3
+func(); //выведет 4
+-->
+
+<!--  
+<script>
+    function createCounter() {
+        var num = 0;
+
+        return function() {
+            num++;
+            return num;
+        }
+    }
+
+    var func = createCounter();
+
+    alert(func());
+    alert(func());
+    alert(func());
+</script>
+-->
+
+<!-- 8. Даны кнопки. Привяжите к каждой кнопке событие по клику, которое будет считать количество нажатий по кнопке и выводить его в текст кнопки. Количество нажатий для каждой кнопки должно хранится в замыкании.  -->
+
+<!--  
+<button>0</button>
+<button>0</button>
+<button>0</button>
+
+<script>
+    var btn = document.querySelectorAll('button');
+
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click', createCounter(this));
+    }
+
+    function createCounter() {
+        var num = 1;
+
+        return function() {
+           this.innerHTML = num;
+           num++;
+        }  
+    }
+</script>
+-->
+
+<!-- 9.  Дан массив цветов. Даны абзацы. По первому нажатию на абзац он должен покраситься в первый цвет из массива, по второму нажатию - во второй и так далее. Все абзацы работают независимо -->
+
+<!--  
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, obcaecati unde ipsa vero soluta necessitatibus minus esse neque possimus aliquid aliquam, assumenda natus reprehenderit nobis facilis harum quo voluptates alias!</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid perspiciatis eaque cumque, facere odit nesciunt quisquam blanditiis magni sequi cum ea obcaecati dolorem dolorum, dolore beatae ratione nemo, inventore molestias!</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, nam aliquid? Voluptatum, labore est odio quod accusantium rerum? Reiciendis ad rerum soluta dicta quos tempora vitae fuga quaerat praesentium eos?</p>
+
+    <script>
+        var p = document.querySelectorAll('p');
+
+        for ( var i = 0; i < p.length; i++) {
+            p[i].addEventListener('click', func());
+        }
+
+        var arr = ['red', 'green', 'blue'];
+       
+
+        function func() {
+            var j = 0;
+
+                return function() {
+                    this.style.color = arr[j];
+
+                    j++;
+                    
+                    if (j == arr.length) {j = 0;}
+                }       
+        }
+    </script>
+-->
+
+<!-- 10.  Даны кнопки. Каждая кнопка по нажатию на нее выводить следующее число Фибоначчи. Кнопки работают независимо. Решить через замыкания. -->
+
+<!--  
+<button>0</button>
+<button>0</button>
+<button>0</button>
+
+<script>
+    var btn = document.querySelectorAll('button');
+
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click', func());
+    }
+
+    function func() {
+        var a = 0;
+        var b = 1;
+        var temp;
+
+        return function() {
+            this.innerHTML = a;
+            temp = a;
+            a = b;
+            b = temp + a;
+        } 
+    }
+</script>
+
+-->
+
+<!-- 11. Даны инпуты. Сделайте так, чтобы каждый инпут хранил историю своих изменений. Каждый инпут свою. Изменением считается событие onchange. История должна хранится в замыкании. Над каждым инпутом должны быть стрелочки назад и вперед, с помощью которых можно передвигаться по истории. -->
+
+<!--  
+<div>
+	<button class="prev">←</button><button class="next">→</button>
+	<input /></div>
+	<div>
+	<button class="prev">←</button><button class="next">→</button>
+	<input /></div>
+</div>
+     
+<script>
+    var input = document.querySelectorAll('input');
+    var prev =document.querySelectorAll('.prev');
+
+    for (var i = 0; i < input.length; i++) {
+        input[i].addEventListener('change', f1());
+    }
+
+    function f1() {
+        var arr = [];
+
+        return function() {
+            arr.push(this.value);
+            console.log(arr);
+           
+            for (var j = 0; j < input.length; j++) {
+                prev[j].addEventListener('click', f2);
+            }
+
+            function f2() {
+                alert(arr);
+            }
+        };   
+    }
+</script>
+-->
+
+<!-- 12.  Сделайте функцию, каждый вызов который будет генерировать случайные числа от 1 до 100, но так, чтобы они не повторялись, пока не будут перебраны все числа из этого промежутка. Решите задачу через замыкания - в замыкании должен хранится массив чисел, которые уже были сгенерированы функцией.  -->
+
+<!--  
+<button>Жми</button>
+<p></p>  
+
+    <script>
+        var p = document.querySelector('p');
+        var btn = document.querySelector('button').addEventListener('click', f1());
+
+        function f1() {
+            var arr = [];
+
+            return function() {
+                var newNum = Math.floor(Math.random() * 100 + 1);
+
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i] == newNum) {return}
+                };
+
+                p.innerHTML += newNum+', ';
+                arr.push(newNum);
+            }
+        }
+    </script>
+-->
+</body>
+</html>
