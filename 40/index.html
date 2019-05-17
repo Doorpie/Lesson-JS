@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 40</title>
+</head>
+<body>
+
+<!-- 1. Пусть даны 3 массива. Создайте коллекцию Map, сделайте ключами коллекции эти массивы, а значениями - какие-нибудь строки. -->
+
+<!--  
+<script>
+    let map = new Map;
+    let arr1 = [1, 2];
+    let arr2 = [3, 4];
+
+    map.set(arr1, '111');
+    map.set(arr2, '222');
+
+    console.log(map);
+</script>
+-->
+
+<!-- 2. Переберите циклом for-of коллекцию, созданную в предыдущей задаче. -->
+
+<!--  
+<script>
+    let map = new Map;
+    let arr1 = [1, 2];
+    let arr2 = [3, 4];
+
+    map.set(arr1, '111');
+    map.set(arr2, '222');
+
+    for (let elem of map) {
+       console.log(elem); 
+    }
+</script>
+-->
+
+<!-- 3. Пусть дана коллекция Map. С помощью метода keys получите массив ее ключей и переберите его циклом for-of. -->
+
+<!--  
+<script>
+    let map = new Map([
+        [1, 2],
+        [3, 4]
+    ]);
+    
+    for (let elem of map.keys()) {
+        console.log(elem); 
+    }
+</script>
+-->
+
+<!-- 4. Пусть дана коллекция Map. С помощью метода values получите массив ее значений и переберите его циклом for-of. -->
+
+<!--  
+<script>
+    let map = new Map([
+        [1, 2],
+        [3, 4]
+    ]);
+    
+    for (let elem of map.values()) {
+        console.log(elem); 
+    }
+</script>
+-->
+
+<!-- 5. Пусть дана коллекция Map. С помощью свойства size узнайте количество элементов в этой коллекции. -->
+
+<!--  
+<script>
+    let map = new Map([
+        [1, 2],
+        [3, 4]
+    ]);
+    
+        console.log(map.size); 
+</script>
+-->
+
+<!-- Применение к DOM -->
+<!-- 6. Пусть даны абзацы. Переберите эти абзацы циклом и создайте коллекцию Map, ключами в которой будут абзацы, а значением - их порядковый номер на странице. Сделайте так, чтобы по клику на любой абзац ему в конец записывался его порядковый номер.  -->
+
+<!--  
+<p>a</p>
+<p>b</p>
+<p>c</p>
+
+    <script>
+        let map = new Map;
+        let pElems = document.querySelectorAll('p');
+        let i = 1;
+
+        for (let p of pElems) {
+            map.set(p, i);
+            i++;
+
+            p.addEventListener('click', 
+            function() {
+                for (let [key, value] of map) {
+                    if (this == key) {
+                        this.innerHTML += value;
+                    }
+                }              
+            });
+        }
+    </script>
+-->
+
+<!-- Практика -->
+<!-- 7. Реализуйте описанную в видео задачу. -->
+
+<div>
+    <input type="text">
+</div>
+<div>
+    <input type="text">
+</div>
+
+    <script>
+        let map = new Map;
+        let inpElems = document.querySelectorAll('input');
+
+        for (let inp of inpElems) {
+            map.set(inp, {values: [], index: -1});
+        }
+
+        for (let inp of inpElems) {
+            inp.addEventListener('change', function() {
+                let {values, index} = map.get(this);
+                values.push(this.value);
+                map.set(this, {values, index: index + 1});
+                this.value = '';
+                 console.log(map);
+            });
+               
+
+            inp.addEventListener('keydown', function(event) {
+                if (event.key == 'ArrowLeft') {
+                    let {values, index} = map.get(this);
+                    if (index > -1) {
+                        this.value = values[index];
+                        map.set(this, {values, index: index - 1});
+                    }
+
+                    event.preventDefault();
+                }
+
+                if (event.key == 'ArrowRight') {
+                    let {values, index} = map.get(this);
+                    if (index < values.length - 1) {
+                        this.value = values[index +1];
+                        map.set(this, {values, index: index + 1});
+                    }
+
+                    event.preventDefault();
+                }
+            });
+        }
+        
+    </script>
+</body>
+</html>
