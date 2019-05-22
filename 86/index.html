@@ -11,312 +11,201 @@
     crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- Задачи на оборачивание элементов (wrap)
-Для решения задач данного блока вам понадобятся следующие методы: wrap, unwrap, wrapInner, wrapAll. -->
+ <!--Задачи на работу с набором
+Для решения задач данного блока вам понадобятся следующие методы: not, eq, first, last, slice, filter.  -->
 
-<!-- 1.  Оберните каждый <h2> в <div>. -->
-<!-- 2.  Оберните каждый <h2> в <div> с классом test.  -->
-<!-- 3.  Оберните каждый <h2> внутри в <i>. -->
-<!-- 4.  Оберните все <h2> в один <i>. -->
-<!-- 5.  Найдите абзацы <p>, обернутые дивами <div>, и удалите эти дивы.  -->
+<!-- 1.  Найдите все <li>, исключив из набора <li> с классом test. -->
+<!-- 2.  Найдите первый <li> в наборе. -->
+<!-- 3.  Найдите последний <li> в наборе.  -->
+<!-- 4.  Найдите пятый <li> в наборе. -->
+<!-- 5.  Найдите предпоследний <li> в наборе. -->
+<!-- 6.  Найдите с 3-го по 10-тый <li> в наборе. -->
+<!-- 7.  Найдите все <li> затем с помощью filter выберите все li с классом .www. -->
 
 <!--  
-<h2>1</h2>
-<h2>2</h2>
-<div>
-    <p>3</p>
-</div>
+<li></li>
+<li></li>
+<li class="test"></li>
 
     <script>
-        $('h2').wrap('<div>');
-        $('h2').wrap("<div class='test'></div>");
-        $('h2').wrapInner("<i>");
-        $('h2').wrapAll("<i>");
-        $('p').unwrap();
+        $('li').not('.test');
+        $('li').first();
+        $('li').last();
+        $('li').eq(4);
+        $('li').eq(-2);
+        $('li').slice(2,9);
+        $('li').filter('.www');
     </script>
 -->
 
-<!-- Задачи на вставку элементов
-Для решения задач данного блока вам понадобятся следующие методы: append, prepend, after, before. -->
+<!-- Задачи на соседей
+Для решения задач данного блока вам понадобятся следующие методы: not, next, prev, nextAll, prevAll, nextUntil, prevUntil, siblings. -->
 
-<!-- 6.  Перед каждым <h2> вставьте '<p>!</p>'. -->
-<!-- 7.  После каждого <h2> вставьте '<p>?</p>'. -->
-<!-- 8.  Сделайте первое и второе задание одновременно (цепочкой). -->
-<!-- 9.  Внутри каждого <h2> в начале вставьте '!'. -->
-<!-- 10.  Внутри каждого <h2> в конце вставьте '?'.  -->
-<!-- 11.  Сделайте предыдущие два задания одновременно + окрасьте все <h2> в красный цвет.  -->
+<!-- 8. Найдите первый элемент, который стоит непосредственно за элементом с классом test.  -->
+<!-- 9.  Найдите первый элемент, который стоит непосредственно перед элементом с классом test. -->
+<!-- 10.  Найдите все элементы, которые идут непосредственно за элементом с классом test.  -->
+<!-- 11.  Найдите все элементы, которые идут непосредственно перед элементом с классом test. -->
+<!-- 12.  Найдите все элементы, которые лежат между элементом с классом www и элементом с классом test через nextUntil. -->
+<!-- 13.  Найдите все элементы, которые лежат между элементом с классом test и элементом с классом www через prevUntil. -->
 
 <!--  
-<h2>1</h2>
-<h2>2</h2>
+<p class="www">-1</p>
+<p>0</p>
+<p class="test">1</p>
+<p>2</p>
+<p>3</p>
 
     <script>
-        $('h2').before('<p>!</p>');
-        $('h2').after('<p>?</p>');
-        $('h2').before('<p>!</p>').after('<p>?</p>');
-        $('h2').prepend('!');
-        $('h2').append('?');
-        $('h2').prepend('!').append('?').css('color', 'red');
+        //8
+
+        console.log($('.test').next().text());
+
+        //9
+
+        console.log($('.test').prev().text());
+
+        //10
+
+        console.log($('.test').nextAll().text());
+
+        //11
+
+        console.log($('.test').prevAll().text());
+
+        //12
+
+        console.log($('.www').nextUntil('.test').text());
+
+        //13
+
+        console.log($('.test').prevUntil('.www').text());
     </script>
 -->
 
-<!-- Задачи на замену элементов
-Для решения задач данного блока вам понадобятся следующие методы: replaceWith, replaceAll. -->
-
-<!-- 12.  каждый <h2> замените на его содержимое. -->
-<!-- 13.  каждый <h2> замените на его содержимое, стоящее в абзаце -->
-
-<!--  
-<h2>1</h2>
-<h2>2</h2>
-
-    <script>
-        $('h2').replaceWith($('h2').text());
-        $('h2').replaceWith($('h2').text().wrap('p'));
-    </script>
--->
-
-<!-- Задачи на удаление элементов
-Для решения задач данного блока вам понадобятся следующие методы: remove, empty. -->
-
-<!-- 14.  Удалите все <h2>. -->
-<!-- 15. Сделайте все <h2> пустыми. -->
-
-<!--  
-<h2>1</h2>
-<h2>2</h2>
-
-    <script>
-        $('h2').remove();
-        $('h2').empty();
-    </script>
--->
-
-<!-- Задачи на атрибуты
-Для решения задач данного блока вам понадобятся следующие методы: attr. -->
-
-<!-- 16.  Получите атрибут href ссылки из класса www.  -->
-<!-- 17.  Получите атрибут href ссылки из класса www.  -->
-<!-- 18.  Получите атрибут href всех ссылок и последовательно выведите алертом.  -->
-<!-- 19.  Замените href каждой ссылки на '!'.  -->
-<!-- 20.  Добавьте каждой ссылке атрибут target='_blank'.  -->
-<!-- 21.  Замените содержимое каждой ссылки (анкоры) на их href.  -->
-<!-- 22.  Вставьте после содержимого каждой ссылки их href в круглых скобках.  -->
-<!-- 23.  Вставьте в атрибут title каждой ссылки ее анкор. -->
-
-<!--  
-<a href="#" class="www"></a>
-<a href="2"></a>
-
-    <script>
-        console.log($('.www').attr('href'));
-        console.log($('a:first').attr('href'));
-
-        $('a').each(function() {
-            alert($(this).attr('href'));
-        });
-
-        $('a').each(function() {
-           $(this).attr('href', '!');
-        });
-
-        $('a').attr('target', '_blank');
-
-        $('a').text($('a').attr('href'));
-
-        $('a').each(function() {
-            let $elem = $(this);
-
-            $elem.html($elem.attr('href'));
-            $elem.before('(').after(')');
-        });
-
-        $('a').each(function() {
-            $(this).attr('title', $(this).text());
-        });
-    </script>
--->
-
-<!-- Задачи на работу с классами
-Для решения задач данного блока вам понадобятся следующие методы: addClass, removeClass, toggleClass, hasClass. -->
-
-<!-- 24. Добавьте всем li класс test. -->
-<!-- 25.  Удалите у li класс www. -->
-<!-- 26. Добавьте всем li класс www, если его нет, и удалите, если есть -->
-<!-- 27.  Проверьте, что хотя бы одна из ссылок имеет класс www.  -->
+<!-- 14. Найдите всех соседей <li> с классом www. -->
+<!-- 15. Найдите всех соседей <li> с классом www, которые (соседи) имеют класс test. -->
+<!-- 16. Найдите всех соседей <li> с классом www, но не соседа с классом test. -->
 
 <!--  
 <li>1</li>
-<li>2</li>
+<li class="www">2</li>
 <li>3</li>
-<li class="www">4</li>
+<li class="test">4</li>
 
     <script>
-        //24
+        //14
 
-        $('li').addClass('test');
+       console.log($('li.www').siblings().text());
 
-        //25
+       //15
 
-        $('li').removeClass('www');
+       console.log($('li.www').siblings('li.test').text());
 
-        //26
-        
-        $('li').each(function() {
-        let $elem = $(this);
-            if ($elem.attr('class') != 'www') {
-                $elem.attr('class', 'www');
-            }
+       //16
 
-            else {
-                $elem.removeClass('www');
-            }
-        });
-
-        //27
-
-        $('li').each(function() {
-        let $elem = $(this);
-            if ($elem.attr('class') == 'www') {
-                alert('Да');
-            }
-        });       
+       console.log($('li.www').siblings().not('.test').text());
     </script>
 -->
 
-<!-- Задачи на атрибуты форм
-Для решения задач данного блока вам понадобятся следующие методы: val, prop. -->
+<!-- Задачи на родителей
+Для решения задач данного блока вам понадобятся следующие методы: parent, parents, parentsUntil, closest, children, .contents(). -->
 
-<!-- 28.  Выведите value инпута с классом in. -->
-<!-- 29.  Выведите содержимое textarea с классом text. -->
-<!-- 30.  Выведите последовательно value каждого инпута. -->
-<!-- 31.  Установите value всех инпутов в '!'. -->
-
-<!--  
-<input type="text" class="in" value="1">
-<textarea name="" id="" cols="30" rows="10" class="text">312</textarea>
-<input type="text" value="2">
-
-    <script>
-        //28
-
-        console.log($('input.in').val());
-
-        //29
-
-        console.log($('textarea.text').val());
-
-        //30
-
-        $('input').each(function(){
-            console.log($(this).val());
-        });
-
-        //31
-
-        $('input').val('!');
-    </script>
--->
-
-<!-- 32.  В value всех инпутов с классом number находятся числа. Сделайте так, чтобы в них стали квадраты этих чисел.  -->
+<!-- 17.  Найдите родителя элемента с классом test. -->
+<!-- 18.  Найдите родителей всех тегов <b> и сделайте их красным цветом. -->
+<!-- 19. Найдите ближайших дивов-родителей всех тегов <b> и сделайте их красным цветом. -->
 
 <!--  
-<input type="text" class="number" value="2">
-<input type="text" class="number" value="3">
-<input type="text" class="number" value="4">
-
-    <script>
-        $('input.number').each(function(){
-            let $elem = $(this);
-            let value = Math.pow($(this).val(), 2);
-            $elem.val(value);
-        });
-    </script>
--->
-
-<!-- 33.  Установите все отмеченные чекбоксы в неотмеченные. -->
-<!-- 34.  Установите все неотмеченные чекбоксы в отмеченные.  -->
-<!-- 35.  Установите все отмеченные чекбоксы в неотмеченные и наоборот. -->
-<!-- 36.  Сделайте неотмеченным последний чекбокс на странице. -->
-
-<!--  
-<input type="checkbox" name="" id="" checked>
-<input type="checkbox" name="" id="">
-
-    <script>
-
-        //33
-
-        $('input:checkbox').prop('checked', false);
-
-        //34
-
-        $('input:checkbox').prop('checked', true);
-
-        //35
-
-        $('input:checkbox').each(function() {
-            $(this).prop('checked', !$(this).prop('checked'));
-        });
-
-        //36
-
-        $("checkbox:last").prop('checked', false);
-    </script>
--->
-
-<!-- Задачи на размеры
-Для решения задач данного блока вам понадобятся следующие методы: width, innerWidth, outerWidth. -->
-
-<!-- 37  Узнайте ширину и высоту первого, второго и третьего дивов <div> (по очереди) непосредственно внутри #wrapper без учета padding и границы. -->
-<!-- 38 То же самое с учетом padding.  -->
-<!-- 39. То же самое с учетом padding и границы. -->
-<!-- 40. То же самое с учетом padding, границы и margin. -->
-
-<!--  
-<div id="wrapper">
-    <div style="width:300px; height:100px; padding:10px; border: 1px solid red; margin: 20px;"></div>
-    <div style="width:200px; height:200px; padding:10px; border: 1px solid red"></div>
-    <div style="width:400px; height:200px; padding:10px; border: 1px solid red"></div>
+<div>
+    <p class="test">1</p>
+</div>
+<div><b>1</b></div>
+<div><b>2</b></div>
+<div>
+    <div><b>3</b></div>
 </div>
 
     <script>
+        //17
 
-        //37
+        console.log($('.test').parent());
 
-        $('#wrapper').children(':lt(3)').each(function() {
-            let width = $(this).width();
-	        let height = $(this).height();
-	        console.log("Ширина: "+width+" Высота: "+height);
-        });
-        console.log('');
+        //18
 
-        //38
+        $('b').parent().css('color', 'red');
 
-        $('#wrapper').children(':lt(3)').each(function() {
-            let width = $(this).innerWidth();
-	        let height = $(this).innerHeight();
-	        console.log("Ширина: "+width+" Высота: "+height);
-        });
-        console.log('');
+        //19
 
-        //39
-
-        $('#wrapper').children(':lt(3)').each(function() {
-            let width = $(this).outerWidth();
-	        let height = $(this).outerHeight();
-	        console.log("Ширина: "+width+" Высота: "+height);
-        });
-        console.log('');
-
-        // 40
-
-        $('#wrapper').children(':lt(3)').each(function() {
-            let width = $(this).outerWidth(true);
-	        let height = $(this).outerHeight(true);
-	        console.log("Ширина: "+width+" Высота: "+height);
-        });      
+        $('b').closest('div').css('color', 'red');
     </script>
 -->
+
+<!-- Задачи на find, add, andSelf, end
+Для решения задач данного блока вам понадобятся следующие методы: find, add, andSelf, end. -->
+
+<!-- 20.  Найдите все <h2> с классом .www, сделайте их красного цвета, затем среди найденных элементов найдите элементы с классом .test и поставьте им размер шрифта в 30px. -->
+<!-- 21.  Найдите все элементы с классом .www, сделайте их красного цвета, затем среди найденных элементов найдите абзацы и поставьте им в конец текст '!'. -->
+<!-- 22.  Найдите все абзацы <p> с классом .www, поставьте им в начало текст '!', а в конец текст '!!', затем добавьте к этим абзацам еще и заголовки <h2> и покрасьте эти абзацы и заголовки в красный цвет.  -->
+
+<!--  
+<h2>1</h2>
+<h2 class="www">2</h2>
+<h2 class="www test">3</h2>
+<div class="www">
+    <p>4</p>
+</div>
+
+<p class="www">5</p>
+<p class="www">6</p>
+
+    <script>
+        //20
+
+        $('h2.www').css('color', 'red').end().find('.test').css('fontSize', '30px');
+
+        //21
+
+        $('.www').css('color', 'red').find('p').append('!');
+
+        //22
+
+        $('p.www').prepend('!').append('!!').add('h2').css('color', 'red');
+    </script>
+-->
+
+<!-- Задачи на is
+Для решения задач данного блока вам понадобятся следующие методы: is. -->
+
+<!-- 23.  Найдите все <h2>, проверьте, что среди найденных есть <h2> с классом test.  -->
+<!-- 24.  Найдите все элементы непосредственно стоящие после заголовков. Если найденный элемент - абзац, добавьте ему в конец содержимое заголовка над ним.  -->
+<!-- 25.  Найдите все элементы непосредственно стоящие после заголовков. Если найденный элемент - не абзац, вставьте под заголовком абзац с таким же содержимым, как и заголовок. -->
+
+<!-- 
+<h2>1</h2>
+<a href=""></a>
+<h2 class="test">2</h2>
+<p>3</p>
+
+    <script>
+        //23
+
+       console.log( $('h2').is('.test'));
+
+       //24 
+
+       $('h2').nextAll().each(function() {
+        if ($(this).is('p')) {
+            $(this).append($(this).prev().text());
+        }
+       });
+
+       //25
+
+       $('h2').nextAll().each(function() {
+        if (!$(this).is('p')) {
+            $(this).after('<p>' + $(this).prev().html() + '</p>');
+        }
+       });
+    </script>
+ -->
 </body>
 </html>
