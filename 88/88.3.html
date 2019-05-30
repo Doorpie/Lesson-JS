@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 88.3</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Задача на fadeIn, fadeOutn -->
+<!-- 3. -->
+<a href="" class="hide">исчезнуть</a>
+<a href="" class="show">показать</a>
+<a href="" class="fadeOn">затемнить</a>
+<a href="" class="fadeOff">оттемнить</a>
+
+<div id="block">
+    <ol>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+    </ol>
+</div>
+
+    <style>
+        div {
+            margin-top: 20px;
+            border: 1px solid black;
+            width: 150px;
+        }
+    </style>
+
+    <script>
+        $('.hide').on('click', function() {
+            $('#block').fadeOut(1000);
+            return false;
+        });
+
+        $('.show').on('click', function() {
+            $('#block').fadeIn(1000);
+            return false;
+        });
+
+        $('.fadeOn').on('click', function() {
+            $('#block').fadeTo(1000, 0.5);
+            return false;
+        });
+        
+        $('.fadeOff').on('click', function() {
+            $('#block').fadeTo(1000, 1);
+            return false;
+        });
+    </script>
+</body>
+</html>

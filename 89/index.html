@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 89</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- 1.  Все абзацы <p>, внутри которых есть <b>, оберните в тег <div>.  -->
+
+<!--  
+<p><b>1</b></p>
+<p><b>2</b></p>
+<p>3</p>
+
+    <script>
+        $("p:has(b)").wrap('<div>');
+    </script>
+-->
+
+<!-- 2.  Найдите все абзацы <p> с классом .www, поставьте им в начало текст '!', затем добавьте к этим абзацам еще и заголовки h1-h6 и покрасьте эти абзацы и заголовки в красный цвет.  -->
+
+<!--  
+<p>1</p>
+<p class="www">2</p>
+
+    <script>
+        $('p.www').prepend('!').add(':header').css('color', 'red');
+    </script>
+-->
+
+<!-- 3. Найдите все абзацы <p>, и замените их на тег <div> с таким же содержимым.  -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+
+    <script>
+        $('p').each(function() {
+            $(this).replaceWith('<div>' + $(this).text() + '</div>');
+        });
+    </script>
+-->
+
+<!-- 4.  Найдите все чекбоксы на странице и заблокируйте четные из найденных.  -->
+
+<!--  
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+
+    <script>
+        $('input:checkbox:even').prop('disabled', true);
+    </script>
+-->
+
+<!-- 5.  Поставьте всем незаблокированным чекбоксам статус "отмечен". -->
+
+<!--  
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="" disabled>
+
+    <script>
+        $('input:checkbox:not([disabled])').attr('checked', true);
+    </script>
+-->
+
+<!-- 6. Дан элемент #test. Поставьте его непосредственному соседу сверху текст '!', а соседу снизу - текст '?'. Решите задачу одной цепочкой. -->
+
+<!--  
+<p>1</p>
+<p id="test">2</p>
+<p>3</p>
+
+    <script>
+        $('#test').prev().append('!').end().next().append('?');
+    </script>
+-->
+
+<!-- 7.  Дан элемент #test. Поставьте его непосредственным соседям сверху и снизу текст элемента #test. -->
+
+<!--  
+<p>1</p>
+<p id="test">2</p>
+<p>3</p>
+
+    <script>
+        $('#test').prev().append($('#test').text()).end().next().append($('#test').text());
+    </script>
+-->
+
+<!-- 8.  Дан элемент #test. Найдите среди его соседей сверху ближайший абзац и поставьте ему текст элемента #test. -->
+
+<!--  
+<p>0</p>
+<p>1</p>
+<h2>1.1</h2>
+<p id="test">2</p>
+<p>3</p>
+
+    <script>
+        $('#test').prevAll('p').first().append($('#test').text());
+    </script>
+-->
+
+<!-- 9.  Найдите второй <li> на странице, добавьте ему класс .www, оберните его внутри тегом <i>, вставьте после него <li> с текстом 'привет'.  -->
+
+<!--  
+<li>1</li>
+<li>2</li>
+<li>3</li>
+
+    <script>
+        $('li:eq(1)').addClass('.www').wrapInner('<i>').after('<li>привет</li>');
+    </script>
+-->
+
+<!-- 10.  Найдите десятый <li> на странице, найдите его родителя, получите непосредственного соседа родителя сверху, оберните его в <div class="www">.  -->
+
+<!--  
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+</ul>
+<p>12</p>
+
+    <script>
+        $('li:eq(9)').parent().next().wrap("<div class='www'></div>");
+    </script>
+-->
+
+<!-- 11.  Каждому абзацу <p>, кроме абзацев с классом .www, добавьте к конец его порядковый номер. -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P class="www">3</P>
+
+    <script>
+        $('p:not(p.www)').each(function(index) {
+            $(this).append(index);
+        })
+    </script>
+-->
+
+<!-- 12.  Найдите все абзацы <p> и поставьте перед каждым абзацем его копию. Копию покрасьте в красный цвет, а исходный абзац в зеленый. -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+
+    <script>
+        $('p').each(function() {
+            $(this).css('color', 'green').clone().insertBefore($(this)).css('color', 'red');
+        });
+    </script>    
+-->
+
+<!-- 13. Найдите абзацы <p>, которые стоят непосредственно под <h2> и переместите каждый абзац так, чтобы он стал непосредственно над <h2>. -->
+
+<!--  
+<h2>1</h2>
+<P>2</P>
+<P>3</P>
+
+    <script>
+        $('h2').nextAll('p').each(function(){
+            $('h2').before($(this));
+        });
+    </script>
+-->
+
+<!-- 14.  Найдите все пустые абзацы <p> (без текста) и вставьте в них текст непосредственного соседа сверху. -->
+
+<!--  
+<p>1</p>
+<p></p>
+<p>2</p>
+<p></p>
+<p>3</p>
+<p></p>
+
+    <script>
+        $('p:empty').each(function(){
+            $(this).text($(this).prev().text());
+        });
+    </script>
+-->
+
+<!-- 15.  Родителю тега <b>, если это элемент с классом .www или абзац <p>, поставьте красный цвет и размер текста в 30px. -->
+
+<!--  
+<div class="www"><b>1</b></div>
+
+    <script>
+        $('b').each(function(){
+            $parent = $(this).parent();
+
+            if ($parent.is('.www' || $parent.is('p'))) {
+                $parent.css({color: 'red', fontSize: '30px'})
+            }
+        });
+    </script>
+-->
+
+<!-- 16.  Всем пустым абзацам <p> поставьте текст ближайшего к ним сверху тега <h2>. -->
+
+<!--  
+<h2>1</h2>
+<p></p>
+<p>2</p>
+<p></p>
+<h2>3</h2>
+<p></p>
+
+    <script>
+        $('p:empty').each(function(){
+            $(this).text($(this).prev('h2').text());
+        });
+    </script>
+-->
+
+<!-- 17.  Даны инпуты с числами. Сделайте так, чтобы в инпутах стали квадраты этих чисел.  -->
+
+<!--  
+<input type="text">
+<input type="text">
+
+    <script>
+        $('input').change(function(){
+            $(this).val(Math.pow($(this).val(),2));
+        });
+    </script>
+-->
+
+<!-- 18.  Дан элемент #test. Поставьте ему в начало текст непосредственного соседа сверху, а в конец - текст непосредственного соседа снизу. -->
+
+<!--  
+<p>1</p>
+<div id="test">2</div>
+<p>3</p>
+
+    <script>
+        $('#test').prepend($('#test').prev(":first").text()).append($('#test').next(":first").text());
+    </script>
+-->
+
+<!-- 19.  Дан элемент #test. Найдите его второго соседа сверху и его второго соседа снизу. Сделайте так, чтобы найденные элементы обменялись текстом (сосед сверху возьмет текст соседа снизу и наоборот).  -->
+
+<!-- 
+<p>0</p>
+<p>1</p>
+<div id="test">2</div>
+<p>3</p>
+<p>4</p>
+
+    <script>
+        $elem = $('#test');
+        $elemPrev = $elem.prevAll().eq(1);
+        $elemNext = $elem.nextAll(':eq(1)');
+
+        let elemPrevText =  $elemPrev.text();
+        let elemNextText =  $elemNext.text();
+        
+        $elemPrev.text(elemNextText);
+        $elemNext.text(elemPrevText);
+    </script>
+-->
+
+<!-- 20. Дан элемент <div>. Выберите из него всех непосредственных потомков, которые не являются заголовками и покрасьте их в красный цвет.  -->
+
+<!--  
+<div>
+    <p>1</p>
+    <h2>2</h2>
+    <b>3</b>
+</div>
+
+    <script>
+        $("div").children(":not(':header')").css('color', 'red');
+    </script>
+-->
+
+<!-- 21.  Найдите все абзацы <p>, покрасьте их в красный цвет. Затем выберите среди найденных абзацев абзацы с классом .www и поставьте им текст '!'.  -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+<p class="www">3</p>
+
+    <script>
+        $('p').css('color', 'red').filter('.www').text('!');
+    </script>
+-->
+
+<!-- 22. Найдите все абзацы <p> с классом .www, покрасьте их в красный цвет. Затем выберите среди найденных абзацев первый и поставьте ему текст '!', затем выберите последний и ему поставьте текст '?'. Решите задачу одной цепочкой. -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+<p class="www">3</p>
+<p class="www">4</p>
+<p class="www">5</p>
+
+    <script>
+        $('p.www').css('color', 'red').filter(':first').text('!').end().filter(":last").text('?');
+    </script>
+-->
+
+<!-- 23.  Найдите все абзацы <p>, поставьте каждому из них в конец тот же текст, который стоит внутри него (то есть текст в абзаце станет написан два раза).  -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+<p class="www">3</p>
+<p class="www">4</p>
+<p class="www">5</p>
+
+    <script>
+        $('p').each(function() {
+            $(this).append($(this).text());
+        });
+    </script>
+-->
+
+<!-- 24.  Найдите все абзацы <p>, поставьте каждому из них в конец его порядковый номер в наборе. -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+<p class="www">3</p>
+<p class="www">4</p>
+<p class="www">5</p>
+
+    <script>
+        $('p').append(function(index){
+            return index;
+        });
+    </script>
+-->
+
+<!-- 25. Даны абзацы с числами. Поставьте каждому из них в конец число, которое в нем хранится, умноженное на его порядковый номер в наборе. -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+<p class="www">3</p>
+<p class="www">4</p>
+<p class="www">5</p>
+
+    <script>
+        $('p').append(function(index, text){
+            return text * index;
+        });
+    </script>
+-->
+
+<!-- 26.  По нажатию на абзац <p> удалите его непосредственных соседей сверху и с низу. -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+<p class="www">3</p>
+<p class="www">4</p>
+<p class="www">5</p>
+
+    <script>
+        $('p').click(function(){
+            $(this).prev().remove().end().next().remove();
+        });
+    </script>
+-->
+
+<!-- 27.  По нажатию на абзац <p> удалите всех его соседей сверху до первого заголовка h1-h6 (то есть элементы, стоящие выше этого заголовка и сам заголовок удалять не надо).  -->
+
+<!--  
+<p>1</p>
+<h1>1.1</h1>
+<p>2</p>
+<p class="www">3</p>
+<p class="www">4</p>
+<h2>4.1</h2>
+<p class="www">5</p>
+
+    <script>
+        $('p').click(function(){
+            $(this).prevUntil(':header').remove();
+        });
+    </script>
+-->
+
+<!-- 28.  По нажатию на абзац <p> удалите его ближайшего нижнего соседа с классом .www. -->
+
+<!--  
+<p>1</p>
+<h1>1.1</h1>
+<p>2</p>
+<p class="www">3</p>
+<p class="www">4</p>
+<h2>4.1</h2>
+<p class="www">5</p>
+
+    <script>
+        $('p').click(function(){
+            $(this).nextAll('.www').first().remove();
+        });
+    </script>
+-->
+
+<!-- 29.  По нажатию на абзац <p> удалите его пятого соседа снизу.  -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P>3</P>
+<P>4</P>
+<P>5</P>
+<P>6</P>
+<P>7</P>
+
+    <script>
+        $('p').on('click', function() {
+            $(this).nextAll(':eq(4)').remove();
+        });
+    </script>
+-->
+
+<!-- 30.  По нажатию на абзац <p> удалите его пятого соседа снизу, если это не <h2>. -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P>3</P>
+<P>4</P>
+<P>5</P>
+<h2>5.5</h2>
+<P>6</P>
+<P>7</P>
+
+    <script>
+        $('p').on('click', function() {
+            $(this).nextAll(':eq(4)').not('h2').remove();
+        });
+    </script>
+-->
+
+<!-- 31.  По нажатию на абзац <p> удалите его пятого соседа снизу, если этот сосед не имеет внутри себя тега <b>. -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P>3</P>
+<P>4</P>
+<P>5</P>
+<P><b>6</b></P>
+<P>7</P>
+
+    <script>
+        $('p').on('click', function() {
+            $(this).nextAll(':eq(4)').not(':has(b)').remove();
+        });
+    </script>
+-->
+
+<!-- 32.  По нажатию на абзац <p> удалите его пятого соседа снизу, если этот сосед не стоит непосредственно после <h2>. -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P>3</P>
+<P>4</P>
+<h2>4.4</h2>
+<P>5</P>
+<P>6</P>
+<P>7</P>
+
+    <script>
+        $('p').on('click', function() {
+            $(this).nextAll(':eq(3)').not('h2').next().remove();
+        });
+    </script>
+-->
+
+<!-- 33.  Дан элемент #test. Поменяйте этот элемент местами с его непосредственным соседом снизу.  -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P>3</P>
+<P>4</P>
+<h2 id="test">test</h2>
+<P>5</P>
+<P>6</P>
+<P>7</P>
+
+    <script>
+        $('#test').on('click', function() {
+            $elem = $(this);
+            $(this).next().after($elem);
+        });
+    </script>
+-->
+
+<!-- 34.  Дан элемент #test. После его непосредственного соседа снизу вставьте копию нашего элемента. -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P>3</P>
+<P>4</P>
+<h2 id="test">test</h2>
+<P>5</P>
+<P>6</P>
+<P>7</P>
+
+    <script>
+        $('#test').on('click', function() {
+            $elem = $(this).clone();
+            $(this).next().after($elem);
+        });
+    </script>
+-->
+
+<!-- 35.  Дан элемент #test. Поменяйте этот элемент местами с его ближайшим соседом снизу с классом .www. -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P>3</P>
+<P>4</P>
+<h2 id="test">test</h2>
+<P>5</P>
+<P class="www">WWW</P>
+<P>7</P>
+
+    <script>
+        $('#test').on('click', function() {
+            $elem = $(this);
+            $elemNextClone = $(this).nextAll('.www:first').clone();
+            $elemNext = $(this).nextAll('.www:first');
+            $(this).after($elemNextClone);
+            $elemNext.after($elem);
+            $elemNext.remove();
+        });
+    </script>
+-->
+
+<!-- 36.  Найдите все абзацы <p>, которые внутри одного родителя лежат между одним и другим <h2>. -->
+
+<!--  
+<div>
+    <p>1</p>
+    <h2>2</h2>
+    <p>3</p>
+    <h2>4</h2>
+    <p>5</p>
+</div>
+
+    <script>
+       $('h2').nextUntil('h2').next().prevUntil('h2').filter('p').css('color', 'red');
+    </script>
+-->
+
+<!-- 37.  Оберните каждый абзац <p> снаружи и внутри в <div>. -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+<p>3</p>
+
+    <script>
+        $('p').wrapInner('<div>').wrap('<div>');
+    </script>
+-->
+
+<!-- 38.  Найдите все абзацы <p>, у которых непосредственный родитель не <div> и оберните каждый из них в <div class="www">. -->
+
+<!--  
+<div>
+    <p>1</p>
+</div>
+
+<P>2</P>
+<P>3</P>
+<P>4</P>
+
+    <script>
+        $('p').parent().not('div').children('p').wrap('<div class="www">');
+    </script>
+-->
+
+<!-- 39.  Найдите все абзацы <p>. Удалите их родителя (сделайте ему unwrap), если этот родитель не <div> с классом .www. Затем для те абзацы, у которых был удален родитель, оберните в <div> с классом .zzz.  -->
+
+<!--  
+<div>
+    <p>1</p>
+</div>
+<div class="www">
+    <p>2</p>
+</div>
+<div>
+    <p>3</p>
+</div>
+
+    <script>
+        $('p').parent().not('div.www').children().unwrap().wrap("<div class='zzz'>");
+    </script>
+-->
+<!-- 40.  Найдите всех родителей элемента #test и создайте массив из CSS классов этих родителей. -->
+
+<!--  
+<h3 class="h3c">
+    <div class="divc">
+        <p class="test">1</p>
+    </div>
+</h3>
+
+<p>
+    <p>3</p>
+</p>
+
+    <script>
+        let arr = [];
+
+        $('.test').parents().each(function() {
+
+            if ($(this).attr('class') != undefined) {
+                arr.push($(this).attr('class'));
+            }    
+        });
+
+        console.log(arr);
+    </script>
+-->
+
+<!-- 41.  Найдите все абзацы <p>, у которых есть атрибут class, и каждый из них оберните в <div> с теми же классами, как у найденного абзаца, а классы каждого абзаца удалите вместе с атрибутом class. -->
+
+<!--  
+<p class="one">1</p>
+<p>2</p>
+<p class="free">3</p>
+
+    <script>
+        $('p[class]').each(function() {
+                $(this).wrap('<div>').parent().addClass($(this).attr('class')).children().removeClass();
+        });
+    </script>
+-->
+
+<!-- 42.  Найдите все абзацы <p> из #test, поставьте им в конец текст '!', затем исключите из найденных абзацы с классом .www и оставшимся поставьте красный цвет. -->
+<!--  
+<div id="test">
+    <P>1</P>
+    <P class="www">2</P>
+    <P>3</P>
+    <P>4</P>
+    <P class="www">5</P>
+</div>
+
+<div>
+    <p>6</p>
+</div>
+
+    <script>
+        $('#test > p').append("!").not('.www').css('color', 'red');
+    </script>
+-->
+
+<!-- 43.  Найдите все <li> на странице, затем перед предпоследним из найденных вставьте еще один <li> с текстом 'пункт'.  -->
+<!--  
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+
+    <script>
+        $('li').eq(-3).after("<li>пункт</li>");
+    </script>
+-->
+
+<!-- 44.  Найдите все <li> на странице, затем выберите среди найденных второй, третий и четвертый с конца и поставьте им текст '!'.  -->
+
+<!--  
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+
+    <script>
+        $('li').slice(-4,-1).append('!');
+    </script>
+-->
+
+<!-- 45.  Найдите <ol> с #test и переставьте все <li> в нем в обратном порядке.  -->
+
+<!--  
+<ol id="test">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ol>
+
+    <script>
+        $('#test').html($('#test').children().get().reverse());
+    </script>
+-->
+
+<!-- 46.  Дан элемент #text. Найдите всех его соседей сверху и всех его соседей снизу и поменяйте их местами (то есть все, что стоит до элемента, должно стать после него и наоборот). -->
+
+<!--  
+<P>1</P>
+<P>2</P>
+<P id="text">3</P>
+<P>4</P>
+<P>5</P>
+
+    <script>
+        let $elem = $('#text');
+        let $elemPrev = $elem.prevAll().get().reverse();
+        let $elemNext = $elem.nextAll();
+        $elem.before($elemNext).after($elemPrev);
+    </script>
+-->
+
+<!-- 47.  Получите все <li> с классом .www, сделайте им красный цвет, затем найдите среди найденных те <li>, у которых есть класс .bbb и удалите их. Решите все одной цепочкой. -->
+
+<!--  
+<li class="www">1</li>
+<li>2</li>
+<li>3</li>
+<li class="www bbb">4</li>
+
+    <script>
+        $('li.www').css('color', 'red').filter('.bbb').remove();
+    </script>
+-->
+
+<!-- 48.  Получите все <li> на странице. Четные из полученных сделайте пустыми, а нечетные удалите. -->
+
+<!--  
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+
+    <script>
+        $('li:even').empty();
+        $('li:odd').remove();
+    </script>
+-->
+
+<!-- 49. Найдите все теги <div> и удвойте им высоту. -->
+
+<!--  
+<div></div>
+<div></div>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        $('div').each(function() {
+            let height = $(this).height();
+            $(this).height(height * 2);
+        });
+    </script>
+-->
+
+<!-- 50.  Найдите сумму высот всех <div> на странице. -->
+
+<!--  
+<div></div>
+<div></div>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        let sum = 0;
+
+        $('div').each(function() {
+            sum += $(this).height(); 
+        });
+
+        alert(sum);
+    </script>
+-->
+
+<!-- 51.  Для элемента #test найдите ближайшего родителя с классом .www, в конец этого родителя добавьте абзац с текстом '!'.  -->
+
+<!--  
+<div>1
+    <h2 class="www">2
+        <p>3
+            <b id="test">4</b>
+        </p>
+    </h2>
+</div>
+
+    <script>
+        $('#test').parents('.www:first').append('<p>!</p>');
+    </script>
+-->
+
+<!-- 52.  По нажатию на элемент #test найдите его ближайшего родителя с классом .www, внутри этого родителя найдите все абзацы и покрасьте их в красный цвет.  -->
+
+<!--  
+<div>1
+    <h2 class="www">2
+        <p>3
+            <b id="test">4</b>
+        </p>
+        <b>5</b>
+        <p>6</p>
+    </h2>
+</div>
+
+    <script>
+        $('#test').on('click', function(){
+            $(this).parents('.www:first').children('p').css('color', 'red');
+        });
+    </script>
+-->
+
+<!-- 53.  Покрасьте первые 10 <li> на странице в красный цвет.  -->
+
+<!--  
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+
+    <script>
+        $('li').slice(0, 10).css('color', 'red');
+    </script>
+-->
+
+<!-- 54.  Покрасьте с 5-той по 10-ю <li> на странице в красный цвет.  -->
+
+<!--  
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+
+    <script>
+        $('li').slice(4, 10).css('color', 'red');
+    </script>
+-->
+
+<!-- 55.  Найдите последние 10 <li> на странице, покрасьте их в красный цвет. Затем из найденных найдите четные <li> и оберните их внутри в тег <b> -->
+
+<!--  
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+
+    <script>
+        $('li').slice(-10).css('color', 'red').filter('li:even').wrap('<b>');
+    </script>   
+-->
+
+<!-- 56.  На странице даны чекбоксы. Подсчитайте, сколько из них отмечены. -->
+
+<!--  
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="" checked>
+<input type="checkbox" name="" id="">
+
+    <script>
+        alert($(':checkbox:checked').length);
+    </script>
+-->
+
+<!-- 57.  Дано 5 чекбоксов. Сделайте так, чтобы после того, как пользователь отметил два из них, все чекбоксы заблокировались.  -->
+
+<!--  
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+
+    <script>
+        $(':checkbox').on('change', function(){
+            if ($(':checkbox:checked').length == 2){
+                $(':checkbox').attr('disabled', true);
+            }
+        });
+    </script>
+-->
+
+<!-- 58.  Сделайте так, чтобы все отмеченные чекбоксы сменили свое состояние на неотмеченное и наоборот. -->
+
+<!--  
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="" checked>
+<input type="checkbox" name="" id="">
+
+    <script>
+       $(':checkbox').each(function(index, elem) {
+          elem.checked = !elem.checked;
+       });
+    </script>
+-->
+
+<!-- 59.  Дан инпуты. Переместите содержимое атрибута value в атрибут placeholder, а сам атрибут value удалите совсем. -->
+
+<!--  
+<input type="text" value="1">
+<input type="text" value="2">
+
+    <script>
+        $(':text').each(function() {
+            $elem = $(this);
+
+            $elem.attr('placeholder', $(this).val()).removeAttr('value');
+        });
+    </script>
+-->
+
+<!-- 60.  Дана ссылка. Если атрибут href начинается на http://, добавьте ссылке атрибут target="_blank". -->
+
+<!--  
+<a href="http://">1</a>
+
+    <script>
+        $("a[href='http://']").attr('target', '_blank');
+    </script>
+-->
+
+<!-- 61.  Дан инпут, в который можно ввести число. Сделайте так, чтобы при вводе числа в этот инпут и потери фокуса на странице искался чекбокс с таким номером и становился отмеченным, а остальные чекбоксы становились неотмеченными. -->
+
+<!--  
+<input type="text">
+<input type="checkbox" name="" id="">1
+<input type="checkbox" name="" id="">2
+<input type="checkbox" name="" id="">3
+<input type="checkbox" name="" id="">4
+<input type="checkbox" name="" id="">5
+
+   <script>
+       $(':text').on('change', function() {
+
+        let val = $(this).val();
+
+        $(':checkbox').each(function(){
+            if ($(this).index() == val) {
+                $(':checkbox').attr('checked', false);
+                $(this).attr('checked', true);
+            }
+        });
+       });
+   </script>
+-->
+
+<!-- 62.  Дан селект и радио кнопочки, количество радио равно количеству пунктов в селекте. Сделайте так, чтобы при выборе пункта в селекте автоматически становилась отмеченной соответствующая радио кнопочка (соответствие по номеру следования: первый пункт списка - первому радио и так далее). -->
+
+<!--  
+<select name="" id="">
+    <option value="">1й</option>
+    <option value="">2й</option>
+    <option value="">3й</option>
+</select>
+
+<input type="radio" name="" id="">
+<input type="radio" name="" id="">
+<input type="radio" name="" id="">
+
+   <script>
+       $('select').on('change', function() {
+
+        let index = $(':selected').index() + 1;
+
+        $(':radio').each(function(){
+            if ($(this).index() == index) {
+                $(':radio').attr('checked', false);
+                $(this).attr('checked', true);
+            }
+        });
+       });
+   </script>
+-->
+</body>
+</html>

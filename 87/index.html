@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 87</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- События через отдельные методы -->
+<!-- 1.  Даны абзацы. Сделайте так, чтобы по клику на каждый абзац на экран выводилось его содержимое. -->
+
+<!--  
+<p>1</p>
+<p>2</p>
+
+    <script>
+        $('p').click(function() {
+            alert($(this).text());
+        });
+    </script>
+ -->
+
+<!-- 2.  Привяжите всем ссылкам событие - по наведению на ссылку в конец ее текста дописывается ее href в круглых скобках. -->
+<!-- 3.  Дополнить предыдущую задачу: после первого наведению на ссылку следует отвязать от нее событие, которое добавляет href в конец текста. -->
+
+<!--  
+<a href="#1">1</a>
+<a href="#2">2</a>
+
+    <script>
+        $('a').mouseenter(function() {
+            $(this).append('(' + $(this).attr('href') + ')');
+            $(this).unbind('mouseenter');
+        }); 
+    </script>
+ -->
+
+<!-- 4.  Привяжите всем инпутам событие - по потери фокуса каждый инпут выводит свое value в абзац с id="test". -->
+
+<!--  
+<input type="text">
+<input type="text">
+<input type="text">
+<p id="test"></p>
+
+    <script>
+        $('input').change(function() {
+            $('p#test').append($(this).val() + ', ');
+        }); 
+    </script>
+ -->
+
+<!-- 5.  Для всех инпутов сделайте так, чтобы они выводили свой value алертом при нажатии на любой из них, но только по первому нажатию. Повторное нажатие на инпут не должно вызывать реакции. -->
+
+<!--  
+<input type="text" value="1">
+<input type="text" value="2">
+
+    <script>
+         $('input').click(function() {
+            alert($(this).val());
+        });
+    </script>
+ -->
+
+<!-- 6.  Даны абзацы с числами. По нажатию на абзац в нем должен появится квадрат числа, которое он содержит. -->
+
+<!--  
+<p>2</p>
+<p>3</p>
+
+    <script>
+        $('p').click(function() {
+            let num = Math.pow($(this).text(), 2); 
+            $(this).text(num);
+        });
+    </script>
+ -->
+
+<!-- 7.  Даны абзацы с числами. По клику на абзац в нем должен появится квадрат числа, которое он содержит, но только по первому клику. По двойному клику на абзац число в абзаце должно удвоится, но тоже только первый раз. -->
+
+<!--  
+<p>2</p>
+<p>3</p>
+
+    <script>
+        $('p').click(function() {
+            let num = Math.pow($(this).text(), 2); 
+            $(this).text(num);
+            $(this).unbind('click');
+        });
+
+        $('p').dblclick(function() {
+            let num =$(this).text(); 
+            $(this).text(num * 2);
+            $(this).unbind('dblclick');
+        });   
+    </script>
+ -->
+
+<!-- Задачи на on и off -->
+<!-- 8.  Привяжите всем ссылкам событие - по наведению на ссылку в конец ее текста дописывается ее href в круглых скобках. -->
+<!-- 9.  Дополнить предыдущую задачу: после первого наведению на ссылку следует отвязать от нее событие, которое добавляет href в конец текста. -->
+
+<!--  
+<a href="#1">1</a>
+<a href="#2">2</a>
+
+    <script>
+        $('a').on('mouseenter', function() {
+            $(this).append('(' + $(this).attr('href') + ')');
+            $(this).off('mouseenter');
+        });
+    </script>
+ -->
+
+<!-- Задачи на one -->
+<!-- 10.  Даны абзацы. Сделайте так, чтобы по первому клику на абзац ему в конец добавлялся '!', но только по первому клику.-->
+
+<!--  
+<p>1</p>
+<p>2</p>
+
+    <script>
+        $('p').one('click', function() {
+           $(this).append('!'); 
+        });
+    </script>
+-->
+
+<!-- Задачи на делегирование через on -->
+<!-- 11.  Дан ul, в нем несколько li. Под ul сделайте кнопку, по нажатию на которую в конец ul будет добавляться новый li с текстом 'пункт'. Сделайте так, чтобы при клике на каждый li, ему в конец добавлялся '!'. Это должно работать и для вновь добавленных li. Задачу решите с помощью делегирования (то есть событие должно быть навешано на ul). -->
+
+<!--  
+<ul></ul>
+<button class="btn">Добавить li</button>
+
+    <script>
+        $('.btn').on('click', function() {
+            $('ul').append('<li>пункт</li>');
+        });
+
+        $('ul').on('click', 'li', function() {
+            $(this).append('!');
+        });
+    </script>
+-->
+
+<!-- 12. Дана таблица с юзерами с двумя колонками: имя и фамилия. Под таблицей сделайте форму, с помощью которой можно будет добавить нового юзера в таблицу. Сделайте так, чтобы при клике на любую ячейку появлялся prompt, с помощью которого можно изменить текст ячейки. Задачу решите с помощью делегирования (то есть событие должно быть навешано на table). -->
+
+<!--  
+<table>
+    <thead>
+        <tr>
+            <td>Имя</td>
+            <td>Фамилия</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Иван</td>
+            <td>Иванов</td>
+        </tr>
+    </tbody>
+</table>
+
+<form action="">
+    Имя
+    <input type="text" class="name">
+    Фамилия
+    <input type="text" class="surname">
+    <button>Добавить</button>
+</form>
+
+    <script>
+        $('table').on('click', 'td', function(){
+           let text = prompt('Изменить');
+           $(this).text(text);
+        });
+
+        $('button').on('click', function(){
+           $('table').append('<tr><td>' + $('.name').val() + '</td><td>' + $('.surname').val() + '</td></tr>');
+        });
+    </script>
+-->
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 88.6-9</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Задача на animate -->
+<!-- 6-9 -->
+
+<div id="block1"></div>
+<div id="block2"></div>
+<div id="block3"></div>
+<div id="block4"></div>
+
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            cursor: pointer;
+            margin-left: 0;
+            
+        }
+    </style>
+
+    <script>
+        $('#block1').on('click', function() {
+            $('#block1').animate({width: 300}, 1000);
+            return false;
+        });
+
+        $('#block2').on('click', function() {
+            $('#block2').animate({width: '+=150'}, 1000);
+            return false;
+        });
+
+        $('#block3').on('click', function() {
+            $('#block3').animate({width: '+=50', height: '+=50'}, 500);
+            return false;
+        });
+
+        $('#block4').on('click', function() {
+            $('#block4').animate({marginLeft: '+=150'}, 500);
+            return false;
+        });
+    </script>
+</body>
+</html>

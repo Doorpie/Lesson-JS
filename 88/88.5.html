@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 88.5</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Задача на show, hide -->
+<!-- 5. -->
+<a href="" class="hide">исчезнуть</a>
+<a href="" class="show">появиться</a>
+
+<div id="block">
+    <ol>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+        <li>пункт списка</li>
+    </ol>
+</div>
+
+    <style>
+        div {
+            margin-top: 20px;
+            border: 1px solid black;
+            width: 150px;
+        }
+    </style>
+
+    <script>
+        $('.hide').on('click', function() {
+            $('#block').hide(1000);
+            return false;
+        });
+
+        $('.show').on('click', function() {
+            $('#block').show(1000);
+            return false;
+        });
+    </script>
+</body>
+</html>
