@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./Js/jquery-ui-1.12.1/jquery-ui.min.css">
+    <title>Lesson 90.28</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+    </script>
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="tabs">
+	   <ul>
+		  <li><a href="#tabs-1">О плагине</a></li>
+		  <li><a href="#tabs-2">Система вкладок</a></li>
+		  <li><a href="#tabs-3">Стили плагина</a></li>
+	   </ul>
+	   <div id="tabs-1">
+		  <p>Плагин Tabs позволяет превратить выбранный элемент в систему вкладок, что помогает разделить информацию на несколько блоков, обеспечивая легкий доступ к каждому из них и экономить место на странице</p>
+	   </div>
+	   <div id="tabs-2">
+		  <p>Система вкладок позволяет разделить информацию на несколько блоков, обеспечивая легкий доступ к каждому из них и экономию места на странице.</p>
+	   </div>
+	   <div id="tabs-3">
+			<p>
+				Плагин Tabs использует стандартные стили jQueryUI-css для оформления вкладок. Для редактирования оформления рекомендуется использовать специальную ручную настройку на сайте jQuery UI. 
+			</p>
+			<p>
+				Для специфичных манипуляций диалоговыми окнами, можно воспользоваться информацией о его структуре.
+			</p>
+	   </div>
+	</div>
+    
+    <style>
+        a{
+            color: orange;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+
+        .ui-tabs-nav a{
+            font-size: 16px;
+            font-weight: normal;
+        }
+        #tabs{
+            width: 80%;
+            margin: 0 auto;
+        }
+        .ui-tabs-panel{
+            font: normal 15px Arial;
+            text-align: justify;
+        }
+        
+    </style>
+    
+    <script>
+        $( "#tabs" ).tabs({
+            event: "mouseover"
+        });
+    </script>
+</body>
+</html>

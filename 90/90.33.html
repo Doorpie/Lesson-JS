@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./Js/jquery-ui-1.12.1/jquery-ui.min.css">
+    <title>Lesson 90.33</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+    </script>
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="" id="set-date">Установить дату в 10.12.2012</a><br>
+    <a href="" id="show">Открыть календарь</a><br>
+    <a href="" id="hide">Закрыть календарь</a><br>
+    <p>Дата: <input type="text" id="datepicker"></p>
+    
+    <style>
+    body {
+      height: 400px;
+    }
+
+    a{
+      color: orange;
+      text-decoration: none;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+    </style>
+    
+    <script>
+		$(document).ready(function(){
+			$("#datepicker")
+				.datepicker({
+					dayNamesMin: [ "Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+					monthNames: [ "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" ],
+					firstDay: 1
+				})
+				.datepicker("option", "dateFormat", 'dd.mm.yy')
+			$('#set-date').click(function(){$("#datepicker").datepicker( "setDate", "10.12.2012" ); return false;})
+			$('#show').click(function(){$("#datepicker").datepicker( "show" ); return false;})
+			$('#hide').click(function(){$("#datepicker").datepicker( "hide" ); return false;})
+		});
+    </script>
+</body>
+</html>
