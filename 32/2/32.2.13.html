@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.2.13</title>
+</head>
+<body>
+
+    <p class="text">1</p>
+    <button class="go">Пуск</button>
+    <button class="pause">Пауза</button>
+
+    <script>
+            // 32.2.13  Дан абзац и две кнопки. Сделайте так, чтобы по нажатию на первую кнопку в абзаце начал тикать таймер от 1 до бесконечности, а по нажатию на вторую таймер останавливался
+    
+    let p = document.querySelector('.text');
+    let btnGo = document.querySelector('.go');
+    let btnPause = document.querySelector('.pause');
+
+    btnGo.addEventListener('click', go);
+
+    function go() {
+        window.timerId =  window.setInterval(timer, 1000);
+        btnGo.disabled = true;
+        btnPause.disabled = false;
+    }
+
+    btnPause.addEventListener('click', pause);
+
+    function pause() {
+        window.clearTimeout(window.timerId);
+        btnGo.disabled = false;
+        btnPause.disabled = true;
+    }
+
+    function timer() {
+        p.innerHTML = parseInt(p.innerHTML) + 1;
+    }
+            
+    </script>
+    
+</body>
+</html>

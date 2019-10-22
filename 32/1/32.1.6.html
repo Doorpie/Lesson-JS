@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Leson 32.1.6</title>
+</head>
+<body>
+    <!-- 32.1.6 Сделайте функцию, которая возвращает множественное или единственное число существительного. Пример: 1 яблоко, 2 (3, 4) яблока, 5 яблок. Функция первым параметром принимает число, а следующие 3 параметра — форма для единственного числа, для чисел два, три, четыре и для чисел, больших четырех, например, func(3, 'яблоко', 'яблока', 'яблок'). -->
+
+<script>
+
+function func(num, str1, str2, str3) {
+    if (num == 1) {
+        return num + ' ' + str1;
+    }
+
+    if (num > 1 && num < 5) {
+        return num + ' ' + str2;
+    }
+
+    if (num >= 5 ) {
+        return num + ' ' + str3;
+    }
+}
+
+console.log(func(3, 'яблоко', 'яблока', 'яблок'));
+</script>
+
+
+</body>
+</html>

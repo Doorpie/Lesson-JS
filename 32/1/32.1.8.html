@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson 32.1.8</title>
+</head>
+<body>
+    <script>
+        // 32.1.8 Сделайте функцию getIntersect, которая параметром принимает два массива и возвращает массив элементов, которые есть в обоих массивах.
+
+        function getIntersect(arr1, arr2) {
+
+            let resultArrr = [];
+
+            for (let i = 0; i < arr1.length; i++) {
+                for (let j = 0; j < arr2.length; j++) {
+                    if (arr1[i] == arr2[j]) {
+                        resultArrr.push(arr1[i]);
+                    }
+                }
+            }
+
+            return resultArrr;
+        }
+
+        console.log(getIntersect([0, 7, 2, 3], [-1, 1, 2, 7]));
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.1.7</title>
+</head>
+<body>
+    <script>
+        // 32.1.7 Сделайте функцию getDivisors, которая параметром принимает число и возвращает массив его делителей (чисел, на которое делится данное число).
+   
+        function getDivisors(num) {
+
+            let arr = [];
+
+                for (let i = 1; i <= num; i++) {
+                    if (num % i == 0) {
+                        arr.push(i);
+                    }
+                }
+
+            return arr;
+        }
+
+        console.log(getDivisors(30));
+    </script>
+</body>
+</html>

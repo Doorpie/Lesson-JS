@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.1.2</title>
+</head>
+<body>
+    <!--32.1.2  Дана строка. Сделайте заглавным первый символ каждого слова этой строки. Для этого сделайте вспомогательную функцию ucfirst, которая будет получать строку, делать первый символ этой строки заглавным и возвращать обратно строку с заглавной первой буквой. -->
+    <script>         
+            function func(str) {
+                let strArr = str.split(' ');
+
+                return getNewArr(strArr).join(' ');                       
+            };
+
+            function getNewArr(strArr) {
+                let newStrArr = [];
+
+                for (i = 0; i < strArr.length; i++) {
+                    newStrArr.push(ucfirst(strArr[i]));
+                }
+
+                return newStrArr;
+            };
+
+            function ucfirst (strArr) {
+                return  strArr[0].toUpperCase() + strArr.substr(1);           
+            };
+
+            alert(func("привет мир"));
+
+        </script>   
+    
+</body>
+</html>

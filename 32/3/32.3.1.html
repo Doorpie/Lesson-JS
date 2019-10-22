@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.3.1</title>
+</head>
+<body>
+    <!--  32.3.1   Сделайте функцию setText, которая будет принимать id элемента и текст. Пусть эта функция устанавливает новый текст для элемента с этим id. Пример: пусть у нас даны два абзаца:
+
+<p id="elem1"></p>
+<p id="elem2"></p>
+Давайте первому элементу установим текст 'первый', а второму - 'второй':
+
+setText('elem1', 'первый');
+setText('elem2', 'второй');
+В результате получим следующий HTML код:
+
+<p id="elem1">первый</p>
+<p id="elem2">второй</p> -->
+
+<p id="elem1"></p>
+<p id="elem2"></p>
+
+    <script>
+
+        setText(elem1, "первый");
+        setText(elem2, "второй");
+
+        function setText(id, text) {
+            id.innerHTML = text;
+        }
+    </script>
+</body>
+</html>

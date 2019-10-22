@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.1.5</title>
+</head>
+<body>
+    <script>
+            // 32.1.5 С помощью функцию isSimple из предыдущей задачи выведите на экран все простые числа из промежутка от 1 до 100.
+
+            
+        function isSimple() {
+
+            for (let i = 1; i <= 100; i++) {
+                if (getDivisors(i)) {
+                    console.log(i);
+                }
+            }
+        }
+
+        function getDivisors(num) {
+
+            for (let i = 2; i < num; i++) {
+
+                if ( num % i == 0) {
+                    return false;
+                } else {
+                    return true;
+                }     
+            }
+        }
+
+isSimple();
+
+    </script>
+</body>
+</html>

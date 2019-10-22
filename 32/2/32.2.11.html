@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson 32.2.11</title>
+</head>
+<body>
+    <script>
+//  Дан следующий массив с работниками:
+// var products = [
+// 	{name: 'Коля', age: 30},
+// 	{name: 'Вася', age: 31},
+// 	{name: 'Петя', age: 32},
+// ];
+// Выведите на экран столбец имен в таком формате: 'Коля - зарплата 400$' и так далее для каждого работника. 
+
+var products = [
+	{name: 'Коля', age: 30},
+	{name: 'Вася', age: 31},
+	{name: 'Петя', age: 32},
+];
+
+let body = document.body;
+
+for (i = 0; i < products.length; i++) {
+    
+    let div = document.createElement('div');
+
+    div.innerHTML = products[i].name + ': возраст - ' + products[i].age;
+
+    body.appendChild(div);
+
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.3.3</title>
+</head>
+<body>
+    <!-- 32.3.3  Даны абзацы. Получите их, переберите циклом и каждому добавьте в конец '!' с помощью функции addText, сделанной в предыдущей задаче. -->
+
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <script>
+
+        let elems = getElements('p');
+        setText(elems);
+
+
+        function setText(elems) {
+            for (i = 0; i < elems.length; i++) {
+                addText('!', elems[i]);
+            }
+        }
+
+        function getElements(selector) {
+            return document.querySelectorAll(selector);
+        }
+
+        function addText(text, id) {
+            id.innerHTML += text;
+        }
+    </script>
+</body>
+</html>

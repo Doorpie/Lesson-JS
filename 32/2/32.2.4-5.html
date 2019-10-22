@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.2.4-5</title>
+</head>
+<body>
+
+     <p class="text">12345</p>
+    <input type="text" class="input" id="res"> 
+    <script>
+        // 32.2.4  Дан абзац и инпут. Сделайте так, чтобы по заходу на страницу текст абзаца отображался в инпуте.
+        // 32.2.5  Модифицируйте предыдущую задачу так, чтобы можно было поредактировать содержимое инпута - и содержимое абзаца также поменялось.
+
+        window.onload = function() {
+            let text = document.querySelector('.text');  
+            let input = document.querySelector(".input");
+            input.value = text.innerHTML;
+
+            input.addEventListener('change', chageText);
+
+            function chageText() {
+                text.innerHTML = input.value;
+            }
+        }
+    </script>
+</body>
+</html>

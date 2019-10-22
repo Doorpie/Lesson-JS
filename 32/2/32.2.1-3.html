@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.2.1</title>
+</head>
+<body>
+
+    <ul></ul>
+    <script>
+        // 32.2.1 Дан массив. Выведите его элементы в виде списка ul так, чтобы каждый элемент попал в свою li.
+        // 32.2.2 Модифицируйте предыдущую задачу так, чтобы по клику на li ей в конец добавлялся '!'.
+        // 32.2.3  Модифицируйте предыдущую задачу так, чтобы по повторное нажатие на li не приводило к добавлению второго '!'.
+
+        let arr = [1, 2, 3];
+
+        let ul = document.querySelector('ul');
+
+        for (let i = 0; i < arr.length; i++) {
+            let li = document.createElement('li');
+            li.innerHTML = arr[i];
+            li.addEventListener('click', addSymbol);
+            ul.appendChild(li);
+        }
+
+        function addSymbol() {
+            this.innerHTML += '!';
+            this.removeEventListener('click', addSymbol);
+        }
+    </script>
+</body>
+</html>

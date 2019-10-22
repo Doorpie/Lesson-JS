@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.2.14</title>
+</head>
+<body>
+
+    <p class="text">10</p>
+    <button class="go">Пуск</button>
+
+    <script>
+            // 32.2.14  Дан абзац и кнопка. Изначально в абзаце написано какое-то число, например 10. Сделайте так, чтобы по нажатию на кнопку в абзаце начал тикать обратный отсчет. Как только он дойдет до нуля - он должен закончится и под ним должна вывестись фраза 'отсчет закончен'.
+            
+    let p = document.querySelector('.text');
+    let btnGo = document.querySelector('.go');
+    let body = document.body;
+
+        btnGo.addEventListener('click', go);
+
+        function go() {
+                window.timerId =  window.setInterval(timer, 1000);
+                btnGo.disabled = true;
+            }
+
+        function timer() {
+            p.innerHTML = parseInt(p.innerHTML) - 1;
+
+            if (p.innerHTML == 0) {
+                window.clearTimeout(window.timerId);
+
+                btnGo.disabled = false;
+
+                let div = document.createElement('div');
+                div.innerHTML = 'отсчет закончен';
+                body.insertBefore(div, btnGo.nextSibling);
+
+            }
+        }
+
+    </script>
+</body>
+</html>

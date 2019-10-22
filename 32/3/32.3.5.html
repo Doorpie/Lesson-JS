@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.3.5</title>
+</head>
+<body>
+    <!-- 32.3.5 Сделайте функцию appendElem, которая первым параметром будет принимать текст, а вторым - ссылку DOM объект, в котором лежит тег ul. Сделайте так, чтобы данная функция добавляла текст в конец этого элемента. Пример: дан следующий элемент:
+
+<ul id="elem"></ul>
+Получим наш элемент по id и используем нашу функцию appendElem, чтобы добавить ему в конец тег li с текстом '!':
+
+var elem = document.getElementById('elem');
+appendElem('!', elem);
+В результате получим следующий HTML код (в конец добавится '!'):
+
+<ul id="elem">
+	<li>!</li>
+</ul>
+Для примера можем добавить не одну li, а несколько:
+
+var elem = document.getElementById('elem');
+appendElem('1', elem);
+appendElem('2', elem);
+appendElem('3', elem);
+В результате получим следующий HTML код (в конец добавится '!'):
+
+<ul id="elem">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+</ul> -->
+    
+<ul id="elem"></ul>
+
+<script>
+    var elem = document.getElementById('elem');
+
+    appendElem('1', elem);
+    appendElem('2', elem);
+    appendElem('3', elem);
+
+    function appendElem (text, elem) {
+        let li = createElement('li');
+
+        li.innerHTML = text;
+
+        elem.appendChild(li);
+    }
+
+    function createElement(element) {
+        return document.createElement(element);
+    }
+</script>
+</body>
+</html>

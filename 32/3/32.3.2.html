@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.3.2</title>
+</head>
+<body>
+    <!--  32.3.2 Сделайте функцию addText, которая первым параметром будет принимать текст, а вторым - DOM элемент. Сделайте так, чтобы данная функция добавляла текст в конец этого элемента. Пример: дан следующий элемент:
+
+<p id="elem">текст</p>
+Получим наш элемент по id и используем нашу функцию addText, чтобы добавить ему в конец '!':
+
+var elem = document.getElementById('elem');
+addText('!', elem);
+В результате получим следующий HTML код (в конец добавится '!'):
+
+<p id="elem">текст!</p> -->
+
+<p id="elem">текст</p>
+<script>
+
+
+    let elem = document.getElementById('elem');
+    addText('!', elem);
+
+    function addText(text, id) {
+        id.innerHTML += text;
+    }
+</script>
+    
+</body>
+</html>

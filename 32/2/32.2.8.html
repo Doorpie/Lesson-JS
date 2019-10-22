@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.2.8</title>
+</head>
+<body>
+    <script>
+        //  Дан массив [[1, 2, 3], [4, 5, 6], [7, 8, 9]]. Выведите его элементы в виде таблицы table размером 3 на 3.
+
+        let body = document.body;
+        let obj = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+
+        let table = document.createElement('table');
+
+        body.appendChild(table); 
+        
+        for (i = 0; i < obj.length; i++) {
+            let tr = document.createElement('tr');
+            table.appendChild(tr);
+
+            for (j = 0; j < obj[i].length; j++) {
+                let td = document.createElement('td');
+                td.innerHTML = obj[i][j];
+                tr.appendChild(td);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.2.12</title>
+</head>
+<body>
+    <p class="text">1</p>
+    <button class="btn">Пуск</button>
+    <script>
+        // 32.2.12  Дан абзац и кнопка. Сделайте так, чтобы по нажатию на кнопку в абзаце начал тикать таймер от 1 до бесконечности. Чтобы предотвратить повторное нажатие на кнопку она должна переходить в состояние disabled.
+    
+    let p = document.querySelector('.text');
+    let btn = document.querySelector('.btn');
+
+    btn.addEventListener('click', go);
+
+    function go() {
+        window.setInterval(timer, 1000);
+        btn.setAttribute('disabled', 'true');
+    }
+
+    function timer() {
+        p.innerHTML = parseInt(p.innerHTML) + 1;
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.2.6-7</title>
+</head>
+<body>
+    <p class="text">12345</p>
+
+    <script>
+        // 32.2.6 Дан абзац с текстом. Сделайте так, чтобы по клику на этот абзац рядом с ним появлялся инпут, с помощью которого можно будет поредактировать текст нашего абзаца. По потери фокуса инпут должен исчезнуть, а содержимое абзаца поменяться.
+        // 32.2.7  Модифицируйте предыдущую задачу так, чтобы инпут появлялся вместо абзаца, а не рядом с ним.
+
+
+            let p  = document.querySelector('.text');
+            let body = document.body;
+
+            p.addEventListener('click', () => {
+                p.style.display = 'none';
+                let input = document.createElement('input');
+                input.value = p.innerHTML;     
+                input.addEventListener('blur', changeText);              
+                body.insertBefore(input, p.nextSibling);
+            });
+
+            function changeText() {
+                p.innerHTML = this.value;
+                body.removeChild(this);
+                p.style.display = 'block';
+            }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.3.4</title>
+</head>
+<body>
+    <!-- 32.3.4  Дан массив. Выведите его элементы в виде списка ul. -->
+
+    <script>
+        let arr = [1, 2, 3, 4];
+        addUl(arr);
+
+        function addUl(arr) {
+            let body = document.body;
+            let ul = createElement('ul');
+
+            body.appendChild(ul);
+
+            for (i = 0; i < arr.length; i++) {
+                let li = createElement('li');
+
+                li.innerHTML = arr[i];
+
+                ul.appendChild(li);
+            }
+
+        }
+
+        function createElement(element) {
+            return document.createElement(element);
+        }
+
+        
+    </script>
+</body>
+</html>
