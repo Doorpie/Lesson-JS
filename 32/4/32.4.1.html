@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.4.1</title>
+</head>
+<body>
+    <!-- 32.4.1 Дан абзац. Сделайте так, чтобы по клику на него его текст становился в инпуте, с помощью которого можно будет поредактировать текст этого абзаца. По потери фокуса инпут должен исчезать, а в абзаце оставаться новый текст. -->
+<p>Поменяй текст</p>
+
+    <script>
+        let body = document.body;
+        let p = getElement('p');
+
+        p.addEventListener('click', getInput);
+
+        function getInput() {
+            this.style.display = 'none';
+
+            let input = document.createElement('input');
+            input.addEventListener('blur', addText);
+            input.value = p.innerHTML;
+            body.insertBefore(input, p.nextSiblin);
+        }
+
+        function addText() {
+            let input = getElement('input');
+            p.innerHTML = input.value;
+            this.remove();
+            p.style.display = 'block';
+        }
+
+        function getElement(selector) {
+           return document.querySelector(selector); 
+        }
+
+    </script>
+
+</body>
+</html>

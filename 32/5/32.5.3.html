@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.5.3</title>
+</head>
+<body>
+
+    <style>
+        td {
+            border: 1px solid black;
+        }
+    </style>
+    <table class="table"></table>
+    <p class="total"></p>
+<script>
+
+    let table = document.querySelector('.table');
+    let total = document.querySelector('.total');
+
+    addProduct(table, {name: '1', price: 1, quantity: 4});
+    setTotal(total, calculateSum(table));
+
+    
+    function addProduct(table, product) {
+
+            let tr = document.createElement('tr');
+
+            createTd(product.name, tr);
+            createTd(product.price, tr);
+            createTd(product.quantity, tr);
+            createTd(product.price * product.quantity, tr, 'cost');
+
+            table.appendChild(tr);
+  
+    }
+
+    function createTd(text, parent, className) {
+        let td = document.createElement('td');
+        td.innerHTML = text;
+        parent.appendChild(td);
+
+        if (className != undefined) {
+            td.classList.add(className);
+        }
+    }
+
+    function calculateSum(table) {
+        let costs = table.querySelectorAll('.cost');
+        console.log(costs);
+
+        let sum = 0;
+
+        for (let i = 0; i < costs.length; i++){
+            sum += Number(costs[i].innerHTML);
+        }
+
+        return sum;
+    }
+
+
+    function setTotal(elem, text) {
+        elem.innerHTML = text;
+    }
+
+
+
+</script>
+</body>
+</html>

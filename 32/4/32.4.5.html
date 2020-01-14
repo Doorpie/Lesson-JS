@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.4.3</title>
+</head>
+<body>
+    <!-- 32.4.5   После того, как вы повторите мой код, на его базе сделайте так, чтобы в конце каждой li стояла ссылка 'удалить', в помощью которой можно будет удалить эту li из ul.-->
+    <ul id="ul"></ul>
+    <input type="text" id="input">
+    <script>
+
+        var arr = ['a', 'b', 'c'];
+        var ul = document.getElementById('ul');
+        var input = document.getElementById('input');
+
+        InitAddingInput(ul, input);
+        initList(ul, arr);
+
+        // функция принимает ul и массив
+        function initList(ul, arr) {
+
+            //  вызываем функцию  создания li из массива и записываем li в items
+            var items = createList(ul, arr);
+
+            // перебираем все li созданные в createList
+            // for (var i = 0;  i < items.length; i++) {
+                // добавляем всем полученным li input для редактирования
+            //     editElem(items[i]);
+            // }
+        }
+
+        // функция добавляет текст в li из input
+        function InitAddingInput(ul, input) {
+            // рисваиваем событие  input
+            input.addEventListener('blur', function() {
+                // используем функцию добавления li
+                addItem(ul, this.value);
+                // по окончанию обнуляем input
+                this.value = '';
+            });
+        }
+
+         //  функция добавляет созданную li в переданную ul  
+        function addItem(ul, text) {
+            // создаем li
+            var li = document.createElement('li');
+            // текст li будет равнятся переданному параметру text
+            li.innerHTML = text;
+
+            // в передаваемую ul записывается созданный li
+            ul.appendChild(li);
+            
+            // добавляем ссылку на удаление
+            addDelete(li);
+            editElem(li);
+            
+            // возращает li
+            return li ;
+        }
+
+        // функция  добвляет input для редактирования li
+        function editElem(elem) {
+            //  события при нажатии li
+            elem.addEventListener('click', function edit() {
+                // переносит текст ли в переменную перед обнулением 
+                var text = this.firstChild.data;
+
+                // обнуляем li
+                this.innerHTML = '';
+
+                // создаем input
+                var input = document.createElement('input');
+                // значение input равен переменной text
+                input.value = text;
+
+                // записываем input в li
+                this.appendChild(input);
+
+                // оставляем ссылку на li
+                var self = this;
+
+                //  создаем событие для input
+                input.addEventListener('blur', function(){
+                    // меняем в сохраненной ссылке li текст
+                    self.innerHTML = this.value;
+
+                    // добавляем заново ссылку удалить
+                    addDelete(self);
+
+                    // возвращаем событие li                
+                    self.addEventListener('click', edit);
+                });
+                //  убераем повторяющееся событие li
+                this.removeEventListener('click', edit);
+            });
+        }
+
+        // функция создает список li из массива
+        function createList(elem, arr) {
+            // записываем все созданные li в массив
+            var items = [];
+            // перебираем массив 
+            for (var i = 0; i < arr.length; i++) {
+                // вызываем функция для записи li в ul
+                var li = addItem(elem, arr[i]);
+                // записываем li в массив
+                items.push(li);
+            }
+            // возвращаемем массив
+            return items;
+        }
+
+        //    функция добавляет ссылку удалить в переданную li
+           function addDelete(elem) {       
+            let a = document.createElement('a');
+
+            a.innerHTML = 'Удалить';
+            a.href = "#";
+            a.style.marginLeft = "5px";
+            
+            elem.appendChild(a);
+
+            var self = elem;
+
+            a.addEventListener('click', function(elem) {
+                self.remove();
+            });
+        }
+
+    </script>
+</body>
+</html>

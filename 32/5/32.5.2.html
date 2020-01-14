@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.5.2</title>
+</head>
+<body>
+    <style>
+        td {
+            border: 1px solid black;
+        }
+    </style>
+    <!--  Модифицируйте предыдущую задачу: пусть теперь таблица изначально пуста, зато под ней есть 3 инпута, в которые можно ввести название продукта, цену и количество, затем нажать на кнопку - и этот продукт добавится в таблицу. Отдельная колонка полной стоимости продукта также должна рассчитываться, как и полная стоимость всех добавленных продуктов. -->
+    <table class="table"></table>
+    <p class="total"></p>
+    <input class="name">
+    <input type="text" class="price">
+    <input type="text" class="quantity">
+    <button class="btn">Добавить</button>
+    <script>
+
+        let table = document.querySelector('.table');
+        let total = document.querySelector('.total');
+        let name = document.querySelector('.name');
+        let price = document.querySelector('.price');
+        let quantity = document.querySelector('.quantity');
+        let btn = document.querySelector('.btn');
+
+   
+    
+
+
+    btn.addEventListener('click', function () {
+        let products = [];
+
+        products.push({'name': name.value, 'price': price.value, 'quantity': quantity.value});
+
+        createProductTable(products, table);
+        setTotal(total, calculateSum(getCostArray(table)));
+        
+    
+    })
+    
+   
+    function createProductTable(products, table) {
+
+        for (let i = 0; i < products.length; i++){
+            let tr = document.createElement('tr');
+
+            createTd(products[i].name, tr);
+            createTd(products[i].price, tr);
+            createTd(products[i].quantity, tr);
+            createTd(products[i].price * products[i].quantity, tr, 'cost');
+
+            table.appendChild(tr);
+        }
+    }
+
+    function createTd(text, parent, className) {
+        let td = document.createElement('td');
+        td.innerHTML = text;
+        parent.appendChild(td);
+
+        
+        if (className != undefined) {
+            td.classList.add(className);
+        }
+    }
+
+    function getCostArray(table) {
+       let tds =  table.querySelectorAll('.cost');
+
+       return tds;
+    }
+
+    function calculateSum(tds) {
+        let sum = 0;
+
+        for (let i = 0; i < tds.length; i++){
+            sum += Number(tds[i].innerHTML);
+        }
+
+        return sum;
+    }
+
+    function setTotal(elem, text) {
+        elem.innerHTML = text;
+    }
+    </script>
+</body>
+</html>

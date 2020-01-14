@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.4.2</title>
+</head>
+<body>
+    <!-- 32.4.2  Дан массив. Выведите его элементы в виде списка ul. -->
+    <!-- 32.4.3  Модифицируйте предыдущую задачу так, чтобы по клику на любую li в ней появлялся инпут, с помощью которого ее можно будет поредактировать. -->
+    <!-- 32.4.4  Модифицируйте предыдущую задачу так, чтобы под списком был инпут, с помощью которого можно будет добавить новый элемент в конец списка ul.-->
+    <script>
+        let arr = [1, 2, 3,];
+        let body = document.body;
+
+        function createForm() {
+            // Создаем ul с input
+            let ul = document.createElement('ul');
+            let input = document.createElement('input'); 
+
+            // событие на внешний input создание нового li
+            input.addEventListener('change', addElement);
+
+            // записываем в html
+            body.appendChild(ul);
+            body.appendChild(input);
+
+            // перебираем массив, записыая каждое значение в новое li
+            for(i = 0 ; i < arr.length; i++) {
+               let li = document.createElement('li');
+               li.addEventListener('click', getInput);
+               li.innerHTML = arr[i];
+               ul.appendChild(li);
+            }
+        }
+
+        // Получаем инпут с текстом li
+        function getInput() {
+
+            // удаляеме повторное событие li
+            this.removeEventListener('click', getInput);
+
+            var ul = document.querySelector('ul');    
+            let input = document.createElement('input');
+
+            // событие на перенос значения input в li
+            input.addEventListener('blur', addText);
+
+            //  переносим текст li в input и вставляем в li
+            input.value = this.innerHTML;
+            this.innerHTML = '';
+
+            this.appendChild(input);
+
+            //  автофокус на input
+            input.focus();
+        }
+
+        // Переносим значение input обратно в li
+        function addText() {
+            // возращаем обратно событие li
+            this.parentNode.addEventListener('click', getInput);
+
+            this.parentNode.innerHTML = this.value;
+            
+            this.remove();
+        }
+
+        // Добавляем новое ли  в ul
+        function addElement() {
+            let ul = document.querySelector('ul');
+            let li = document.createElement('li');
+
+            li.innerHTML = this.value
+
+            ul.appendChild(li);
+
+            this.value = '';
+        }
+
+        createForm();
+    </script>
+</body>
+</html>

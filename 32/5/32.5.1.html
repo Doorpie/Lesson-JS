@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 32.5.1</title>
+</head>
+<body>
+
+    <style>
+        td {
+            border: 1px solid black;
+        }
+    </style>
+    <!-- Дана таблица. В ней мы будем отображать купленные продукты. Каждый ряд таблицы - это один продукт, а именно: название продукта, его цена, количество и уплаченная сумма, которая равна цене умноженной на количество. Пусть продукты хранятся в виде объекта вида:
+
+var products = [
+	{name: 'product1', price: 100, quantity: 4},
+	{name: 'product2', price: 200, quantity: 5},
+	{name: 'product3', price: 300, quantity: 6},
+];
+Итак, выведите эти продукты в виде таблицы, в отдельной колонке рассчитав сумму. Под таблицей выведите полную стоимость всех продуктов. -->
+    <table class="table"></table>
+    <p class="total"></p>
+<script>
+
+
+    let products = [
+        {name: 'product1', price: 100, quantity: 4},
+        {name: 'product2', price: 200, quantity: 5},
+        {name: 'product3', price: 300, quantity: 6},
+    ];
+
+    let table = document.querySelector('.table');
+    let total = document.querySelector('.total');
+
+    createProductTable(products, table);
+    setTotal(total, calculateSum(products));
+    
+
+    
+    function createProductTable(data, table) {
+        for (let i = 0; i < products.length; i++){
+            let tr = document.createElement('tr');
+
+            createTd(products[i].name, tr);
+            createTd(products[i].price, tr);
+            createTd(products[i].quantity, tr);
+            createTd(products[i].price * products[i].quantity, tr);
+
+            table.appendChild(tr);
+        }
+    }
+
+    function createTd(text, parent) {
+        let td = document.createElement('td');
+        td.innerHTML = text;
+        parent.appendChild(td);
+    }
+
+    function calculateSum(data) {
+        let sum = 0;
+
+        for (let i = 0; i < products.length; i++){
+            sum += products[i].price * products[i].quantity;
+        }
+
+        return sum;
+    }
+
+    function setTotal(elem, text) {
+        elem.innerHTML = text;
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson 42</title>
+</head>
+<body>
+    <script>
+            // 1. Дана строка 'ahb acb aeb aeeb adcb axeb'. Напишите регулярку, которая найдет строки ahb, acb, aeb по шаблону: буква 'a', любой символ, буква 'b'. 
+    
+            console.log('ahb acb aeb aeeb adcb axeb'.replace(/a.b/g, '!'));
+
+            // 2  Дана строка 'aba aca aea abba adca abea'. Напишите регулярку, которая найдет строки abba adca abea по шаблону: буква 'a', 2 любых символа, буква 'a'.
+
+            console.log('aba aca aea abba adca abea'.replace(/a..a/g, '!'));
+
+            // 3.  Дана строка 'aba aca aea abba adca abea'. Напишите регулярку, которая найдет строки abba и abea, не захватив adca. Показать решение.
+
+            console.log('aba aca aea abba adca abea'.replace(/ab.a/g, '!'));
+
+            // На '+', '*', '?', ()
+            // 4. Дана строка 'aa aba abba abbba abca abea'. Напишите регулярку, которая найдет строки aba, abba, abbba по шаблону: буква 'a', буква 'b' любое количество раз, буква 'a'.
+
+            console.log('aa aba abba abbba abca abea'.replace(/ab+a/g, '!'));
+
+            // 5.  Дана строка 'aa aba abba abbba abca abea'. Напишите регулярку, которая найдет строки aa, aba, abba, abbba по шаблону: буква 'a', буква 'b' любое количество раз (в том числе ниодного раза), буква 'a'.
+
+            console.log('aa aba abba abbba abca abea'.replace(/ab*a/g, '!'));
+
+            // 6.  Дана строка 'aa aba abba abbba abca abea'. Напишите регулярку, которая найдет строки aa, aba по шаблону: буква 'a', буква 'b' один раз или ниодного, буква 'a'.
+
+            console.log('aa aba abba abbba abca abea'.replace(/ab?a/g, '!'));
+
+            // 7. Дана строка 'aa aba abba abbba abca abea'. Напишите регулярку, которая найдет строки aa, aba, abba, abbba, не захватив abca abea. 
+
+            console.log('aa aba abba abbba abca abea'.replace(/ab*a/g, '!'));
+
+            // 8. Дана строка 'ab abab abab abababab abea'. Напишите регулярку, которая найдет строки по шаблону: строка 'ab' повторяется 1 или более раз
+
+            console.log('ab abab abab abababab abea'.replace(/(ab)+/g, '!'));
+
+            // На экранировку
+
+            // 9. Дана строка 'a.a aba aea'. Напишите регулярку, которая найдет строку a.a, не захватив остальные.
+
+            console.log('a.a aba aea'.replace(/a\.a/g, '!'));
+
+            // 10. Дана строка '2+3 223 2223'. Напишите регулярку, которая найдет строку 2+3, не захватив остальные
+
+            console.log('2+3 223 2223'.replace(/2\+3/g, '!'));
+
+            // 11. Дана строка '23 2+3 2++3 2+++3 345 567'. Напишите регулярку, которая найдет строки 2+3, 2++3, 2+++3, не захватив остальные (+ может быть любое количество).
+
+            console.log('23 2+3 2++3 2+++3 345 567'.replace(/2\++3/g, '!'));
+
+            // 12. Дана строка '23 2+3 2++3 2+++3 445 677'. Напишите регулярку, которая найдет строки 23, 2+3, 2++3, 2+++3, не захватив остальные. 
+
+            console.log('23 2+3 2++3 2+++3 445 677'.replace(/2\+*3/g, '!'));
+
+            // 13. Дана строка '*+ *q+ *qq+ *qqq+ *qqq qqq+'. Напишите регулярку, которая найдет строки *q+, *qq+, *qqq+, не захватив остальные
+
+            console.log('*+ *q+ *qq+ *qqq+ *qqq qqq+'.replace(/\*q+\+/g, '!'));
+
+            // На жадность
+            // 14. Дана строка 'aba accca azzza wwwwa'. Напишите регулярку, которая найдет все строки по краям которых стоят буквы 'a', и заменит каждую из них на '!'. Между буквами a может быть любой символ (кроме a).
+
+            console.log('aba accca azzza wwwwa'.replace(/a.+?a/g, '!'));
+    </script>
+</body>
+</html>
